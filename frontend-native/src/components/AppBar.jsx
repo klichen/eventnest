@@ -4,7 +4,7 @@ import Text from './Text';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
     backgroundColor: 'purple',
     flexDirection: "row",
     justifyContent: "flex-start"
@@ -26,12 +26,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBar = () => {
-  return <View style={styles.container}>{
-    <Pressable style={styles.button}>
-        <Text style={styles.text}>{"Nav Button"}</Text>
+const AppBar = ({ nav }) => {
+  return (
+  <View style={styles.container}>
+    <Pressable style={styles.button} onPress={() => nav.navigate('Home')}>
+        <Text style={styles.text}>{"Home"}</Text>
     </Pressable>
-  }</View>;
+    <Pressable style={styles.button} onPress={() => nav.navigate('Flex')}>
+        <Text style={styles.text}>{"Flex"}</Text>
+    </Pressable>
+  </View>
+  );
 };
 
 export default AppBar;
