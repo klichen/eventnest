@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import Constants from 'expo-constants';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,6 +10,7 @@ import FlexPage from './src/components/FlexPage';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  console.log(Constants.expoConfig);
   return (
     <>
       <NavigationContainer>

@@ -6,19 +6,19 @@ const styles = StyleSheet.create({
     flexContainer: {
       flexDirection: 'row',
     //   marginTop: 50,
-      justifyContent: "flex-end",
+      justifyContent: "flex-start",
       alignContent: 'center',
       gap: 25,
       flexWrap: "wrap"
     },
     flexItemA: {
 
-        flexGrow: 1,
+        flexGrow: 0,
         backgroundColor: 'green',
     },
     flexItemB: {
         flexGrow: 0,
-        backgroundColor: 'blue',
+        backgroundColor: 'orange',
     },
     flexNav: {
         flexGrow: 0
