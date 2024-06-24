@@ -1,19 +1,25 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from '../components/RepositoryItem'
+import EventCard from '../components/EventCard';
+import Constants from 'expo-constants';
 import { useEffect, useState } from 'react';
 import useRepositories from '../hooks/useRepositories';
 
 const styles = StyleSheet.create({
   separator: {
     height: 10,
-    backgroundColor: 'grey',
+    backgroundColor: 'white',
     marginBottom: 8
   },
 
   container: {
-    flex: 1,
-    marginTop: 48
-  }
+    flex: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 0,
+  },
 });
 
 const repositories = [
@@ -63,10 +69,53 @@ const repositories = [
   },
 ];
 
+// mock event data
+const date1 = new Date('2024-10-31T18:00:00');
+const events = [
+    {
+        title: "Board Games Night",
+        dateTime: date1,
+        location: "Wilson Hall 2002",
+        imageLink: 'tbd'
+    },
+    {
+        title: "Board Games Night",
+        dateTime: date1,
+        location: "Wilson Hall 2002",
+        imageLink: 'tbd'
+    },
+    {
+        title: "Board Games Night",
+        dateTime: date1,
+        location: "Wilson Hall 2002",
+        imageLink: 'tbd'
+    },
+    {
+        title: "Board Games Night",
+        dateTime: date1,
+        location: "Wilson Hall 2002",
+        imageLink: 'tbd'
+    },
+    {
+        title: "Board Games Night",
+        dateTime: date1,
+        location: "Wilson Hall 2002",
+        imageLink: 'tbd'
+    },
+    {
+        title: "Board Games Night",
+        dateTime: date1,
+        location: "Wilson Hall 2002",
+        imageLink: 'tbd'
+    },
+]
 
-const ItemSeparator = () => <View style={styles.separator} />;
+
+// const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepoItem = ({ item }) => <RepositoryItem fullName={item.fullName} description={item.description} language={item.language} />;
+
+const EventItem = ({ item }) => <EventCard title={item.title} location={item.location} dateTime={item.dateTime} imageLink={item.imageLink} />;
 
 const HomeScreen = ({ navigation }) => {
 //   const { repositories } = useRepositories();
@@ -95,10 +144,13 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <FlatList
-        data={repositories}
-        ItemSeparatorComponent={ItemSeparator}
+        data={events}
+        // ItemSeparatorComponent={ItemSeparator}
         // other props
-        renderItem={RepoItem}
+        // contentContainerStyle={{ flex: 1, alignSelf: "stretch" }}
+        showsVerticalScrollIndicator={false}
+        style={{ width: "90%" }}
+        renderItem={EventItem}
         />
     </View>
   );
