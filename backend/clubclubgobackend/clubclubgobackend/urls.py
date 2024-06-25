@@ -27,4 +27,6 @@ urlpatterns = [
     # path("clubclubgo/", include("clubclubgo.urls")),
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('upcoming/', views.getUpcomingEvents),
+    path('club/<id>/events/', views.getClubEvents),
 ]
