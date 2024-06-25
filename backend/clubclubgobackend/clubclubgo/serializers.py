@@ -11,4 +11,5 @@ class ClubSerializer(serializers.HyperlinkedModelSerializer):
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Event
-        fields = ['id', 'club_id', 'title', 'date_time', 'location', 'event_link',  'image_link', 'description']
+        fields = ['id', 'club_id', 'title', 'start_datetime', 'end_datetime', 'location', 'event_link',  'image_link', 'description'] #
+         
