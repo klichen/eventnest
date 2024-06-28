@@ -1,17 +1,12 @@
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, Button } from 'react-native';
 import RepositoryItem from '../components/RepositoryItem'
 import EventCard from '../components/EventCard';
 import Constants from 'expo-constants';
+import Text from '../components/Text';
 import { useEffect, useState } from 'react';
 import useRepositories from '../hooks/useRepositories';
 
 const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-    backgroundColor: 'white',
-    marginBottom: 8
-  },
-
   container: {
     flex: 0,
     alignItems: 'center',
@@ -20,6 +15,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
     padding: 0,
   },
+  filterBtns: {
+    flex: 1,
+  }
 });
 
 const repositories = [
@@ -73,36 +71,42 @@ const repositories = [
 const date1 = new Date('2024-10-31T18:00:00');
 const events = [
     {
+        id: "e1",
         title: "Board Games Night",
         dateTime: date1,
         location: "Wilson Hall 2002",
         imageLink: 'tbd'
     },
     {
+        id: "e2",
         title: "Board Games Night",
         dateTime: date1,
         location: "Wilson Hall 2002",
         imageLink: 'tbd'
     },
     {
+        id: "e3",
         title: "Board Games Night",
         dateTime: date1,
         location: "Wilson Hall 2002",
         imageLink: 'tbd'
     },
     {
+        id: "e4",
         title: "Board Games Night",
         dateTime: date1,
         location: "Wilson Hall 2002",
         imageLink: 'tbd'
     },
     {
+        id: "e5",
         title: "Board Games Night",
         dateTime: date1,
         location: "Wilson Hall 2002",
         imageLink: 'tbd'
     },
     {
+        id: "e6",
         title: "Board Games Night",
         dateTime: date1,
         location: "Wilson Hall 2002",
@@ -110,12 +114,7 @@ const events = [
     },
 ]
 
-
-// const ItemSeparator = () => <View style={styles.separator} />;
-
-const RepoItem = ({ item }) => <RepositoryItem fullName={item.fullName} description={item.description} language={item.language} />;
-
-const EventItem = ({ item }) => <EventCard title={item.title} location={item.location} dateTime={item.dateTime} imageLink={item.imageLink} />;
+const EventItem = ({ item }) => <EventCard title={item.title} location={item.location} dateTime={item.dateTime} imageLink={item.imageLink} id={item.id} />;
 
 const HomeScreen = ({ navigation }) => {
 //   const { repositories } = useRepositories();
@@ -143,6 +142,10 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+        <Text fontSize="heading" fontWeight="bold">UofT Events</Text>
+        <View style={styles.filterBtns}>
+            {/* TODO: select date, categories, sort by buttons */}
+        </View>
         <FlatList
         data={events}
         // ItemSeparatorComponent={ItemSeparator}

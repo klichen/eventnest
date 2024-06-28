@@ -1,5 +1,4 @@
 import { StatusBar } from 'expo-status-bar';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -10,26 +9,39 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import SavedEventsScreen from './src/screens/SavedEventsScreen';
+import EventScreen from './src/screens/EventScreen';
 
 // screen route names
+const homeStack = 'HomeStack'
 const homeRoute = 'Home'
+const eventRoute = 'Event'
 const searchRoute = 'Search'
 const savedEventsRoute = 'Saved'
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name={homeRoute} component={HomeScreen} />
+      <HomeStack.Screen name={eventRoute} component={EventScreen} />
+    </HomeStack.Navigator>
+  )
+}
 
 const App = () => {
   return (
     <>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName={homeRoute}
+          initialRouteName={homeStack}
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size}) => {
               let iconName;
               let rn = route.name;
 
-              if (rn === homeRoute) {
+              if (rn === homeStack) {
                 iconName = focused ? 'home' : 'home-outline'
               }
               else if (rn === searchRoute) {
@@ -45,7 +57,7 @@ const App = () => {
             headerShown: false
           })}
         >
-          <Tab.Screen name={homeRoute} component={HomeScreen} />
+          <Tab.Screen name={homeStack} component={HomeStackScreen} />
           <Tab.Screen name={searchRoute} component={SearchScreen} />
           <Tab.Screen name={savedEventsRoute} component={SavedEventsScreen} />
         </Tab.Navigator>
