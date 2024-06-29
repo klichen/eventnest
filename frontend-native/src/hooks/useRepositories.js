@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+// this is an example of a hook for making requests - probably will need to refer to this for fetching event info from backend
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
   const [loading, setLoading] = useState(false);
