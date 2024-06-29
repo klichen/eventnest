@@ -1,8 +1,9 @@
-import { FlatList, View, StyleSheet, Button } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from '../components/RepositoryItem'
 import EventCard from '../components/EventCard';
 import Constants from 'expo-constants';
 import Text from '../components/Text';
+import Button from '../components/Button';
 import { useEffect, useState } from 'react';
 import useRepositories from '../hooks/useRepositories';
 
@@ -13,10 +14,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
-    padding: 0,
+    paddingBottom: 48
   },
   filterBtns: {
-    flex: 1,
+    // marginHorizontal: 16,
+    width: '90%',
+    paddingHorizontal: 24,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 16,
+    gap: 16
+
   }
 });
 
@@ -145,6 +153,18 @@ const HomeScreen = ({ navigation }) => {
         <Text fontSize="heading" fontWeight="bold">UofT Events</Text>
         <View style={styles.filterBtns}>
             {/* TODO: select date, categories, sort by buttons */}
+            <Button
+                title='Date'
+                iconName='caret-down-outline'
+            />
+            <Button
+                title='Categories'
+                iconName='caret-down-outline'
+            />
+            <Button
+                title='Sort By'
+                iconName='caret-down-outline'
+            />
         </View>
         <FlatList
         data={events}
