@@ -1,8 +1,8 @@
-# Dependency directories
-node_modules/
+# pycache
+/clubclubgobackend/clubclubgo/__pycache__/
+/clubclubgobackend/clubclubgobackend/__pycache__/
 
-# Optional npm cache directory
-.npm
+# db
+/clubclubgobackend/db.sqlite3
 
-# dotenv environment variables file
-.env
+
