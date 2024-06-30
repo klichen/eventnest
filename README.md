@@ -7,3 +7,10 @@ hello
 - git pull 
 - cd **frontend-native** or **backend** 
 - npm install --> https://stackoverflow.com/a/45365969
+
+
+## To run the app on expo mobile app
+- cd frontend-native
+- npm install - if not done yet
+- npm start
+- scan QR code 
