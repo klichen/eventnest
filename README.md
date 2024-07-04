@@ -10,5 +10,6 @@ hello
 
 
 ### Running  server
--  cd backend/clubclubgobackend
+- cd backend/clubclubgobackend
+- pip install -r requirements.txt
 - python3 manage.py runserver
