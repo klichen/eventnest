@@ -7,3 +7,8 @@ hello
 - git pull 
 - cd **frontend-native** or **backend** 
 - npm install --> https://stackoverflow.com/a/45365969
+
+
+### Running  server
+-  cd backend/clubclubgobackend
+- python3 manage.py runserver
