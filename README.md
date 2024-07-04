@@ -9,7 +9,15 @@ hello
 - npm install --> https://stackoverflow.com/a/45365969
 
 
+## To run the app on expo mobile app
+- cd frontend-native
+- npm install - if not done yet
+- npm start
+- scan QR code 
+
 ### Running  server
-- cd backend/clubclubgobackend
+- cd backend
 - pip install -r requirements.txt
 - python3 manage.py runserver
+
+

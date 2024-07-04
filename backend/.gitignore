@@ -5,4 +5,5 @@
 # db
 /db.sqlite3
 
-
+# dependencies
+node_modules/
