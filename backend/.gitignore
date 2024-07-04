@@ -1,8 +1,8 @@
 # pycache
-/clubclubgobackend/clubclubgo/__pycache__/
-/clubclubgobackend/clubclubgobackend/__pycache__/
+/clubclubgo/__pycache__/
+/clubclubgobackend/__pycache__/
 
 # db
-/clubclubgobackend/db.sqlite3
+/db.sqlite3
 
 
