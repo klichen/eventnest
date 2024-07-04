@@ -1,11 +1,11 @@
 import { FlatList, View, StyleSheet } from 'react-native';
-import RepositoryItem from '../components/RepositoryItem'
 import EventCard from '../components/EventCard';
 import Constants from 'expo-constants';
-import Text from '../components/Text';
-import Button from '../components/Button';
+import Text from '../components/atomics/Text';
+import Button from '../components/atomics/Button';
 import { useEffect, useState } from 'react';
 import useRepositories from '../hooks/useRepositories';
+import DateFilterBtn from '../components/DateFilterBtn';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,16 +13,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#f5f7fa',
     paddingBottom: 48
   },
   filterBtns: {
     // marginHorizontal: 16,
-    width: '90%',
+    width: '100%',
     paddingHorizontal: 24,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: 16,
+    marginTop: 16,
     gap: 16
 
   }
@@ -153,10 +153,7 @@ const HomeScreen = ({ navigation }) => {
         <Text fontSize="heading" fontWeight="bold">UofT Events</Text>
         <View style={styles.filterBtns}>
             {/* TODO: select date, categories, sort by buttons */}
-            <Button
-                title='Date'
-                iconName='caret-down-outline'
-            />
+            <DateFilterBtn />
             <Button
                 title='Categories'
                 iconName='caret-down-outline'
@@ -172,7 +169,7 @@ const HomeScreen = ({ navigation }) => {
         // other props
         // contentContainerStyle={{ flex: 1, alignSelf: "stretch" }}
         showsVerticalScrollIndicator={false}
-        style={{ width: "90%" }}
+        style={{ width: "100%", paddingHorizontal: 24, marginTop: 16 }}
         renderItem={EventItem}
         />
     </View>

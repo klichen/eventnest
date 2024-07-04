@@ -1,5 +1,5 @@
 import { View, StyleSheet, Image, Pressable, Button } from 'react-native';
-import Text from './Text';
+import Text from './atomics/Text';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -37,6 +37,7 @@ const EventCard = ({ title, dateTime, location, imageLink, imageHeight = 200, ev
         setSaved(!saved)
         // TODO: implement local save 
     }
+    
 
     const handleNavigate = () => {
         navigation.navigate('Event', {
@@ -44,13 +45,16 @@ const EventCard = ({ title, dateTime, location, imageLink, imageHeight = 200, ev
             eventTitle: title,
             dateTime,
             location,
-            eventSaved: saved
+            eventSaved: saved,
+            setSaved,
         });
     }
 
     return (
         <View style={styles.cardContainer}>
-            <Pressable onPress={handleNavigate}>
+            <Pressable onPress={handleNavigate} style={({ pressed }) => [
+                { opacity: pressed ? 0.5 : 1.0 }
+            ]}>
                 <Image source={require('./mock-event-image.png')} resizeMode='cover' style={{ width: '100%', height: imageHeight, borderRadius: 16, marginBottom: 16 }}/>
             </Pressable>
             <View style={styles.cardContent}>

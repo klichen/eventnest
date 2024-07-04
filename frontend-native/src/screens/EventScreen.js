@@ -1,5 +1,5 @@
 import { View, StyleSheet, Image, Pressable, Button, ScrollView } from 'react-native';
-import Text from '../components/Text';
+import Text from '../components/atomics/Text';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useState, useEffect } from 'react';
 
@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         paddingBottom: 24,
-        paddingHorizontal: 16
+        paddingHorizontal: 16,
+        backgroundColor: '#f5f7fa',
         // marginTop: 24,
     },
     dateLine: {
@@ -26,8 +27,8 @@ const styles = StyleSheet.create({
   });
 
 const EventScreen = ({ route, navigation }) => {
-    const { eventId, eventTitle, dateTime, location, eventSaved} = route.params
-    const [saved, setSaved] = useState(eventSaved)
+    const { eventId, eventTitle, dateTime, location, eventSaved, setSaved} = route.params
+    const [savedChild, setSavedChild] = useState(eventSaved)
 
     useEffect(() => {
         navigation.setOptions({
@@ -35,11 +36,12 @@ const EventScreen = ({ route, navigation }) => {
           title: eventTitle,
           headerBackTitle: "Back"
         });
-      }, [navigation, route]);
+    }, [navigation, route]);
 
     const handleOnPressSave = () => {
         console.log("saved button pressed")
-        setSaved(!saved)
+        setSaved(!eventSaved)
+        setSavedChild(!savedChild)
         // TODO: implement local save 
     }
 
@@ -50,7 +52,7 @@ const EventScreen = ({ route, navigation }) => {
                 <Text color="textSecondary">{dateTime.toDateString()} - {dateTime.toLocaleTimeString()}</Text>
                 <View style={styles.icon}>
                     <Pressable onPress={handleOnPressSave}>
-                        <Ionicons name={saved ? "bookmark" : "bookmark-outline"} size={32} color="#ff7a00" />
+                        <Ionicons name={savedChild ? "bookmark" : "bookmark-outline"} size={32} color="#ff7a00" />
                     </Pressable>
                 </View>
             </View>
