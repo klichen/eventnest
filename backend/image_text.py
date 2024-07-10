@@ -13,6 +13,16 @@ def read_posts_csv():
             posts.append(row)
             # print(row)
         return posts
+    
+def read_posts_json():
+    with open('posts.json', 'r') as openfile:
+ 
+        # Reading from json file
+        json_object = json.load(openfile)
+ 
+    print(json_object)
+    print(type(json_object))
+    return json_object
 
 def image_to_text(image_url):
     api_url = 'https://api.api-ninjas.com/v1/imagetotext'
@@ -28,7 +38,9 @@ def image_to_text(image_url):
 
 def main():
     # read_posts_csv()
-    image_to_text("https://instagram.fyzd1-3.fna.fbcdn.net/v/t39.30808-6/433139615_18326318554189325_4150010369888308604_n.jpg?stp=dst-jpg_e15_fr_s1080x1080&_nc_ht=instagram.fyzd1-3.fna.fbcdn.net&_nc_cat=105&_nc_ohc=FRrbw1mNPwsQ7kNvgFgq62k&edm=AOQ1c0wAAAAA&ccb=7-5&ig_cache_key=MzMzMTExMTUxOTUyOTE3MTE5NA%3D%3D.2-ccb7-5&oh=00_AYDiRay80ssYPau5nTSllU81bTnVFRGsJoVazXmUcmmJmg&oe=668E15B3&_nc_sid=8b3546")
+    for post in posts:
+        post["image_texts"] = image_to_text(post)
+    # image_to_text("https://instagram.fyzd1-3.fna.fbcdn.net/v/t39.30808-6/433139615_18326318554189325_4150010369888308604_n.jpg?stp=dst-jpg_e15_fr_s1080x1080&_nc_ht=instagram.fyzd1-3.fna.fbcdn.net&_nc_cat=105&_nc_ohc=FRrbw1mNPwsQ7kNvgFgq62k&edm=AOQ1c0wAAAAA&ccb=7-5&ig_cache_key=MzMzMTExMTUxOTUyOTE3MTE5NA%3D%3D.2-ccb7-5&oh=00_AYDiRay80ssYPau5nTSllU81bTnVFRGsJoVazXmUcmmJmg&oe=668E15B3&_nc_sid=8b3546")
     
 
 
