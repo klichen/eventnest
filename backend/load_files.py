@@ -9,7 +9,11 @@ def extract_i(fileName, prefix, fileType):
     all parameters are strings
     fileName requires a str in a [prefix][int][.filetype] format
     '''
-    return int(fileName.split(prefix)[1].split(fileType)[0])
+    try:
+        return int(fileName.split(prefix)[1].split(fileType)[0])
+    except IndexError:
+        print(fileName + " does not contain " + prefix)
+        return -1
 
 
 
@@ -61,14 +65,15 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
             print(filename)
             try:
                 i = extract_i(filename, input_prefix, FILETYPE)
-                target_filename = target_prefix + str(i) + FILETYPE
+                if i > 0:
+                    target_filename = target_prefix + str(i) + FILETYPE
 
-                if not file_exists(cwd, target_folder, target_filename):
-                    print(cwd + input_folder + filename, cwd + target_folder + target_filename)
-                    function(cwd + input_folder + filename, cwd + target_folder + target_filename)
+                    if not file_exists(cwd, target_folder, target_filename):
+                        print(cwd + input_folder + filename, cwd + target_folder + target_filename)
+                        function(cwd + input_folder + filename, cwd + target_folder + target_filename)
 
             except IndexError:
-                print("ignoring " + filename + ", does not contain prefix " +input_prefix)
+                pass
                 
 
 
