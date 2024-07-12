@@ -79,7 +79,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
                         function(cwd + input_folder + filename, cwd + target_folder + target_filename)
                         print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
                         API_CALLS -= 10
-                        time.sleep(random.randint(15, 525))
+                        time.sleep(random.randint(15, 325))
                         
 
             except IndexError:
