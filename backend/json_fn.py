@@ -5,7 +5,7 @@ import math
 
 
 def read_json(fileName):
-    with open(fileName+'.json', 'r') as openfile:
+    with open(fileName, 'r') as openfile:
  
         # Reading from json file
         json_object = json.load(openfile)
@@ -22,7 +22,7 @@ def write_json(fileName, dict_list):
 
     # print(json_object)
     # Writing to sample.json
-    with open(fileName+".json", "w") as outfile:
+    with open(fileName, "w") as outfile:
         outfile.write(json_object)
 
 

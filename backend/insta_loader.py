@@ -28,27 +28,17 @@ def load_posts(profile_name):
     L = instaloader.Instaloader()
     #L.login("username", "password")
 
-
     # Get the Profile instance
     try:
         profile = instaloader.Profile.from_username(L.context, profile_name)
     
-        
         posts = []
-        # post = instaloader.Post.from_shortcode(L.context, "CxvdeKcg1EK")
-        # print(post)
-        # only read  the 10 most recent posts
-        i = 0
+        
+        i = 0 # only read  the 10 most recent posts
         for post in profile.get_posts():
             if (i == 10):
                 break
             i += 1
-            #L.download_post(post, target=profile_name)
-            # print(post.caption)
-            # print(post.url) # image url 
-            # print(post.title) 
-            # print(post.shortcode) 
-            # L.download_post(post, target=profile_name)
 
             # check if post has multiple images
             if post.mediacount > 1:
@@ -71,6 +61,10 @@ def load_posts(profile_name):
         print("profile does not exist")
         return 
 
+    except instaloader.LoginRequiredException:
+        print("Login required, skipping profile")
+        return 
+    
 def load_post(post_id):
     L = instaloader.Instaloader()
     #L.login("username", "password")
@@ -84,6 +78,7 @@ def load_post(post_id):
     for sidecar in sidecars: 
         print(sidecar.display_url)
 
+
 def check_profiles(profile_list):
     posts = []
     if profile_list:
@@ -93,17 +88,28 @@ def check_profiles(profile_list):
 
     return posts        
 
-
-
-
-def main():
-    clubs = json_fn.read_json("files/clubs/clubs00")
+def load_club_posts(intput_filename,output_filename):
+    clubs = json_fn.read_json(intput_filename)
     posts = []
     for club in clubs:
         print(club["instagram_usernames"])
         posts.extend(check_profiles(club["instagram_usernames"]))
     
-    json_fn.write_json("files/posts/posts00", posts)
+    json_fn.write_json(output_filename, posts)
+
+    # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
+    # load_post("CxvdeKcg1EK")
+    print("Complete!")
+
+
+def main():
+    clubs = json_fn.read_json("files/clubs/clubs00.json")
+    posts = []
+    for club in clubs:
+        print(club["instagram_usernames"])
+        posts.extend(check_profiles(club["instagram_usernames"]))
+    
+    json_fn.write_json("files/posts/posts00.json", posts)
 
     # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
     # load_post("CxvdeKcg1EK")
