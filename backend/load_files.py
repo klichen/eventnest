@@ -65,12 +65,12 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
             print(filename)
             try:
                 i = extract_i(filename, input_prefix, FILETYPE)
-                if i > 0:
+                if i > -1:
                     target_filename = target_prefix + str(i) + FILETYPE
 
                     if not file_exists(cwd, target_folder, target_filename):
-                        print(cwd + input_folder + filename, cwd + target_folder + target_filename)
                         function(cwd + input_folder + filename, cwd + target_folder + target_filename)
+                        print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
 
             except IndexError:
                 pass
@@ -78,8 +78,12 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
 
 
 def main():
-    # function_for_files("files/clubs/", "clubs", "files/posts/", "posts", insta_loader.load_club_posts)
-    function_for_files("/files/posts/", "posts", "/files/processed_posts/", "posts", image_text.process_posts)
+    parse = input("club/post?:")
+
+    if parse.startswith("c"):
+        function_for_files("/files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
+    else: 
+        function_for_files("/files/posts/", "posts", "/files/processed_posts/", "posts", image_text.process_posts)
 
     
 

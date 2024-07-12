@@ -84,9 +84,12 @@ def check_profiles(profile_list):
     if profile_list:
         for profile in profile_list:
             print("profile: " + profile)
-            posts.extend(load_posts(profile))
+            loaded_posts = load_posts(profile)
+            if loaded_posts:
+                posts.extend(load_posts(profile))
 
     return posts        
+
 
 def load_club_posts(intput_filename,output_filename):
     clubs = json_fn.read_json(intput_filename)

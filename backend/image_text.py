@@ -17,14 +17,21 @@ def image_to_text(image_urls):
 
 
 def process_posts(intput_filepath, output_filepath):
+    print("Processing images in ", intput_filepath)
     posts = json_fn.read_json(intput_filepath)
+    print(str(len(posts)), " posts")
     for post in posts:
-        if not post["image_texts"]:
+        try:
+            if not post["image_texts"]:
+                post["image_texts"] = image_to_text(post["image_urls"])
+                
+        except KeyError:
             post["image_texts"] = image_to_text(post["image_urls"])
+
 
     json_fn.write_json(output_filepath, posts)
 
-    print("Completes processing " + intput_filepath  + " and outputted into " +output_filepath + "!")
+    print("Completed processing " + intput_filepath  + " and outputted into " +output_filepath + "!")
 
 
 def main():
