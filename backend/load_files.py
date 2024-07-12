@@ -71,6 +71,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
                     if not file_exists(cwd, target_folder, target_filename):
                         function(cwd + input_folder + filename, cwd + target_folder + target_filename)
                         print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
+                        break
 
             except IndexError:
                 pass
