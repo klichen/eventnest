@@ -4,7 +4,6 @@ import image_text
 import time
 
 FILETYPE = ".json"
-API_CALLS = 150
 
 def extract_i(fileName, prefix, fileType):
     '''
@@ -58,11 +57,14 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
     # print(cwd + "/files/clubs")
     directory = os.fsencode(os.getcwd() + input_folder)
     print(directory)
+    API_CALLS = 150
+
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
-        if API_CALLS < 0:
+        if API_CALLS <= 0:
             time.sleep(3600)
+            API_CALLS = 150
         
         if filename.endswith(FILETYPE) : 
             # for every json file in the files/clubs/ folder, check if there is a corresponding files/posts/ file with the same index. 
@@ -76,7 +78,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
                     if not file_exists(cwd, target_folder, target_filename):
                         function(cwd + input_folder + filename, cwd + target_folder + target_filename)
                         print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
-                        API_CALLS -= 10
+                        API_CALLS -= 15
                         
 
             except IndexError:
