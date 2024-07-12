@@ -2,6 +2,7 @@ import os
 import insta_loader
 import image_text
 import time
+import random 
 
 FILETYPE = ".json"
 API_CALLS = 150
@@ -63,6 +64,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
         filename = os.fsdecode(file)
         if API_CALLS < 0:
             time.sleep(3600)
+            API_CALLS = 150
         
         if filename.endswith(FILETYPE) : 
             # for every json file in the files/clubs/ folder, check if there is a corresponding files/posts/ file with the same index. 
@@ -77,6 +79,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
                         function(cwd + input_folder + filename, cwd + target_folder + target_filename)
                         print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
                         API_CALLS -= 10
+                        time.sleep(random.randint(15, 525))
                         
 
             except IndexError:
@@ -88,7 +91,6 @@ def main():
     parse = input("club/post?:")
 
     if parse.startswith("c"):
-
         function_for_files("/files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
 
     else: 

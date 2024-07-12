@@ -101,9 +101,12 @@ def check_profiles(profile_list):
     if profile_list:
         for profile in profile_list:
             print("profile: " + profile)
-            loaded_posts = load_posts(profile)
-            if loaded_posts:
+            try: 
                 posts.extend(load_posts(profile))
+            except TypeError:
+                print("No posts. Something went wrong :/")
+                return
+                
 
     return posts        
 
