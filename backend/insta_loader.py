@@ -34,9 +34,9 @@ def load_posts(profile_name):
     
         posts = []
         
-        i = 0 # only read  the 10 most recent posts
+        i = 0 # only read the 5 most recent posts
         for post in profile.get_posts():
-            if (i == 10):
+            if (i == 5):
                 break
             i += 1
 
