@@ -58,13 +58,13 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
     # print(cwd + "/files/clubs")
     directory = os.fsencode(os.getcwd() + input_folder)
     print(directory)
-    API_CALLS = 150
+    API_CALLS = 100
 
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if API_CALLS <= 0:
-            time.sleep(3600)
+            time.sleep(random.randint(100, 250))
             API_CALLS = 150
         
         if filename.endswith(FILETYPE) : 
@@ -80,6 +80,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
                         function(cwd + input_folder + filename, cwd + target_folder + target_filename)
                         print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
                         API_CALLS -= 15
+                        time.sleep(random.randint(3, 10))
                         
 
             except IndexError:
