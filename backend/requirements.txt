@@ -9,7 +9,6 @@ docutils==0.17.1
 HTMLParser==0.0.2
 importlib_metadata==1.5.0
 instaloader==4.12
-jnius==1.1.0
 keyring==18.0.1
 lockfile==0.12.2
 lxml==4.8.0
