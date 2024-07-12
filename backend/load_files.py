@@ -2,6 +2,7 @@ import os
 import insta_loader
 import image_text
 import time
+import random 
 
 FILETYPE = ".json"
 
@@ -90,7 +91,6 @@ def main():
     parse = input("club/post?:")
 
     if parse.startswith("c"):
-
         function_for_files("/files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
 
     else: 
