@@ -58,12 +58,29 @@ def load_posts(profile_name):
         return posts
     
     except instaloader.ProfileNotExistsException:
-        print("profile does not exist")
+        print("Profile does not exist")
+        return 
+    
+    except instaloader.exceptions.QueryReturnedNotFoundException:
+        print("Profile cannot be found")
+        return 
+
+    except instaloader.QueryReturnedNotFoundException:
+        print("Profile cannot be found")
         return 
 
     except instaloader.LoginRequiredException:
         print("Login required, skipping profile")
         return 
+    
+    except instaloader.PrivateProfileNotFollowedException:
+        print("Login required, private instagram. skipping profile")
+        return 
+    
+    except instaloader.InvalidArgumentException:
+        print("Invalid arguments. Skipping profile ", profile_name)
+        return 
+     
     
 def load_post(post_id):
     L = instaloader.Instaloader()
