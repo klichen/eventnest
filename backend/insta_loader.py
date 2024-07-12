@@ -1,7 +1,9 @@
 # script.py
 import instaloader
 import csv
-import json
+import json_fn
+
+
 
 def read_clubs_csv():
     with open('files/club_instagrams.csv', newline='') as csvfile:
@@ -12,18 +14,14 @@ def read_clubs_csv():
             print(row)
         return clubs
 
-def read_clubs_json():
-    with open('files/clubs.json', 'r') as openfile:
- 
-        # Reading from json file
-        json_object = json.load(openfile)
- 
-    print(json_object)
-    # print(type(json_object))
-    return json_object
+def write_posts_csv(rows):
+    with open('files/posts.csv', 'a', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile, delimiter="|",
+                                quotechar='^', quoting=csv.QUOTE_MINIMAL)
+        for row in rows:
+            # print(row)
+            csv_writer.writerow(row)
 
-# class ProfileNotExistsException(Exception):
-#     pass
 
 
 def load_posts(profile_name):
@@ -39,7 +37,12 @@ def load_posts(profile_name):
         posts = []
         # post = instaloader.Post.from_shortcode(L.context, "CxvdeKcg1EK")
         # print(post)
+        # only read  the 10 most recent posts
+        i = 0
         for post in profile.get_posts():
+            if (i == 10):
+                break
+            i += 1
             #L.download_post(post, target=profile_name)
             # print(post.caption)
             # print(post.url) # image url 
@@ -58,7 +61,7 @@ def load_posts(profile_name):
             posts.append({"username": profile_name, 
                         "post _id": post.shortcode, 
                         "date_posted": post.date, 
-                        "image_url": url, 
+                        "image_urls": url, 
                         "caption": post.caption})
             # profile name|post id|date|image url|post caption
 
@@ -86,36 +89,21 @@ def check_profiles(profile_list):
     if profile_list:
         for profile in profile_list:
             print("profile: " + profile)
-            posts.append(load_posts(profile))
+            posts.extend(load_posts(profile))
 
     return posts        
 
-def write_posts_csv(rows):
-    with open('files/posts.csv', 'a', newline='') as csvfile:
-        csv_writer = csv.writer(csvfile, delimiter="|",
-                                quotechar='^', quoting=csv.QUOTE_MINIMAL)
-        for row in rows:
-            # print(row)
-            csv_writer.writerow(row)
-        
-def write_posts_json(posts):
-    # Serializing json
-    json_object = json.dumps(posts, indent=4)
-    
-    # Writing to sample.json
-    with open("posts.json", "a") as outfile:
-        outfile.write(json_object)
+
 
 
 def main():
-    clubs = read_clubs_json()
-    # clubs = read_clubs_csv()
+    clubs = json_fn.read_json("files/clubs/clubs00")
     posts = []
     for club in clubs:
         print(club["instagram_usernames"])
-        posts.append(check_profiles(club["instagram_usernames"]))
+        posts.extend(check_profiles(club["instagram_usernames"]))
     
-    write_posts_json(posts)
+    json_fn.write_json("files/posts/posts00", posts)
 
     # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
     # load_post("CxvdeKcg1EK")

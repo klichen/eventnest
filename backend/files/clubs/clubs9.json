@@ -1,0 +1,60 @@
+[
+    {
+        "club_page": "https://sop.utoronto.ca/group/hart-house-archery-club/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/hart-house-u-of-t-film-festival/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/gujarati-students-association/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/habitat-for-humanity-uoft-student-chapter/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/grenville-island/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/green-chemistry-initiative-gci/",
+        "instagram_links": [
+            "https://www.instagram.com/greenchemuoft"
+        ],
+        "instagram_usernames": [
+            "greenchemuoft"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/institute-of-transportation-engineers-student-chapter/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/insert-what-you-wantiwyw/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/institute-of-medical-science-students-association-imssa/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/institute-of-electrical-and-electronics-engineers-university-of-toronto-student-branch/",
+        "instagram_links": [
+            "https://www.instagram.com/ieee_uoft/"
+        ],
+        "instagram_usernames": [
+            "ieee_uoft"
+        ]
+    }
+]
