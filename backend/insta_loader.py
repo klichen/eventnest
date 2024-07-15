@@ -103,8 +103,8 @@ def check_profiles(profile_list):
             print("profile: " + profile)
             try: 
                 loaded_posts = load_posts(profile)
-                if not load_posts is None:
-                    posts.extend(load_posts)
+                if not loaded_posts is None:
+                    posts.extend(loaded_posts)
             except TypeError:
                 print("No posts. Something went wrong :/")
                 return []
