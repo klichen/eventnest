@@ -1,5 +1,4 @@
 import { FlatList, View, StyleSheet } from 'react-native';
-import RepositoryItem from '../components/RepositoryItem'
 import EventCard from '../components/EventCard';
 import Constants from 'expo-constants';
 import Text from '../components/Text';
