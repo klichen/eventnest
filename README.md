@@ -14,3 +14,9 @@ hello
 - npm install - if not done yet
 - npm start
 - scan QR code 
+
+### Running  server
+- cd backend
+- python3 manage.py runserver
+
+
