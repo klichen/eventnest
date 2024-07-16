@@ -10,7 +10,32 @@ class OpenAIBatchProcessor:
         client = OpenAI(api_key=api_key)
         self.client = client
 
-    def create_input_file(self, info_file = 'events_info.json'):
+    def _simplify_image_txt(self, image_text_json):
+        # text_info = json.loads(image_text_json)
+        text_info = image_text_json
+        if not text_info:
+            return ''
+
+        lines = []
+        cur_y1 = text_info[0]['bounding_box']['y1']
+        cur_line = []
+        for t in text_info:
+            y1 = t['bounding_box']['y1']
+            text = t['text']
+            if abs(y1 - cur_y1) < 20:
+                cur_line.append(text)
+            else:
+                lines.append(' '.join(cur_line))
+                cur_line = [text]
+                cur_y1 = y1
+        
+        if cur_line:
+            lines.append(' '.join(cur_line))
+
+        result = '\n'.join(lines)
+        return result
+
+    def create_input_file(self, info_file = 'data/posts.json'):
         
         extract_info_prompt = '''Based on the provided JSON containing the text of an Instagram event post and its caption, extract the following information: date, location, and time of the event. Additionally, summarize the event and create an appropriate title. Format this information as a JSON object. If any of the date, location, or time information is not available, return that field as null in the JSON output.'''
 
@@ -19,16 +44,18 @@ class OpenAIBatchProcessor:
         f = open(info_file)
         data = json.load(f)
 
-        for idx, event in enumerate(data['events_info']):
+        for idx, event in enumerate(data):
             club_name = event['username']
             image_texts = ''
             caption = event['caption']
 
-            for img_text in event['image_text']:
+            for img_text in event['image_texts']:
+                # remove bounding box values
+                simplified_text = self._simplify_image_txt(img_text)
                 if image_texts == '':
-                    image_texts = img_text
+                    image_texts = simplified_text
                 else:
-                    image_texts = image_texts + '\n' + img_text
+                    image_texts = image_texts + '\n' + simplified_text
 
             info_input = image_texts + '\n' + 'Caption: ' + caption
 
@@ -97,7 +124,7 @@ class OpenAIBatchProcessor:
             result_file_id = cur_batch_job.output_file_id
             result = self.client.files.retrieve(result_file_id).decode("utf-8")
 
-            result_file_name = "data/batch_job_results_events.jsonl"
+            result_file_name = "results/batch_job_results_events.jsonl"
             with open(result_file_name, "wb") as file:
                 file.write(result)
 
@@ -122,9 +149,9 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 processor = OpenAIBatchProcessor(openai_api_key)
 
 batch_file_name = processor.create_input_file()
-batch_file = processor.upload_input_file(batch_file_name)
-batch_job = processor.create_batch_job(batch_file)
-processor.check_status_retrieve(batch_job)
+# batch_file = processor.upload_input_file(batch_file_name)
+# batch_job = processor.create_batch_job(batch_file)
+# processor.check_status_retrieve(batch_job)
 
 # print(batch_job.id)
 
