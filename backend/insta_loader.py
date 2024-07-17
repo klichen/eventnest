@@ -49,7 +49,7 @@ def load_posts(profile_name):
                 url = [post.url]
 
             posts.append({"username": profile_name, 
-                        "post _id": post.shortcode, 
+                        "post_id": post.shortcode, 
                         "date_posted": post.date, 
                         "image_urls": url, 
                         "caption": post.caption})
