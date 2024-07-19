@@ -1,8 +1,9 @@
 # pycache
-/__pycache__/
+**/__pycache__/*
 /clubclubgo/__pycache__/
 /clubclubgobackend/__pycache__/
 /clubclubgo/migrations/__pycache__/
+
 
 # db
 /db.sqlite3
