@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Pressable, Button } from 'react-native';
+import { View, StyleSheet, Image, Pressable } from 'react-native';
 import Text from './atomics/Text';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useState } from 'react';
