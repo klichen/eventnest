@@ -1,15 +1,24 @@
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 import math
+import jsonlines
 
 
 
 def read_json(fileName):
-    with open(fileName, 'r') as openfile:
- 
-        # Reading from json file
-        json_object = json.load(openfile)
- 
+    suffix = fileName.split(".")
+    print(suffix)
+    if suffix[-1] == "json":
+        with open(fileName, 'r') as openfile:
+    
+            # Reading from json file
+            json_object = json.load(openfile)
+    elif suffix[-1] == "jsonl":
+        with jsonlines.open(fileName) as reader:
+            json_object = [obj for obj in reader]
+    else:
+        print("is this a json? " + suffix[-1])
+    
     print("File Content ex: \n_______________________")
     print(json_object[:5])
     print("_______________________")
