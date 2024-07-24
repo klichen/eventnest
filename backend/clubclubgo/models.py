@@ -27,6 +27,9 @@ class Club(models.Model):
         default="NA",)
     website_link = models.URLField(max_length=100, blank=True, default='')
 
+    def __str__(self): 
+        return self.name
+
 
 class Event(models.Model):
     '''
@@ -48,3 +51,6 @@ class Event(models.Model):
     event_link = models.URLField(max_length=100, blank=True, default='')
     image_link = models.URLField(max_length=100, blank=True, default='')
     description = models.TextField(max_length=300)
+
+    def __str__(self): 
+        return self.title + " " + self.start_datetime.strftime('%m/%d/%Y')

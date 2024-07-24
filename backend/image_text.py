@@ -38,7 +38,6 @@ def main():
 
 
     posts = json_fn.read_json("files/posts/posts00.json")
-    processed_posts = []
     for post in posts:
         if not post["image_texts"]:
             post["image_texts"] = image_to_text(post["image_urls"])
