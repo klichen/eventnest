@@ -48,6 +48,7 @@ class OpenAIBatchProcessor:
             club_name = event['username']
             image_texts = ''
             caption = event['caption']
+            post_id = event['post_id']
 
             for img_text in event['image_texts']:
                 # remove bounding box values
@@ -60,11 +61,12 @@ class OpenAIBatchProcessor:
             info_input = image_texts + '\n' + 'Caption: ' + caption
 
             task = {
-                "custom_id": f"task-{club_name}-{idx}",
+                "custom_id": post_id,
                 "method": "POST",
                 "url": "/v1/chat/completions",
                 "body": {
-                    "model": "gpt-3.5-turbo-0125",
+                    # "model": "gpt-3.5-turbo-0125",
+                    "model": "gpt-4o-mini",
                     "temperature": 0.1,
                     "response_format": { 
                         "type": "json_object"
@@ -84,10 +86,11 @@ class OpenAIBatchProcessor:
             }
 
             tasks.append(task)
+            f.close()
 
         # Creating the batch jsonl file
 
-        file_name = "data/events_batch_input.jsonl"
+        file_name = "data/batch1_gpt4o_input.jsonl"
 
         with open(file_name, 'w') as file:
             for obj in tasks:
@@ -114,31 +117,39 @@ class OpenAIBatchProcessor:
     
     def check_status_retrieve(self, batch_job):
         cur_batch_job = batch_job
-        while batch_job.status not in ["completed", "failed", "cancelled"]:
-            time.sleep(30)  # Wait for 30 seconds before checking the status again
-            print(f"Batch job status: {batch_job.status}...trying again in 30 seconds...")
+        while cur_batch_job.status not in ["completed", "failed", "cancelled"]:
+            time.sleep(5)  # Wait for 30 seconds before checking the status again
+            print(f"Batch job status: {batch_job.status}...trying again in 5 seconds...")
             cur_batch_job = self.client.batches.retrieve(batch_job.id)
         
         # Download and save the results
         if cur_batch_job.status == "completed":
             result_file_id = cur_batch_job.output_file_id
-            result = self.client.files.retrieve(result_file_id).decode("utf-8")
+            result = self.client.files.content(result_file_id).content
 
-            result_file_name = "results/batch_job_results_events.jsonl"
-            with open(result_file_name, "wb") as file:
+            result_file_name = "results/batch1_gpt4o_results.jsonl"
+
+            with open(result_file_name, 'wb') as file:
                 file.write(result)
 
-            # Load data from the saved file
-            # results = []
-            # with open(result_file_name, "r") as file:
-            #     for line in file:
-            #         json_object = json.loads(line.strip())
-            #         results.append(json_object)
-
-            # return results
         else:
             print(f"Batch job failed with status: {batch_job.status}")
             return None
+    
+    def download_output_file(self, batch_id):
+        batch_job = self.client.batches.retrieve(batch_id)
+
+        result_file_id = batch_job.output_file_id
+        result = self.client.files.content(result_file_id).content
+
+        result_file_name = "results/batch1_results.jsonl"
+
+        with open(result_file_name, 'wb') as file:
+            file.write(result)
+
+    def get_batch_job(self, batch_id):
+        batch_job = self.client.batches.retrieve(batch_id)
+        return batch_job
         
 
 # get API key and start openai client
@@ -148,21 +159,14 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 
 processor = OpenAIBatchProcessor(openai_api_key)
 
-batch_file_name = processor.create_input_file()
-# batch_file = processor.upload_input_file(batch_file_name)
-# batch_job = processor.create_batch_job(batch_file)
-# processor.check_status_retrieve(batch_job)
+# batch_file_name = processor.create_input_file()
+batch_file = processor.upload_input_file('data/batch1_gpt4o_input.jsonl')
+batch_job = processor.create_batch_job(batch_file)
+processor.check_status_retrieve(batch_job)
 
 # print(batch_job.id)
 
-# batch_job_id = "batch_4OmnVcmHooYCOgRroVSQ7Uzo"
-# batch_job = client.batches.retrieve(batch_job_id)
+# batch_job_id = "batch_X2jexnfdSVA5WeGiYgYU6BCO"
+# batch_job = processor.download_output_file(batch_job_id)
 
-# result_file_id = batch_job.output_file_id
-# result = client.files.content(result_file_id).content
-
-# result_file_name = "data/batch_job_results_events.jsonl"
-
-# with open(result_file_name, 'wb') as file:
-#     file.write(result)
 
