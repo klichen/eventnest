@@ -4,29 +4,27 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// import RepositoryList from './src/components/RepositoryList'
-// import FlexPage from './src/components/FlexPage';
 import HomeScreen from './src/screens/HomeScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import SavedEventsScreen from './src/screens/SavedEventsScreen';
 import EventScreen from './src/screens/EventScreen';
 
 // screen route names
-const homeStack = 'HomeStack'
 const homeRoute = 'Home'
 const eventRoute = 'Event'
+const searchStack = 'SearchStack'
 const searchRoute = 'Search'
 const savedEventsRoute = 'Saved'
 
 const Tab = createBottomTabNavigator();
-const HomeStack = createNativeStackNavigator();
+const SearchStack = createNativeStackNavigator();
 
-function HomeStackScreen() {
+function SearchStackScreen() {
   return (
-    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name={homeRoute} component={HomeScreen} />
-      <HomeStack.Screen name={eventRoute} component={EventScreen} />
-    </HomeStack.Navigator>
+    <SearchStack.Navigator screenOptions={{ headerShown: false }}>
+      <SearchStack.Screen name={searchRoute} component={SearchScreen} />
+      <SearchStack.Screen name={eventRoute} component={EventScreen} />
+    </SearchStack.Navigator>
   )
 }
 
@@ -35,16 +33,16 @@ const App = () => {
     <>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName={homeStack}
+          initialRouteName={homeRoute}
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size}) => {
               let iconName;
               let rn = route.name;
 
-              if (rn === homeStack) {
+              if (rn === homeRoute) {
                 iconName = focused ? 'home' : 'home-outline'
               }
-              else if (rn === searchRoute) {
+              else if (rn === searchStack) {
                 iconName = focused ? 'search' : 'search-outline' 
               }
               else if (rn == savedEventsRoute) {
@@ -57,8 +55,8 @@ const App = () => {
             headerShown: false
           })}
         >
-          <Tab.Screen name={homeStack} component={HomeStackScreen} />
-          <Tab.Screen name={searchRoute} component={SearchScreen} />
+          <Tab.Screen name={homeRoute} component={HomeScreen} />
+          <Tab.Screen name={searchStack} component={SearchStackScreen} />
           <Tab.Screen name={savedEventsRoute} component={SavedEventsScreen} />
         </Tab.Navigator>
       </NavigationContainer>

@@ -33,7 +33,7 @@ const EventCard = ({ title, dateTime, location, imageLink, imageHeight = 200, ev
     const [saved, setSaved] = useState(eventSaved)
     
     const handleOnPressSave = () => {
-        console.log("saved button pressed")
+        // console.log("saved button pressed")
         setSaved(!saved)
         // TODO: implement local save 
     }

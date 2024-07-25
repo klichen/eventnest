@@ -39,7 +39,7 @@ const EventScreen = ({ route, navigation }) => {
     }, [navigation, route]);
 
     const handleOnPressSave = () => {
-        console.log("saved button pressed")
+        // console.log("saved button pressed")
         setSaved(!eventSaved)
         setSavedChild(!savedChild)
         // TODO: implement local save 

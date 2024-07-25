@@ -1,10 +1,14 @@
 import { View, StyleSheet, TextInput, Pressable, Keyboard } from 'react-native';
 import Button from './atomics/Button';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useState, forwardRef } from 'react';
 
-const SearchBar = ({ clicked, setClicked, searchPhrase, setSearchPhrase }) => {
+const SearchBar = forwardRef(({ clicked, setClicked, searchPhrase, setSearchPhrase, handleSubmitSearch, handleCancelSearch }, ref) => {
+  // const [search, setSearch] = useState('')
+
     const  handlePressSearch = ({ nativeEvent: { text: text } }) => {
         console.log(text)
+        setSearchPhrase(search)
         setClicked(false)
     }
     return (
@@ -18,6 +22,7 @@ const SearchBar = ({ clicked, setClicked, searchPhrase, setSearchPhrase }) => {
         >
           <Ionicons name="search" size={16} />
           <TextInput
+            ref={ref}
             style={styles.input}
             placeholder="Search"
             value={searchPhrase}
@@ -26,12 +31,12 @@ const SearchBar = ({ clicked, setClicked, searchPhrase, setSearchPhrase }) => {
             onFocus={() => {
               setClicked(true);
             }}
-            onSubmitEditing={handlePressSearch}
+
+            onSubmitEditing={handleSubmitSearch}
           />
           {clicked && (
             <Pressable onPress={() => {
-                setSearchPhrase("")
-            }}>
+                setSearchPhrase("")            }}>
                 <Ionicons name="close" size={16} color="black" style={{ padding: 1 }} />
             </Pressable>
           )}
@@ -43,16 +48,18 @@ const SearchBar = ({ clicked, setClicked, searchPhrase, setSearchPhrase }) => {
                 title="Cancel"
                 textColor='#2196f3'
                 textWeight='medium'
-                onPress={() => {
-                    Keyboard.dismiss();
-                    setClicked(false);
-                }}
-            ></Button>
+                onPress={handleCancelSearch}
+                // onPress={() => {
+                //     Keyboard.dismiss();
+                //     setSearchPhrase("")
+                //     setClicked(false);
+                // }}
+            />
           </View>
         )}
       </View>
     );
-  };
+  });
   export default SearchBar;
   
   // styles
