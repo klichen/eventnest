@@ -6,32 +6,26 @@ import { useState, useEffect } from 'react';
 import CalendarPicker from 'react-native-calendar-picker'
 
 
-const DateFilterBtn = ({ }) => {
+const DateFilterBtn = ({ setSelectedStartDate, setSelectedEndDate, handleSubmitDateRange }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedStartDate, setSelectedStartDate] = useState()
-    const [selectedEndDate, setSelectedEndDate] = useState()
-
+    const [startDate, setStartDate] = useState()
+    const [endDate, setEndDate] = useState()
     const today = new Date()
-
-    // useEffect(() => {
-    //   if (selectedStartDate) {
-    //     console.log('Selected Start Date:', selectedStartDate);
-    //   }
-    // }, [selectedStartDate]);
-  
-    // useEffect(() => {
-    //   if (selectedEndDate) {
-    //     console.log('Selected End Date:', selectedEndDate);
-    //   }
-    // }, [selectedEndDate]);
     
     const handleDateChange = (date, type) => {
       if (type === 'START_DATE') {
-        setSelectedStartDate(date)
+        setStartDate(date)
       }
       else {
-        setSelectedEndDate(date)
+        setEndDate(date)
       }
+    }
+
+    const handleClickApply = () => {
+      setModalVisible(!modalVisible)
+      setSelectedStartDate(startDate)
+      setSelectedEndDate(endDate)
+      handleSubmitDateRange()
     }
 
     return (
@@ -59,22 +53,22 @@ const DateFilterBtn = ({ }) => {
                       // minDate={minDate}
                       // maxDate={maxDate}
                       todayBackgroundColor="#f2e6ff"
-                      selectedDayColor="#7300e6"
+                      selectedDayColor="#007FA3"
                       onDateChange={(date, type) => handleDateChange(date, type)}
                     />
                     <View style={styles.actionBtns}>
                       <Button 
-                        title='Close'
-                        textColor='#2196f3'
+                        title='Cancel'
+                        textColor='#007FA3'
                         textWeight='medium'
                         onPress={() => setModalVisible(!modalVisible)}
                         customStyle={styles.calendarBtns}
                       />
                       <Button 
-                        title='Done'
-                        textColor='#2196f3'
+                        title='Apply'
+                        textColor='#007FA3'
                         textWeight='medium'
-                        onPress={() => setModalVisible(!modalVisible)}
+                        onPress={handleClickApply}
                         customStyle={styles.calendarBtns}
                       />
                       {/* <Pressable
@@ -112,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     paddingTop: 16,
-    paddingBottom: 80,
+    paddingBottom: 40,
     // alignItems: 'center',
   },
   actionBtns: {

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 2,
         backgroundColor: 'white',
-        marginTop: 24,
+        marginBottom: 24,
     },
     cardContent: {
         flexDirection: 'row',
@@ -33,7 +33,7 @@ const EventCard = ({ title, dateTime, location, imageLink, imageHeight = 200, ev
     const [saved, setSaved] = useState(eventSaved)
     
     const handleOnPressSave = () => {
-        console.log("saved button pressed")
+        // console.log("saved button pressed")
         setSaved(!saved)
         // TODO: implement local save 
     }
@@ -67,7 +67,7 @@ const EventCard = ({ title, dateTime, location, imageLink, imageHeight = 200, ev
                 </Pressable>
                 <View style={styles.icon}>
                     <Pressable onPress={handleOnPressSave}>
-                        <Ionicons name={saved ? "bookmark" : "bookmark-outline"} size={32} />
+                        <Ionicons name={saved ? "bookmark" : "bookmark-outline"} size={32} color="#007FA3" />
                     </Pressable>
                 </View>
             </View>
