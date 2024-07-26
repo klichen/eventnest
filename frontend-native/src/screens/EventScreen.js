@@ -52,7 +52,7 @@ const EventScreen = ({ route, navigation }) => {
                 <Text color="textSecondary">{dateTime.toDateString()} - {dateTime.toLocaleTimeString()}</Text>
                 <View style={styles.icon}>
                     <Pressable onPress={handleOnPressSave}>
-                        <Ionicons name={savedChild ? "bookmark" : "bookmark-outline"} size={32} color="#ff7a00" />
+                        <Ionicons name={savedChild ? "bookmark" : "bookmark-outline"} size={32} color="#007FA3" />
                     </Pressable>
                 </View>
             </View>

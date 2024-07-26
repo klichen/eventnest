@@ -8,7 +8,7 @@ const SearchEmptyState = ({ handleClearSearch }) => {
             <Text>Search Not Found</Text>
             <Button
                 title="Clear Search"
-                textColor='#2196f3'
+                textColor='#007FA3'
                 textWeight='medium'
                 onPress={() => {
                     handleClearSearch()

@@ -49,7 +49,7 @@ const App = () => {
                 iconName = focused ? 'bookmarks' : 'bookmarks-outline'
               }
 
-              return <Ionicons name={iconName} size={size} color="#ffa700"/>
+              return <Ionicons name={iconName} size={size} color="#25355A"/>
             },
             tabBarShowLabel: false,
             headerShown: false

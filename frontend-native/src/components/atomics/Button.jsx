@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 const Button = (props) => {
-  const { onPress, title, bgColor, iconName, iconRight = true, iconColor = 'white', iconSize = 16, textColor = 'white', textWeight = 'bold', customStyle } = props;
+  const { onPress, title, bgColor, iconName, iconRight = false, iconColor = 'white', iconSize = 16, textColor = 'white', textWeight = 'bold', textSize = 16, customStyle } = props;
   
   const styles = StyleSheet.create({
     button: {
@@ -14,7 +14,7 @@ const Button = (props) => {
         backgroundColor: bgColor,
     },
     text: {
-        fontSize: 16,
+        fontSize: textSize,
         lineHeight: 21,
         fontWeight: textWeight,
         letterSpacing: 0.25,
