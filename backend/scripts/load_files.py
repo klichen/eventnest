@@ -92,10 +92,10 @@ def main():
     parse = input("club/post?:")
 
     if parse.startswith("c"):
-        function_for_files("/files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
+        function_for_files("..//files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
 
     else: 
-        function_for_files("/files/posts/", "posts", "/files/processed_posts/", "posts", image_text.process_posts)
+        function_for_files("..//files/posts/", "posts", "/files/processed_posts/", "posts", image_text.process_posts)
 
     
 

@@ -128,13 +128,13 @@ def load_club_posts(intput_filename,output_filename):
 
 
 def main():
-    clubs = json_fn.read_json("files/clubs/clubs00.json")
+    clubs = json_fn.read_json("../files/clubs/clubs00.json")
     posts = []
     for club in clubs:
         print(club["instagram_usernames"])
         posts.extend(check_profiles(club["instagram_usernames"]))
     
-    json_fn.write_json("files/posts/posts00.json", posts)
+    json_fn.write_json("../files/posts/posts00.json", posts)
 
     # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
     # load_post("CxvdeKcg1EK")

@@ -15,7 +15,7 @@ hello
 - npm start
 - scan QR code 
 
-### Running  server [no Ubuntu!!! only powershell!!!!!]
+### Running  server 
 - cd backend
 - pip install -r requirements.txt 
 - python3 manage.py runserver

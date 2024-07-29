@@ -21,11 +21,13 @@ class Club(models.Model):
     }
     name = models.TextField(max_length=100)
     description = models.TextField(max_length=300)
-    email = models.TextField(max_length=50)
+    email = models.TextField(max_length=50, default='')
     website_type = models.CharField(max_length=2,
         choices=WEBSITE_CHOICES,
         default="NA",)
     website_link = models.URLField(max_length=100, blank=True, default='')
+    website_link = models.URLField(max_length=100, blank=True, default='')
+    
 
     def __str__(self): 
         return self.name
