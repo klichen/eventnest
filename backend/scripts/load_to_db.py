@@ -6,6 +6,7 @@ import dateparser
 import re
 import mysql.connector
 import logging
+# from ..clubclubgo.models  import Club
 
 
 HOST = "b7n3yx0oplrx3fektmdw-mysql.services.clever-cloud.com"
@@ -96,8 +97,6 @@ def load_clubs_to_db(clubs):
     "instagram_links": null, 
     "instagram_usernames": null},
     """
-    db=_mysql.connect(host=HOST,user=USER,
-                    password=PASSWORD,database=DB)
     
     cnx = mysql.connector.connect(host=HOST,user=USER,
                     password=PASSWORD,database=DB)
@@ -120,12 +119,8 @@ def load_clubs_to_db(clubs):
     #             VALUES (%s, %s, %s, %s, %s);"""
     # club_data = ("Amiercan ROcks", "Med descr, momre owrds", "", "SP", "https://sop.utoronto.ca")
     # cursor.execute(add_club, club_data)
-    # r=db.store_result()
-    try:
 
-        db.query("""SELECT * FROM clubclubgo_club;""")
-        r=db.store_result()
-        print(r.fetch_row(maxrows=0))
+    try:
 
         for club in clubs:
             # print("----new club: ----")
@@ -138,8 +133,6 @@ def load_clubs_to_db(clubs):
                 website_link = club["club_page"]
                 website_type = "SP"
 
-            # new_club = saniztize(club)
-            # print(json.dumps(new_club))
             # add to db 
             try:
                 add_club = """INSERT INTO clubclubgo_club (name, description, email, website_type, website_link)
@@ -149,19 +142,6 @@ def load_clubs_to_db(clubs):
                 cursor.execute(add_club, club_data)
                 
 
-
-                # db.query("""INSERT INTO clubclubgo_club (name, description, website_type, website_link)
-                #         VALUES ({}, {}, {}, {});""".format(club["club_title"],club["club_descriptions"],website_type, website_link))
-                # r=db.store_result()
-
-                
-
-                # db.query("""SELECT * FROM clubclubgo_club;""")
-                # r=db.store_result()
-
-                # print(r.fetch_row(maxrows=0))
-                # except KeyError:
-                #     print("KeyError: club missing data " + json.dumps(club))
             except mysql.connector.errors.DatabaseError as e:
                 print("Error inserting: ", e, club_data)
         
@@ -175,40 +155,84 @@ def load_clubs_to_db(clubs):
     finally:
         cnx.commit()
         cnx.close()
-        db.close()
+
+def get_club_id(club_name):
+    return Club.objects.get(name=club_name)
 
 def load_events_to_db(events):
-    pass
-    # TODO load from settings.py
-    db=_mysql.connect(host=HOST,user=USER,
+    cnx = mysql.connector.connect(host=HOST,user=USER,
                     password=PASSWORD,database=DB)
+    cursor = cnx.cursor()
 
-    for event in events:
-        try: 
-            # parse event
 
-            # find club id for event club 
-            
-            db.query("""SELECT id WHERE name = {} FROM clubclubgo_event;""".format(event["club_title"]))
-            r=db.store_result()
-            club_id = r.fetch_row()
-            print(club_id)
+    try:
+
+        for event in events:
+
+            find_club_id = ("""SELECT id WHERE name = "%s" FROM clubclubgo_club;""")
+            club_name = [event["club_title"]]
+            # club_name = get_club_id(event["club_title"])
+            print(club_name)
+            cursor.execute(find_club_id, club_name)
+
+            myresult = cursor.fetchall()
+            for x in myresult:
+                print(x)
 
             # add to db 
-            # TODO sanitize ? 
+            # try:
+            #     add_event = """INSERT INTO clubclubgo_club (club_id, title, start_datetime, end_datetime, location, event_link, image_link, description)
+            #             VALUES (%s, %s, %s, %s, %s);"""
+            #     event_data = club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],event_link, event["media_url"], event["summary"])
+            #     # print(club_data)
+            #     cursor.execute(add_event, event_data)
+                
+
+            # except mysql.connector.errors.DatabaseError as e:
+            #     print("Error inserting: ", e, event_data)
         
-            event_link = "https://www.instagram.com/p/{}".format(event["post_id"])
-            db.query("""INSERT INTO clubclubgo_event (club_id, title, start_datetime, end_datetime, location, event_link, image_link, description)
-                    VALUES ({}, {}, {}, {}, {}, {}, {}, {});""".format(club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],\
-                                        event_link, event["media_url"], event["summary"]))
-            r=db.store_result()
+        print("Total rows:")
+        cursor.execute("""SELECT COUNT(*) FROM clubclubgo_club;""")
+        myresult = cursor.fetchall()
 
-            db.query("""SELECT * FROM clubclubgo_event;""")
-            r=db.store_result()
+        for x in myresult:
+            print(x)
 
-            print(r.fetch_row(maxrows=0))
-        except KeyError:
-            print("KeyError: Event missing data") 
+    finally:
+        pass
+        # cnx.commit()
+        # cnx.close()
+
+    # # TODO load from settings.py
+    # db=_mysql.connect(host=HOST,user=USER,
+    #                 password=PASSWORD,database=DB)
+
+    # for event in events:
+    #     try: 
+    #         # parse event
+
+    #         # find club id for event club 
+            
+    #         db.query("""SELECT id WHERE name = {} FROM clubclubgo_event;""".format(event["club_title"]))
+    #         r=db.store_result()
+    #         club_id = r.fetch_row()
+    #         print(club_id)
+
+    #         # add to db 
+    #         # TODO sanitize ? 
+        
+    #         event_link = "https://www.instagram.com/p/{}".format(event["post_id"])
+    #         db.query("""INSERT INTO clubclubgo_event (club_id, title, start_datetime, end_datetime, location, event_link, image_link, description)
+    #                 VALUES ({}, {}, {}, {}, {}, {}, {}, {});""".format(club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],\
+    #                                     event_link, event["media_url"], event["summary"]))
+    #         r=db.store_result()
+
+    #         db.query("""SELECT * FROM clubclubgo_event;""")
+    #         r=db.store_result()
+
+    #         print(r.fetch_row(maxrows=0))
+    #     except KeyError:
+    #         print("KeyError: Event missing data") 
 
 
 
@@ -237,17 +261,6 @@ def process_posts():
     json_fn.write_json("../files/event_posts/unapproved_posts00.json", unapproved_posts)
     
 
-def allow_db_char():
-    db=_mysql.connect(host=HOST,user=USER,
-                    password=PASSWORD,database=DB)
-    db.query("""ALTER DATABASE CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;""")
-    db.query("""ALTER TABLE clubclubgo_event CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;""")
-    db.query("""ALTER TABLE clubclubgo_club CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;""")
-
-    db.query("""ALTER TABLE clubclubgo_event CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;""")
-
-    r=db.store_result()
-    print(r.fetch_row(maxrows=0))
 
 def deEmojify(text):
     # https://stackoverflow.com/questions/33404752/removing-emojis-from-a-string-in-python 
@@ -267,7 +280,7 @@ def showTable():
     # r=db.store_result()
     # print(r.fetch_row(maxrows=0))
 
-    print("________________cnx___________________\n\n")
+    # print("________________cnx___________________\n\n")
 
     cnx = mysql.connector.connect(host=HOST,user=USER,
                     password=PASSWORD,database=DB)
@@ -281,11 +294,16 @@ def showTable():
         f.write(''.join(str(x)))
     f.close()
 
+
+
 def main():
- 
-    clubs  = json_fn.read_json("../files/club_all.json")
+    
+    # clubs  = json_fn.read_json("../files/club_all.json")
     # load_clubs_to_db(clubs)
-    showTable()
+
+    events  = json_fn.read_json("../files/event_posts/p_filtered_posts00.json")
+    load_events_to_db(events)
+    # showTable()
 
     # print(posts[5]["image_texts"])
     # print(processed_posts)
