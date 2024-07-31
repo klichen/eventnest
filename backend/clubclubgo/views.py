@@ -73,6 +73,17 @@ def getUpcomingEvents(request):
     
     # todo return response if not get 
 
+def getEvents(request):
+    if request.method == "GET":
+        event_ids = request.GET.get("event_ids", [])
+        events = []
+        for event_id in event_ids:
+            events.append(Event.objects.get(id=event_id))
+        
+        return JsonResponse(EventSerializer(events, many=True, context={'request': request} ).data, safe=False)
+        # `HyperlinkedRelatedField` requires the request in the serializer context. Add `context={'request': request}` when instantiating the serializer.
+
+
 def getClubEvents(request, id=None):
     if id is None:
         return HttpResponseBadRequest

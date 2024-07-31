@@ -13,6 +13,8 @@ keyring==18.0.1
 lockfile==0.12.2
 lxml==4.8.0
 mysqlclient==2.2.4
+mysql==0.0.3
+mysql-connector-python=9.0.0
 numpy==1.21.4
 ordereddict==1.1
 protobuf==5.27.2

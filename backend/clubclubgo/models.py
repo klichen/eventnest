@@ -16,18 +16,18 @@ class Club(models.Model):
     '''
     WEBSITE_CHOICES = {
         ("NA", "None"),
+        ("SP", "Student Portal"),
         ("IN", "Instagram"), 
         ("HH", "Hart House")
     }
     name = models.TextField(max_length=100)
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=255)
     email = models.TextField(max_length=50, default='')
     website_type = models.CharField(max_length=2,
         choices=WEBSITE_CHOICES,
         default="NA",)
-    website_link = models.URLField(max_length=100, blank=True, default='')
-    website_link = models.URLField(max_length=100, blank=True, default='')
-    
+    website_link = models.URLField(max_length=150, blank=True, default='')
+   
 
     def __str__(self): 
         return self.name
@@ -52,7 +52,7 @@ class Event(models.Model):
     location = models.TextField(max_length=100)
     event_link = models.URLField(max_length=100, blank=True, default='')
     image_link = models.URLField(max_length=100, blank=True, default='')
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=250)
 
     def __str__(self): 
         return self.title + " " + self.start_datetime.strftime('%m/%d/%Y')
