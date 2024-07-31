@@ -1,10 +1,11 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import EventCard from '../components/EventCard';
 import Constants from 'expo-constants';
-import Text from '../components/Text';
-import Button from '../components/Button';
+import Text from '../components/atomics/Text';
+import Button from '../components/atomics/Button';
 import { useEffect, useState } from 'react';
 import useRepositories from '../hooks/useRepositories';
+import DateFilterBtn from '../components/DateFilterBtn';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,67 +13,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#f5f7fa',
     paddingBottom: 48
   },
-  filterBtns: {
-    // marginHorizontal: 16,
-    width: '90%',
-    paddingHorizontal: 24,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginVertical: 16,
-    gap: 16
-
-  }
 });
-
-const repositories = [
-  {
-    id: 'jaredpalmer.formik',
-    fullName: 'jaredpalmer/formik',
-    description: 'Build forms in React, without the tears',
-    language: 'TypeScript',
-    forksCount: 1589,
-    stargazersCount: 21553,
-    ratingAverage: 88,
-    reviewCount: 4,
-    ownerAvatarUrl: 'https://avatars2.githubusercontent.com/u/4060187?v=4',
-  },
-  {
-    id: 'rails.rails',
-    fullName: 'rails/rails',
-    description: 'Ruby on Rails',
-    language: 'Ruby',
-    forksCount: 18349,
-    stargazersCount: 45377,
-    ratingAverage: 100,
-    reviewCount: 2,
-    ownerAvatarUrl: 'https://avatars1.githubusercontent.com/u/4223?v=4',
-  },
-  {
-    id: 'django.django',
-    fullName: 'django/django',
-    description: 'The Web framework for perfectionists with deadlines.',
-    language: 'Python',
-    forksCount: 21015,
-    stargazersCount: 48496,
-    ratingAverage: 73,
-    reviewCount: 5,
-    ownerAvatarUrl: 'https://avatars2.githubusercontent.com/u/27804?v=4',
-  },
-  {
-    id: 'reduxjs.redux',
-    fullName: 'reduxjs/redux',
-    description: 'Predictable state container for JavaScript apps',
-    language: 'TypeScript',
-    forksCount: 13902,
-    stargazersCount: 52869,
-    ratingAverage: 0,
-    reviewCount: 0,
-    ownerAvatarUrl: 'https://avatars3.githubusercontent.com/u/13142323?v=4',
-  },
-];
 
 // mock event data
 const date1 = new Date('2024-10-31T18:00:00');
@@ -150,28 +94,13 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <Text fontSize="heading" fontWeight="bold">UofT Events</Text>
-        <View style={styles.filterBtns}>
-            {/* TODO: select date, categories, sort by buttons */}
-            <Button
-                title='Date'
-                iconName='caret-down-outline'
-            />
-            <Button
-                title='Categories'
-                iconName='caret-down-outline'
-            />
-            <Button
-                title='Sort By'
-                iconName='caret-down-outline'
-            />
-        </View>
         <FlatList
         data={events}
         // ItemSeparatorComponent={ItemSeparator}
         // other props
         // contentContainerStyle={{ flex: 1, alignSelf: "stretch" }}
         showsVerticalScrollIndicator={false}
-        style={{ width: "90%" }}
+        style={{ width: "100%", paddingHorizontal: 24, marginTop: 16 }}
         renderItem={EventItem}
         />
     </View>
