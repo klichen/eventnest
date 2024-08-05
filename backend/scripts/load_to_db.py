@@ -6,6 +6,7 @@ import dateparser
 import re
 import mysql.connector
 import logging
+import pytz
 # from ..clubclubgo.models  import Club
 
 
@@ -68,12 +69,21 @@ def get_event_from_post(post):
         start_time = new_time
         end_time = None
 
-    parsed_date = dateparser.parse(post["date"] + " "+ start_time)
+    if  "EST" in start_time:
+        parsed_date = dateparser.parse(post["date"] + " "+ start_time.replace('EST', ''))
+    else: 
+        parsed_date = dateparser.parse(post["date"] + " "+ start_time )
+
+    # utc_dt = parsed_date.astimezone(pytz.utc)
     print(post["date"] + " "+ post["time"] + " ---> ")
     print(parsed_date)
     post["start_datetime"] = parsed_date
     if end_time is not None:
-        post["end_datetime"] = dateparser.parse(post["date"] + " "+ end_time)
+        if  "EST" in end_time:
+            parsed_end_date = dateparser.parse(post["date"] + " "+ end_time.replace('EST', ''))
+        else: 
+            parsed_end_date = dateparser.parse(post["date"] + " "+ end_time )
+        post["end_datetime"] = parsed_end_date
     else: 
         post["end_datetime"] = None
 
@@ -156,52 +166,62 @@ def load_clubs_to_db(clubs):
         cnx.commit()
         cnx.close()
 
-def get_club_id(club_name):
-    return Club.objects.get(name=club_name)
 
 def load_events_to_db(events):
     cnx = mysql.connector.connect(host=HOST,user=USER,
                     password=PASSWORD,database=DB)
     cursor = cnx.cursor()
 
+    # find_club_id = ("""DESCRIBE clubclubgo_event;;""")
+    # cursor.execute(find_club_id)
+    # myresult = cursor.fetchall()
+
+    # for x in myresult:
+    #     print(x)
 
     try:
 
         for event in events:
+            # cursor.execute("""SELECT * FROM clubclubgo_club;""")
+            # myresult = cursor.fetchall()
+            
+            # for x in myresult:
+            #     print(x)
 
-            find_club_id = ("""SELECT id WHERE name = "%s" FROM clubclubgo_club;""")
-            club_name = [event["club_title"]]
+            find_club_id = ("""SELECT id FROM clubclubgo_club WHERE name = %s;""")
+            club_name = (event["club_title"],)
             # club_name = get_club_id(event["club_title"])
             print(club_name)
             cursor.execute(find_club_id, club_name)
 
-            myresult = cursor.fetchall()
-            for x in myresult:
-                print(x)
+            myresult = cursor.fetchone()
+            print(myresult)
+            club_id= myresult[0]
+            event_link = "https://www.instagram.com/p/"+ event["post_id"]
 
             # add to db 
-            # try:
-            #     add_event = """INSERT INTO clubclubgo_club (club_id, title, start_datetime, end_datetime, location, event_link, image_link, description)
-            #             VALUES (%s, %s, %s, %s, %s);"""
-            #     event_data = club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],event_link, event["media_url"], event["summary"])
-            #     # print(club_data)
-            #     cursor.execute(add_event, event_data)
+            try:
+                add_event = """INSERT INTO clubclubgo_event (club_id_id, title, start_datetime, end_datetime, location, event_link, image_link, description)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"""
+                event_data = (club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],event_link, event["media_url"], event["summary"])
+                # print(club_data)
+                cursor.execute(add_event, event_data)
                 
 
-            # except mysql.connector.errors.DatabaseError as e:
-            #     print("Error inserting: ", e, event_data)
+            except mysql.connector.errors.DatabaseError as e:
+                print("Error inserting: ", e, event_data)
         
         print("Total rows:")
-        cursor.execute("""SELECT COUNT(*) FROM clubclubgo_club;""")
+        cursor.execute("""SELECT COUNT(*) FROM clubclubgo_event;""")
         myresult = cursor.fetchall()
 
         for x in myresult:
             print(x)
 
     finally:
-        pass
-        # cnx.commit()
-        # cnx.close()
+        # pass
+        cnx.commit()
+        cnx.close()
 
     # # TODO load from settings.py
     # db=_mysql.connect(host=HOST,user=USER,
@@ -300,8 +320,9 @@ def main():
     
     # clubs  = json_fn.read_json("../files/club_all.json")
     # load_clubs_to_db(clubs)
+    # process_posts()
 
-    events  = json_fn.read_json("../files/event_posts/p_filtered_posts00.json")
+    events  = json_fn.read_json("../files/event_posts/filtered_posts00.json")
     load_events_to_db(events)
     # showTable()
 

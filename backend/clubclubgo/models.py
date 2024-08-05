@@ -48,9 +48,9 @@ class Event(models.Model):
     club_id = models.ForeignKey(Club, on_delete=models.CASCADE)
     title = models.TextField(max_length=100)
     start_datetime = models.DateTimeField()
-    end_datetime = models.DateTimeField(blank=True,  default=None)
+    end_datetime = models.DateTimeField(blank=True, null=True, default=None)
     location = models.TextField(max_length=100)
-    event_link = models.URLField(max_length=100, blank=True, default='')
+    event_link = models.URLField(max_length=100, blank=True, default='') #must be unique !!!
     image_link = models.URLField(max_length=100, blank=True, default='')
     description = models.TextField(max_length=250)
 
