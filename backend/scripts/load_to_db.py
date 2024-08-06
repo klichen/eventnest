@@ -1,12 +1,9 @@
 from MySQLdb import _mysql
 import json_fn
-import json
-import dateutil.parser
 import dateparser
 import re
 import mysql.connector
-import logging
-import pytz
+import datetime
 # from ..clubclubgo.models  import Club
 
 
@@ -165,12 +162,6 @@ def load_events_to_db(events):
     try:
 
         for event in events:
-            # cursor.execute("""SELECT * FROM clubclubgo_club;""")
-            # myresult = cursor.fetchall()
-            
-            # for x in myresult:
-            #     print(x)
-
             find_club_id = ("""SELECT id FROM clubclubgo_club WHERE name = %s;""")
             club_name = (event["club_title"],)
             # club_name = get_club_id(event["club_title"])
@@ -181,12 +172,13 @@ def load_events_to_db(events):
             print(myresult)
             club_id= myresult[0]
             event_link = "https://www.instagram.com/p/"+ event["post_id"]
+            today = datetime.datetime.today()
 
             # add to db 
             try:
-                add_event = """INSERT INTO clubclubgo_event (club_id_id, title, start_datetime, end_datetime, location, event_link, image_link, description)
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"""
-                event_data = (club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],event_link, event["media_url"], event["summary"])
+                add_event = """INSERT INTO clubclubgo_event (club_id_id, title, start_datetime, end_datetime, location, event_link, image_link, description, date_created)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"""
+                event_data = (club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],event_link, event["media_url"], event["summary"], today)
                 # print(club_data)
                 cursor.execute(add_event, event_data)
                 
@@ -262,6 +254,18 @@ def showTable():
         f.write(''.join(str(x)))
     f.close()
 
+def runCommand():
+    cnx = mysql.connector.connect(host=HOST,user=USER,
+                    password=PASSWORD,database=DB)
+    cursor = cnx.cursor()
+    cursor.execute("""DESCRIBE clubclubgo_event ;""")
+    myresult = cursor.fetchall()
+    
+
+    for x in myresult:
+        print(x)
+
+
 
 
 def main():
@@ -269,9 +273,11 @@ def main():
     # clubs  = json_fn.read_json("../files/club_all.json")
     # load_clubs_to_db(clubs)
     # process_posts()
+    showTable()
+    # runCommand()
 
-    events  = json_fn.read_json("../files/event_posts/filtered_posts00.json")
-    load_events_to_db(events)
+    # events  = json_fn.read_json("../files/event_posts/filtered_posts00.json")
+    # load_events_to_db(events)
     # showTable()
 
     # print(posts[5]["image_texts"])

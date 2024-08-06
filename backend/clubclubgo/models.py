@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Club(models.Model):
@@ -27,6 +28,7 @@ class Club(models.Model):
         choices=WEBSITE_CHOICES,
         default="NA",)
     website_link = models.URLField(max_length=150, blank=True, default='')
+    last_updated = models.DateTimeField(blank=True, null=True) 
    
 
     def __str__(self): 
@@ -53,6 +55,8 @@ class Event(models.Model):
     event_link = models.URLField(max_length=100, blank=True, default='') #must be unique !!!
     image_link = models.URLField(max_length=100, blank=True, default='')
     description = models.TextField(max_length=250)
+    date_created = models.DateTimeField(blank=True, default=timezone.now)
+
 
     def __str__(self): 
         return self.title + " " + self.start_datetime.strftime('%m/%d/%Y')
