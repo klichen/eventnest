@@ -31,5 +31,5 @@ urlpatterns = [
     path('club/<id>/events/', views.getClubEvents),
     path('search/', views.searchEvents),
     path('events/', views.getEvents),
-    path('recent/', views.getRecentlyUpdatedEvents)
+    path('new/', views.getRecentlyUpdatedEvents)
 ]
