@@ -112,23 +112,6 @@ def load_clubs_to_db(clubs):
                     password=PASSWORD,database=DB)
     cursor = cnx.cursor()
 
-    # logger = logging.getLogger("mysql.connector")
-    # logger.setLevel(logging.DEBUG)
-
-    # formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s- %(message)s")
-
-    # stream_handler = logging.StreamHandler()
-    # stream_handler.setFormatter(formatter)
-    # logger.addHandler(stream_handler)
-
-    # file_handler = logging.FileHandler("cpy.log")
-    # file_handler.setFormatter(formatter)
-    # logger.addHandler(file_handler) 
-
-    # add_club = """INSERT INTO clubclubgo_club (name, description, email, website_type, website_link)
-    #             VALUES (%s, %s, %s, %s, %s);"""
-    # club_data = ("Amiercan ROcks", "Med descr, momre owrds", "", "SP", "https://sop.utoronto.ca")
-    # cursor.execute(add_club, club_data)
 
     try:
 
@@ -223,41 +206,6 @@ def load_events_to_db(events):
         cnx.commit()
         cnx.close()
 
-    # # TODO load from settings.py
-    # db=_mysql.connect(host=HOST,user=USER,
-    #                 password=PASSWORD,database=DB)
-
-    # for event in events:
-    #     try: 
-    #         # parse event
-
-    #         # find club id for event club 
-            
-    #         db.query("""SELECT id WHERE name = {} FROM clubclubgo_event;""".format(event["club_title"]))
-    #         r=db.store_result()
-    #         club_id = r.fetch_row()
-    #         print(club_id)
-
-    #         # add to db 
-    #         # TODO sanitize ? 
-        
-    #         event_link = "https://www.instagram.com/p/{}".format(event["post_id"])
-    #         db.query("""INSERT INTO clubclubgo_event (club_id, title, start_datetime, end_datetime, location, event_link, image_link, description)
-    #                 VALUES ({}, {}, {}, {}, {}, {}, {}, {});""".format(club_id, event["title"], event["start_datetime"], event["end_datetime"], event["location"],\
-    #                                     event_link, event["media_url"], event["summary"]))
-    #         r=db.store_result()
-
-    #         db.query("""SELECT * FROM clubclubgo_event;""")
-    #         r=db.store_result()
-
-    #         print(r.fetch_row(maxrows=0))
-    #     except KeyError:
-    #         print("KeyError: Event missing data") 
-
-
-
-    # db.commit()
-    # db.close()
 
 def process_posts():
     posts = json_fn.read_json("../files/chatgpt_posts/batch1_data.json")
