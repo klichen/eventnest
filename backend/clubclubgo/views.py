@@ -75,7 +75,8 @@ def getUpcomingEvents(request):
 
 def getEvents(request):
     if request.method == "GET":
-        event_ids = request.GET.get("event_ids", [])
+        event_ids = request.GET.getlist("event_id")
+        print(event_ids)
         events = []
         for event_id in event_ids:
             events.append(Event.objects.get(id=event_id))
