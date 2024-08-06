@@ -1,0 +1,64 @@
+[
+    {
+        "club_page": "https://sop.utoronto.ca/group/insert-channel-name-icn/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/innovation-onboard-uoft/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/innis-college-student-society-icss/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/innis-garden-club/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/innis-residence-council-irc/",
+        "instagram_links": [
+            "https://www.instagram.com/innisirc/"
+        ],
+        "instagram_usernames": [
+            "innisirc"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/inner-peace-connection/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/indigenous-students-association/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/inkling-writers-circle/",
+        "instagram_links": [
+            "https://www.instagram.com/inkling.writers.circle/"
+        ],
+        "instagram_usernames": [
+            "inkling.writers.circle"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/industrial-engineering-club/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/industrial-relations-and-human-resources-student-association/",
+        "instagram_links": [
+            "https://www.instagram.com/uoft.irhrsa/"
+        ],
+        "instagram_usernames": [
+            "uoft.irhrsa"
+        ]
+    }
+]

@@ -15,8 +15,17 @@ hello
 - npm start
 - scan QR code 
 
-### Running  server
+### Running  server 
 - cd backend
+- pip install -r requirements.txt 
 - python3 manage.py runserver
+
+### Activate/deactivate backend venv
+- cd backend
+- source env/bin/activate (ubuntu)
+- env/bin/activate.ps1 (powershell)
+- deactivate
+
+
 
 
