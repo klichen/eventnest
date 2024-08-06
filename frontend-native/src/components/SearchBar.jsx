@@ -4,11 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useState, forwardRef } from 'react';
 
 const SearchBar = forwardRef(({ clicked, setClicked, searchPhrase, setSearchPhrase, handleSubmitSearch, handleCancelSearch }, ref) => {
-  const handlePressSearch = ({ nativeEvent: { text: text } }) => {
-    console.log(text)
-    setSearchPhrase(search)
-    setClicked(false)
-  }
+
   return (
     <View style={styles.container}>
       <View

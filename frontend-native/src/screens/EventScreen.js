@@ -5,14 +5,19 @@ import { useState, useEffect } from 'react';
 import { parseISOString } from '../utils/helperFunctions';
 import useGetClubInformation from '../hooks/useGetClubInformation';
 import LoadSkeleton from '../components/LoadSkeleton';
+import { checkEventIsSaved, setEventId, removeEventId } from '../utils/AsyncStorage';
+import useEventSavedStatus from '../hooks/useEventSavedStatus';
+
 
 const EventScreen = ({ route, navigation }) => {
-    const { eventId, clubId, eventTitle, eventDescription, startDatetime, endDatetime, imageLink, eventLink, location, eventSaved, setSaved } = route.params
-    const [savedChild, setSavedChild] = useState(eventSaved)
+    const { eventId, clubId, eventTitle, eventDescription, startDatetime, endDatetime, imageLink, eventLink, location } = route.params
+    // const [savedChild, setSavedChild] = useState(eventSaved)
     const startDate = startDatetime ? parseISOString(startDatetime) : null
     const endDate = endDatetime ? parseISOString(endDatetime) : null
     const { clubInfo = {}, loading } = useGetClubInformation(clubId)
     const { description: clubDescription, name: clubName, website_type, website_link } = clubInfo
+    const [saved, setSaved] = useEventSavedStatus(eventId)
+
 
     useEffect(() => {
         navigation.setOptions({
@@ -23,8 +28,14 @@ const EventScreen = ({ route, navigation }) => {
     }, [navigation, route]);
 
     const handleOnPressSave = () => {
-        setSaved(!eventSaved)
-        setSavedChild(!savedChild)
+        if (saved) {
+            removeEventId(eventId);
+        }
+        else {
+            setEventId(eventId);
+        }
+        setSaved(!saved)
+        // setSavedChild(!savedChild)
         // TODO: implement local save 
     }
 
@@ -44,7 +55,7 @@ const EventScreen = ({ route, navigation }) => {
                 {startDate && !endDate && <Text color="textSecondary">{startDate.toDateString()}, {startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} </Text>}
                 <View style={styles.saveIcon}>
                     <Pressable onPress={handleOnPressSave}>
-                        <Ionicons name={savedChild ? "bookmark" : "bookmark-outline"} size={32} color="#007FA3" />
+                        <Ionicons name={saved ? "bookmark" : "bookmark-outline"} size={32} color="#007FA3" />
                     </Pressable>
                 </View>
             </View>

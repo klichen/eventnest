@@ -1,19 +1,28 @@
 import { View, StyleSheet, Image, Pressable } from 'react-native';
 import Text from './atomics/Text';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { parseISOString } from '../utils/helperFunctions';
+import { checkEventIsSaved, setEventId, removeEventId } from '../utils/AsyncStorage';
+import useEventSavedStatus from '../hooks/useEventSavedStatus';
 
-const EventCard = ({ title, description, startDatetime, endDatetime, location, imageLink, imageHeight = 200, eventSaved = false, id, clubId, eventLink }) => {
-    const navigation = useNavigation()
-    const eventId = id
-    const dateTime = startDatetime ? parseISOString(startDatetime) : null
-    const [saved, setSaved] = useState(eventSaved)
+const EventCard = ({ title, description, startDatetime, endDatetime, location, imageLink, imageHeight = 200, id, clubId, eventLink }) => {
+    const navigation = useNavigation();
+    const eventId = "event" + id;
+    const dateTime = startDatetime ? parseISOString(startDatetime) : null;
+    const [saved, setSaved] = useEventSavedStatus(eventId);
+
 
 
     const handleOnPressSave = () => {
-        setSaved(!saved)
+        if (saved) {
+            removeEventId(eventId);
+        }
+        else {
+            setEventId(eventId);
+        }
+        setSaved(!saved);
         // TODO: implement local save 
     }
 
@@ -29,8 +38,8 @@ const EventCard = ({ title, description, startDatetime, endDatetime, location, i
             location,
             imageLink,
             eventLink,
-            eventSaved: saved,
-            setSaved,
+            // eventSaved: saved,
+            // setSaved,
         });
     }
 
@@ -45,7 +54,7 @@ const EventCard = ({ title, description, startDatetime, endDatetime, location, i
                 <Pressable onPress={handleNavigate}>
                     <View style={{ flexDirection: 'column', gap: 12 }}>
                         <Text fontWeight='bold'>{title}</Text>
-                        {dateTime && <Text color="textSecondary">{dateTime.toDateString()} - {dateTime.toLocaleTimeString()}</Text>}
+                        {dateTime && <Text color="textSecondary">{dateTime.toDateString()} - {dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>}
                         <Text>{location}</Text>
                     </View>
                 </Pressable>

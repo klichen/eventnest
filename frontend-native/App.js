@@ -15,9 +15,11 @@ const eventRoute = 'Event'
 const searchStack = 'SearchStack'
 const searchRoute = 'Search'
 const savedEventsRoute = 'Saved'
+const savedEventsStack = 'SavedStack'
 
 const Tab = createBottomTabNavigator();
 const SearchStack = createNativeStackNavigator();
+const SavedEventsStack = createNativeStackNavigator();
 
 function SearchStackScreen() {
   return (
@@ -25,6 +27,15 @@ function SearchStackScreen() {
       <SearchStack.Screen name={searchRoute} component={SearchScreen} />
       <SearchStack.Screen name={eventRoute} component={EventScreen} />
     </SearchStack.Navigator>
+  )
+}
+
+function SavedEventsStackScreen() {
+  return (
+    <SavedEventsStack.Navigator screenOptions={{ headerShown: false }}>
+      <SavedEventsStack.Screen name={savedEventsRoute} component={SavedEventsScreen} />
+      <SavedEventsStack.Screen name={eventRoute} component={EventScreen} />
+    </SavedEventsStack.Navigator>
   )
 }
 
@@ -45,7 +56,7 @@ const App = () => {
               else if (rn === searchStack) {
                 iconName = focused ? 'search' : 'search-outline' 
               }
-              else if (rn == savedEventsRoute) {
+              else if (rn == savedEventsStack) {
                 iconName = focused ? 'bookmarks' : 'bookmarks-outline'
               }
 
@@ -57,7 +68,7 @@ const App = () => {
         >
           <Tab.Screen name={homeRoute} component={HomeScreen} />
           <Tab.Screen name={searchStack} component={SearchStackScreen} />
-          <Tab.Screen name={savedEventsRoute} component={SavedEventsScreen} />
+          <Tab.Screen name={savedEventsStack} component={SavedEventsStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
