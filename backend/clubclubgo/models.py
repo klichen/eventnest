@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Club(models.Model):
@@ -16,16 +17,22 @@ class Club(models.Model):
     '''
     WEBSITE_CHOICES = {
         ("NA", "None"),
+        ("SP", "Student Portal"),
         ("IN", "Instagram"), 
         ("HH", "Hart House")
     }
     name = models.TextField(max_length=100)
-    description = models.TextField(max_length=300)
-    email = models.TextField(max_length=50)
+    description = models.TextField(max_length=255)
+    email = models.TextField(max_length=50, default='')
     website_type = models.CharField(max_length=2,
         choices=WEBSITE_CHOICES,
         default="NA",)
-    website_link = models.URLField(max_length=100, blank=True, default='')
+    website_link = models.URLField(max_length=150, blank=True, default='')
+    last_updated = models.DateTimeField(blank=True, null=True) 
+   
+
+    def __str__(self): 
+        return self.name
 
 
 class Event(models.Model):
@@ -43,8 +50,13 @@ class Event(models.Model):
     club_id = models.ForeignKey(Club, on_delete=models.CASCADE)
     title = models.TextField(max_length=100)
     start_datetime = models.DateTimeField()
-    end_datetime = models.DateTimeField(blank=True,  default=None)
+    end_datetime = models.DateTimeField(blank=True, null=True, default=None)
     location = models.TextField(max_length=100)
-    event_link = models.URLField(max_length=100, blank=True, default='')
+    event_link = models.URLField(max_length=100, blank=True, default='') #must be unique !!!
     image_link = models.URLField(max_length=100, blank=True, default='')
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=250)
+    date_created = models.DateTimeField(blank=True, default=timezone.now)
+
+
+    def __str__(self): 
+        return self.title + " " + self.start_datetime.strftime('%m/%d/%Y')

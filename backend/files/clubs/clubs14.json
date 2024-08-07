@@ -1,0 +1,84 @@
+[
+    {
+        "club_page": "https://sop.utoronto.ca/group/newman-catholic-students-club/",
+        "instagram_links": [
+            "https://www.instagram.com/uoft_ncsc/"
+        ],
+        "instagram_usernames": [
+            "uoft_ncsc"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/new-resonance-a-cappella/",
+        "instagram_links": [
+            "https://www.instagram.com/newresonance/"
+        ],
+        "instagram_usernames": [
+            "newresonance"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/new-dragons-dragon-boat-club/",
+        "instagram_links": [
+            "https://www.instagram.com/newdragons/"
+        ],
+        "instagram_usernames": [
+            "newdragons"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/new-college-against-sexual-assault-harassment-nasah/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/new-college-student-council-ncsc/",
+        "instagram_links": [
+            "https://www.instagram.com/myncsc"
+        ],
+        "instagram_usernames": [
+            "myncsc"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/neurotechuoft-ntut/",
+        "instagram_links": [
+            "https://www.instagram.com/neurotechuoft/?hl=en"
+        ],
+        "instagram_usernames": [
+            "neurotechuoft"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/new-college-residence-council-ncrc/",
+        "instagram_links": null,
+        "instagram_usernames": null
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/neuroscience-association-for-undergraduate-students/",
+        "instagram_links": [
+            "https://www.instagram.com/nausuoft/"
+        ],
+        "instagram_usernames": [
+            "nausuoft"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/regenesis-uoft/",
+        "instagram_links": [
+            "https://www.instagram.com/regenesistoronto/?hl=en"
+        ],
+        "instagram_usernames": [
+            "regenesistoronto"
+        ]
+    },
+    {
+        "club_page": "https://sop.utoronto.ca/group/robotics-for-space-exploration/",
+        "instagram_links": [
+            "https://www.instagram.com/rsx.utoronto/"
+        ],
+        "instagram_usernames": [
+            "rsx.utoronto"
+        ]
+    }
+]

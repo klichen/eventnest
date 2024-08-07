@@ -1,6 +1,6 @@
 # pycache
-/clubclubgo/__pycache__/
-/clubclubgobackend/__pycache__/
+**/__pycache__/*
+
 
 /clubclubgo/migrations
 
@@ -10,5 +10,5 @@
 # dependencies
 node_modules/
 
-# env
 .env
+/bin/

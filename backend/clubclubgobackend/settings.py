@@ -77,8 +77,15 @@ WSGI_APPLICATION = 'clubclubgobackend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+          'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'b7n3yx0oplrx3fektmdw',  
+        'USER': 'ue6crgij3j651go4',  
+        'PASSWORD': 'gYuvqMA63YtXmi8NuN0B',  
+        'HOST': 'b7n3yx0oplrx3fektmdw-mysql.services.clever-cloud.com',  
+        'PORT': '3306',  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        }  
     }
 }
 
