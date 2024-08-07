@@ -2,6 +2,8 @@
 import instaloader
 import csv
 import json_fn
+import time
+import random
 
 
 
@@ -53,6 +55,7 @@ def load_posts(profile_name):
                         "date_posted": post.date, 
                         "image_urls": url, 
                         "caption": post.caption})
+            time.sleep(random.randint(1, 6))
             # profile name|post id|date|image url|post caption
 
         return posts
@@ -62,6 +65,10 @@ def load_posts(profile_name):
         return []
     
     except instaloader.exceptions.QueryReturnedNotFoundException:
+        print("Profile cannot be found")
+        return []
+    
+    except instaloader.QueryReturnedNotFoundException:
         print("Profile cannot be found")
         return []
 
@@ -76,8 +83,13 @@ def load_posts(profile_name):
     except instaloader.InvalidArgumentException:
         print("Invalid arguments. Skipping profile ", profile_name)
         return []
+    
+    except instaloader.exceptions as e:
+        print("instaloader error: ", e, " in profile: ", profile_name)
+        return []
      
     
+
 def load_post(post_id):
     L = instaloader.Instaloader()
     #L.login("username", "password")
