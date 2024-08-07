@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import SmallEventCard from '../components/SmallEventCard';
 import useGetSavedEvents from '../hooks/useGetSavedEvents';
@@ -52,6 +52,7 @@ const eventsData = [
 
 const SavedEventsScreen = ({ navigation }) => {
   const { savedEvents, setSavedEvents, loading, refetch } = useGetSavedEvents();
+  const memoizedSavedEvents = useMemo(() => savedEvents, [savedEvents]);
 
   const removeSavedEvent = (eventId) => {
     setSavedEvents((prev) =>
@@ -72,7 +73,7 @@ const SavedEventsScreen = ({ navigation }) => {
     )
   }
 
-  if (savedEvents.length === 0) {
+  if (memoizedSavedEvents && memoizedSavedEvents.length === 0) {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Saved Events</Text>
@@ -85,7 +86,7 @@ const SavedEventsScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.header}>Saved Events</Text>
       <ScrollView>
-        {!!savedEvents && savedEvents.map((section, index) => (
+        {!!memoizedSavedEvents && memoizedSavedEvents.map((section, index) => (
           <View key={index} style={styles.section}>
             <Text style={styles.date}>{section.date}</Text>
             {section.events.map((event) => (

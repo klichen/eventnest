@@ -48,7 +48,7 @@ const EventCard = ({ title, description, startDatetime, endDatetime, location, i
             </Pressable>
             <View style={styles.cardContent}>
                 <Pressable onPress={handleNavigate}>
-                    <View style={{ flexDirection: 'column', gap: 12 }}>
+                    <View style={{ flexDirection: 'column', gap: 12, width: '95%' }}>
                         <Text fontWeight='bold'>{title}</Text>
                         {dateTime && <Text color="textSecondary">{dateTime.toDateString()} - {dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>}
                         <Text>{location}</Text>
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
         marginBottom: 24,
     },
     cardContent: {
+        // flexGrow: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginLeft: 16,
