@@ -273,13 +273,13 @@ def runCommand():
 
 def main():
     
-    # clubs  = json_fn.read_json("../files/club_all.json")
+    # clubs  = json_fn.read_json("/files/club_all.json")
     # load_clubs_to_db(clubs)
     # process_posts()
     showTable()
     # runCommand()
 
-    # events  = json_fn.read_json("../files/event_posts/filtered_posts00.json")
+    # events  = json_fn.read_json("/files/event_posts/filtered_posts00.json")
     # load_events_to_db(events)
     # showTable()
 

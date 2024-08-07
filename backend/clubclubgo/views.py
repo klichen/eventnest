@@ -152,7 +152,7 @@ def searchEvents(request):
         descr_search = Q(description__icontains=searchString)
         club_search = Q(name__icontains=searchString)
         
-        events_queryset = queryset.filter(date_search & (title_search | descr_search))
+        events_queryset = queryset.filter(date_search & (title_search | descr_search | club_search))
         print("title")
         print(list(queryset.filter(title_search)))
         print("descr")
@@ -171,11 +171,13 @@ def searchEvents(request):
             club_search = Q(name__icontains=term)
             
             print("term: ", term)
-            events_queryset = queryset.filter(date_search & (title_search | descr_search))
+            events_queryset = queryset.filter(date_search & (title_search | descr_search | club_search))
             print("title")
-            print(list(queryset.filter(title_search)))
+            print(list(queryset.filter(date_search &(title_search))))
             print("descr")
-            print(list(queryset.filter(descr_search)))
+            print(list(queryset.filter(date_search &(descr_search))))
+            print("club")
+            print(list(queryset.filter(date_search &(club_search))))
 
 
             for event in events_queryset.values("id"):
