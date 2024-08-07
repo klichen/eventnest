@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ScrollView, View, StyleSheet, Text } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import SmallEventCard from '../components/SmallEventCard';
 import useGetSavedEvents from '../hooks/useGetSavedEvents';
+import Text from '../components/atomics/Text';
 
 const eventsData = [
   {
@@ -50,17 +51,35 @@ const eventsData = [
 ];
 
 const SavedEventsScreen = ({ navigation }) => {
-  // TODO: update list of saved events when 'unsaving' event --> add confirmation dialog 
-  // change bookmark icon to 'remove' or something 
+  const { savedEvents, setSavedEvents, loading, refetch } = useGetSavedEvents();
 
-  // const [bookmarkedEvents, setBookmarkedEvents] = useState([]);
-  const { savedEvents, loading, refetch } = useGetSavedEvents()
-
-  const handleBookmarkPress = (eventId) => {
-    setBookmarkedEvents((prev) =>
-      prev.includes(eventId) ? prev.filter((id) => id !== eventId) : [...prev, eventId]
+  const removeSavedEvent = (eventId) => {
+    setSavedEvents((prev) =>
+      prev
+        .map(section => ({
+          ...section,
+          events: section.events.filter(event => event.id !== eventId)
+        }))
+        .filter(section => section.events.length > 0)
     );
   };
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text fontSize="subheading">Loading Saved Events...</Text>
+      </View>
+    )
+  }
+
+  if (savedEvents.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.header}>Saved Events</Text>
+        <Text fontSize="subheading">Find your saved events here!</Text>
+      </View>
+    )
+  }
 
   return (
     <View style={styles.container}>
@@ -73,8 +92,7 @@ const SavedEventsScreen = ({ navigation }) => {
               <SmallEventCard
                 key={event.id}
                 event={event}
-                // isBookmarked={bookmarkedEvents.includes(event.id)}
-                // onBookmarkPress={handleBookmarkPress}
+                removeSavedEvent={removeSavedEvent}
               />
             ))}
           </View>
@@ -103,7 +121,6 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 15,
     color: '#000000',
-    backgroundColor: '', // Gray background color
     padding: 5,
     marginBottom: 10,
   },

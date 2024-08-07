@@ -35,8 +35,6 @@ const EventScreen = ({ route, navigation }) => {
             setEventId(eventId);
         }
         setSaved(!saved)
-        // setSavedChild(!savedChild)
-        // TODO: implement local save 
     }
 
     const handleOnPressLearnMore = () => {

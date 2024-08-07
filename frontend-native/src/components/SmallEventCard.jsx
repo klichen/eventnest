@@ -1,24 +1,21 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity, StyleSheet, Dimensions, Pressable } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { View, Image, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { parseISOString } from '../utils/helperFunctions';
 import useGetClubInformation from '../hooks/useGetClubInformation';
 import LoadSkeleton from './LoadSkeleton';
 import { useNavigation } from '@react-navigation/native';
-import useEventSavedStatus from '../hooks/useEventSavedStatus';
-import { removeEventId, setEventId } from '../utils/AsyncStorage';
+import { removeEventId } from '../utils/AsyncStorage';
 
 const placeholderImage = 'https://reactjs.org/logo-og.png'; // placeholder image
 
-const SmallEventCard = ({ event }) => {
+const SmallEventCard = ({ event, removeSavedEvent }) => {
   const { id, eventTitle, startDatetime, endDatetime, clubId, imageLink, eventLink, location, eventDescription } = event;
   const eventId = 'event' + id;
   const startTime = startDatetime ? parseISOString(startDatetime) : null;
   const { clubInfo = {}, loading } = useGetClubInformation(clubId);
   const { name: clubName } = clubInfo;
   const navigation = useNavigation();
-  const [saved, setSaved] = useEventSavedStatus(eventId);
 
   const handleNavigate = () => {
     navigation.navigate('Event', {
@@ -34,15 +31,19 @@ const SmallEventCard = ({ event }) => {
     });
   }
 
-  const handleOnPressSave = () => {
-    if (saved) {
-        removeEventId(eventId);
-    }
-    else {
-        setEventId(eventId);
-    }
-    setSaved(!saved);
-}
+  const handleUnsaveEvent = () => {
+    removeEventId(eventId);
+    removeSavedEvent(id)
+  }
+
+  const handleOnPressRemoveIcon = () =>
+    Alert.alert('Remove saved event?', '', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      { text: 'OK', onPress: handleUnsaveEvent },
+    ]);
 
   return (
     <TouchableOpacity
@@ -67,21 +68,12 @@ const SmallEventCard = ({ event }) => {
           </View>}
 
       </View>
-      <View style={styles.saveIcon}>
-        <Pressable onPress={handleOnPressSave} hitSlop={{ top: 25, bottom: 15, left: 25, right: 15 }}>
-          <Ionicons name={saved ? "bookmark" : "bookmark-outline"} size={24} color="#007FA3" />
-        </Pressable>
+      <View style={styles.removeIcon}>
+        <TouchableOpacity onPress={handleOnPressRemoveIcon} hitSlop={{ top: 25, bottom: 15, left: 25, right: 15 }}>
+          <MaterialCommunityIcons name={"bookmark-remove"} size={28} color="#007FA3" />
+          {/* <Ionicons name={"bookmark"} size={24} color="#007FA3" /> */}
+        </TouchableOpacity>
       </View>
-      {/* <TouchableOpacity
-        style={styles.bookmarkIcon}
-        onPress={() => onBookmarkPress(event.id)}
-      >
-        <Icon
-          name={isBookmarked ? "bookmark" : "bookmark-o"}
-          size={20}
-          color="#000"
-        />
-      </TouchableOpacity> */}
     </TouchableOpacity>
   );
 };
@@ -90,19 +82,16 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     marginBottom: 15,
-    // position: 'relative', // To position the bookmark icon
-    backgroundColor: '#fff', // White background for the card
-    borderRadius: 10, // Rounded corners
-    borderWidth: 1, // Border width
-    borderColor: '#ddd', // Border color
+    backgroundColor: '#fff', 
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
     shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.25,
     shadowRadius: 2,
-    elevation: 5, // Elevation for Android shadow
-    padding: 10, // Padding inside the card
-    width: '100%', // Ensuring the card takes full width in both web and mobile
-    // alignItems: 'flex-end'
+    padding: 10,
+    width: '100%',
   },
   image: {
     width: 80,
@@ -138,10 +127,10 @@ const styles = StyleSheet.create({
     bottom: 10,
     right: 10,
   },
-  saveIcon: {
+  removeIcon: {
     alignSelf: 'flex-end',
     // padding: 8
-},
+  },
 });
 
 export default SmallEventCard;

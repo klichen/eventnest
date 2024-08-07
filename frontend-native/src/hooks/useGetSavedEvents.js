@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getAllEventIds } from '../utils/AsyncStorage';
+import { useFocusEffect } from '@react-navigation/native';
 
 const useGetSavedEvents = () => {
     const [savedEvents, setSavedEvents] = useState();
@@ -8,7 +9,7 @@ const useGetSavedEvents = () => {
     const mockData = [
         {
             "id": 1,
-            "club_id": "http://bbf6-2607-fea8-761e-8520-00-546e.ngrok-free.app/club/1/",
+            "club_id": "http://2b6a-138-51-90-242.ngrok-free.app/club/1/",
             "title": "Board games Night",
             "start_datetime": "2024-08-10T18:00:00Z",
             "end_datetime": "2024-08-10T22:00:00Z",
@@ -19,7 +20,7 @@ const useGetSavedEvents = () => {
         },
         {
             "id": 2,
-            "club_id": "http://bbf6-2607-fea8-761e-8520-00-546e.ngrok-free.app/club/2/",
+            "club_id": "http://2b6a-138-51-90-242.ngrok-free.app/club/2/",
             "title": "Cheer for Our Team at UEFA EURO 2024!",
             "start_datetime": "2024-08-24T18:00:00Z",
             "end_datetime": "2024-08-24T22:00:00Z",
@@ -69,7 +70,7 @@ const useGetSavedEvents = () => {
         setLoading(true);
         try {
             const eventIds = await getAllEventIds();
-            const baseUrl = 'https://bbf6-2607-fea8-761e-8520-00-546e.ngrok-free.app/events';
+            const baseUrl = 'https://2b6a-138-51-90-242.ngrok-free.app/events';
             const url = new URL(baseUrl);
             eventIds.forEach(id => url.searchParams.append('id', id));
 
@@ -83,19 +84,34 @@ const useGetSavedEvents = () => {
             const data = reformatData(json)
             setLoading(false);
             setSavedEvents(data);
-            // console.log(data)
         } catch (error) {
             console.error(error.message)
         }
 
     };
 
-    useEffect(() => {
-        // fetchSavedEvents();
-        setSavedEvents(reformatData(mockData))
-    }, []);
+    const fetchMockData = async () => {
+        const savedEventIds = await getAllEventIds();
+        const newEvents = reformatData(mockData).map(section => ({
+            ...section,
+            events: section.events.filter(event => savedEventIds.includes('event' + event.id))
+        })).filter(section => section.events.length > 0);
+        setSavedEvents(newEvents);
+    };
 
-    return { savedEvents, loading, refetch: fetchSavedEvents };
+    // useEffect(() => {
+    //     // fetchSavedEvents();
+    //     fetchMockData();
+    //     // setSavedEvents(reformatData(mockData))
+    // }, []);
+
+    useFocusEffect(
+        useCallback(() => {
+            fetchMockData();
+        }, [])
+    );
+
+    return { savedEvents, setSavedEvents, loading, refetch: fetchMockData };
 };
 
 export default useGetSavedEvents;
