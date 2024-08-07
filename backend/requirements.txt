@@ -21,6 +21,7 @@ protobuf==5.27.2
 pyOpenSSL==24.1.0
 python_dateutil==2.9.0.post0
 pytz==2020.1
+python_dotenv==1.0.1
 toml==0.10.2
 tornado==6.4.1
 typing_extensions==4.12.2

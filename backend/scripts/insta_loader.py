@@ -65,10 +65,6 @@ def load_posts(profile_name):
         print("Profile cannot be found")
         return []
 
-    except instaloader.QueryReturnedNotFoundException:
-        print("Profile cannot be found")
-        return []
-
     except instaloader.LoginRequiredException:
         print("Login required, skipping profile")
         return []

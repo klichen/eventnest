@@ -4,13 +4,16 @@ import dateparser
 import re
 import mysql.connector
 import datetime
+from  os import getenv
+from dotenv import load_dotenv
 # from ..clubclubgo.models  import Club
 
 
-HOST = "b7n3yx0oplrx3fektmdw-mysql.services.clever-cloud.com"
-USER="ue6crgij3j651go4"
-PASSWORD="gYuvqMA63YtXmi8NuN0B"
-DB="b7n3yx0oplrx3fektmdw"
+load_dotenv() 
+HOST = getenv("DBHOST")
+USER = getenv("DBUSER")
+PASSWORD = getenv("DBPASSWORD")
+DB = getenv("DB")
 
 
 def find_club(clubs_dict,club_username):
