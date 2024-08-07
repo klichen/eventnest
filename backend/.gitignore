@@ -2,6 +2,8 @@
 **/__pycache__/*
 
 
+/clubclubgo/migrations
+
 # db
 /db.sqlite3
 
