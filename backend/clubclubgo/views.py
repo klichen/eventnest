@@ -211,8 +211,8 @@ def searchEvents(request):
         print(club_events)
 
 
-        return JsonResponse({"events":EventSerializer(sorted_events_queryset, many=True, context={'request': request}).data if len(sorted_events_queryset)>0 else {},
-                             "club_events": EventSerializer(club_events, many=True, context={'request': request}).data if len(club_events)>0 else {}}, safe=False )
+        return JsonResponse({"events":EventSerializer(sorted_events_queryset, many=True, context={'request': request}).data if len(sorted_events_queryset)>0 else [] ,
+                             "club_events": EventSerializer(club_events, many=True, context={'request': request}).data if len(club_events)>0 else []}, safe=False )
         # `HyperlinkedRelatedField` requires the request in the serializer context. Add `context={'request': request}` when instantiating the serializer.
     
 
