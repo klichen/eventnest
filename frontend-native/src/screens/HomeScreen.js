@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 import Text from '../components/atomics/Text';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import TodayEventCard from '../components/TodayEventCard';
 
 const { width } = Dimensions.get('window');
 
@@ -14,10 +15,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
     paddingBottom: 20,
+    //backgroundColor: 'white',
   },
   pagination: {
     flexDirection: 'row',
     alignSelf: 'center',
+    marginBottom: 20,
   },
   dot: {
     height: 6,
@@ -95,6 +98,23 @@ const events = [
   },
 ];
 
+const todayEvents = [
+  {
+    id: 't1',
+    title: 'Yoga Class',
+    time: '10:00 AM',
+    organizer: 'Health Club',
+    isBookmarked: false,
+  },
+  {
+    id: 't2',
+    title: 'Guest Lecture',
+    time: '2:00 PM',
+    organizer: 'Science Department',
+    //isBookmarked: true,
+  },
+];
+
 const keywords = [
   { label: 'Sports', icon: 'soccer-ball-o', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0E0' },
   { label: 'Social & Party', icon: 'users', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0FF' },
@@ -147,6 +167,11 @@ const HomeScreen = ({ navigation }) => {
     setCurrentIndex(index);
   };
 
+  const handleBookmarkPress = (eventId) => {
+    console.log(`Bookmark pressed for event id: ${eventId}`);
+    // Handle the bookmark logic here
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Explore</Text>
@@ -188,10 +213,17 @@ const HomeScreen = ({ navigation }) => {
           ))}
         </View>
         <Text style={styles.heading}>What's Happening Today</Text>
-        <Text style={styles.heading}>What's Happening Today</Text>
-        <Text style={styles.heading}>What's Happening Today</Text>
-        <Text style={styles.heading}>What's Happening Today</Text>
-        <Text style={styles.heading}>What's Happening Today</Text>
+        <FlatList
+          data={todayEvents}
+          renderItem={({ item }) => (
+            <TodayEventCard 
+              event={item} 
+              isBookmarked={item.isBookmarked} 
+              onBookmarkPress={handleBookmarkPress} 
+            />
+          )}
+          keyExtractor={(item) => item.id}
+        />
       </ScrollView>
     </View>
   );
