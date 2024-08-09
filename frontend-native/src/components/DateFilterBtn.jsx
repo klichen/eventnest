@@ -1,37 +1,44 @@
-import { View, StyleSheet, Image, Pressable, Modal } from 'react-native';
+import { View, StyleSheet, Modal, Alert } from 'react-native';
 import IconButton from './atomics/IconButton';
-import Text from './atomics/Text';
 import Button from './atomics/Button';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import CalendarPicker from 'react-native-calendar-picker'
 
 
-const DateFilterBtn = ({ setSelectedStartDate, setSelectedEndDate, handleSubmitDateRange }) => {
+const DateFilterBtn = ({ setSelectedStartDate, setSelectedEndDate }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [startDate, setStartDate] = useState()
-    const [endDate, setEndDate] = useState()
-    const today = new Date()
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
+
+    const mustChooseDatesAlert = () =>
+      Alert.alert('You must select a start and end date', '', [
+        { text: 'OK' },
+      ]);
     
     const handleDateChange = (date, type) => {
       if (type === 'START_DATE') {
-        setStartDate(date)
+        setStartDate(date);
       }
       else {
-        setEndDate(date)
+        setEndDate(date);
       }
     }
 
     const handleClickApply = () => {
-      setModalVisible(!modalVisible)
-      setSelectedStartDate(startDate)
-      setSelectedEndDate(endDate)
-      handleSubmitDateRange()
+      // TODO: add must choose start and end date warning
+      if (!startDate || !endDate) {
+        mustChooseDatesAlert();
+      }
+      else {
+        setModalVisible(!modalVisible);
+        setSelectedStartDate(startDate);
+        setSelectedEndDate(endDate);
+      }
     }
 
     return (
         <View>
             <IconButton
-                // title='Date'
                 iconRight={false}
                 iconName='calendar-outline'
                 iconColor='black'
@@ -71,16 +78,6 @@ const DateFilterBtn = ({ setSelectedStartDate, setSelectedEndDate, handleSubmitD
                         onPress={handleClickApply}
                         customStyle={styles.calendarBtns}
                       />
-                      {/* <Pressable
-                        style={[styles.button]}
-                        onPress={() => setModalVisible(!modalVisible)}>
-                            <Text color={'primary'}>Close</Text>
-                      </Pressable>
-                      <Pressable
-                        style={[styles.button]}
-                        onPress={() => setModalVisible(!modalVisible)}>
-                            <Text >Done</Text>
-                      </Pressable> */}
                     </View>
                   </View>
                 </View>
@@ -99,7 +96,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)'
-  //   marginTop: 22,
   },
   modalView: {
     flexDirection: 'column',
@@ -107,7 +103,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingTop: 16,
     paddingBottom: 40,
-    // alignItems: 'center',
   },
   actionBtns: {
     display: 'flex',

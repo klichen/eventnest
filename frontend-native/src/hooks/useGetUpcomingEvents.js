@@ -7,7 +7,7 @@ const useGetUpcomingEvents = () => {
         setLoading(true);
 
         try {
-            const url = 'https://25db-138-51-77-126.ngrok-free.app/upcoming'
+            const url = 'https://c2be-2607-fea8-761e-8520-00-546e.ngrok-free.app/upcoming'
             const response = await fetch(url, {
                 method: "GET",
                 headers: new Headers({

@@ -1,17 +1,16 @@
 import { View, StyleSheet, Image, Pressable, ScrollView, Linking } from 'react-native';
 import Text from '../components/atomics/Text';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { parseISOString } from '../utils/helperFunctions';
 import useGetClubInformation from '../hooks/useGetClubInformation';
 import LoadSkeleton from '../components/LoadSkeleton';
-import { checkEventIsSaved, setEventId, removeEventId } from '../utils/AsyncStorage';
+import { setEventId, removeEventId } from '../utils/AsyncStorage';
 import useEventSavedStatus from '../hooks/useEventSavedStatus';
 
 
 const EventScreen = ({ route, navigation }) => {
     const { eventId, clubId, eventTitle, eventDescription, startDatetime, endDatetime, imageLink, eventLink, location } = route.params
-    // const [savedChild, setSavedChild] = useState(eventSaved)
     const startDate = startDatetime ? parseISOString(startDatetime) : null
     const endDate = endDatetime ? parseISOString(endDatetime) : null
     const { clubInfo = {}, loading } = useGetClubInformation(clubId)
@@ -46,7 +45,7 @@ const EventScreen = ({ route, navigation }) => {
     }
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={{paddingBottom: 32}}>
             <Image source={{ uri: imageLink }} resizeMode='cover' style={{ width: '100%', height: 300, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 16, paddingHorizontal: 16 }} />
             <View style={styles.dateLine}>
                 {startDate && endDate && <Text color="textSecondary" fontSize='body2'>{startDate.toDateString()}, {startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>}
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        paddingBottom: 24,
+        // paddingBottom: 24,
         paddingHorizontal: 12,
         backgroundColor: '#f5f7fa',
     },
