@@ -1,5 +1,7 @@
 import json_fn
 import requests
+import time
+import random 
 
 
 def image_to_text(image_urls):
@@ -7,6 +9,7 @@ def image_to_text(image_urls):
     image_texts = []
 
     for image_url in image_urls:
+        time.sleep(random.randint(1, 6))
         response = requests.get(image_url)
         files = {'image': response.content}
         r = requests.post(api_url, files=files)
