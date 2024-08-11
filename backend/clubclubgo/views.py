@@ -135,7 +135,7 @@ def searchEvents(request):
 
         
         start_date = datetime.strptime(start_date_str, '%m-%d-%Y')
-        end_date = datetime.strptime(end_date_str, '%m-%d-%Y')
+        end_date = datetime.strptime(end_date_str + " 23:59", '%m-%d-%Y %H:%M')
         
 
         print("current start_date:", start_date)
@@ -146,7 +146,7 @@ def searchEvents(request):
         queryset = queryset.filter(date_search)
 
         searchString = request.GET.get("search", "")
-        searchStrs = searchString.split("+") 
+        searchStrs = searchString.split(" ") 
         print(searchStrs)
         event_vals  = {}
         
@@ -170,7 +170,6 @@ def searchEvents(request):
         for term in searchStrs:
             title_search = Q(title__icontains=term)
             descr_search = Q(description__icontains=term)
-            club_search = Q(name__icontains=term)
             
             print("term: ", term)
             events_queryset = queryset.filter(title_search | descr_search )
@@ -193,6 +192,7 @@ def searchEvents(request):
         sorted_events_queryset = [queryset.get(id=event_id) for event_id in sorted_events]
         print("sorted_events_queryset")
         print(sorted_events_queryset)
+
         club_queryset = club_queryset.filter(club_search) 
 
         print("club_queryset")
@@ -200,18 +200,19 @@ def searchEvents(request):
 
         # get next event for each club in club_queryset
         clubs_list = list(club_queryset)
-        club_events = []
+        club_events = Event.objects.none()
         
         if not searchString == "" and len(clubs_list) > 0:
             for i in  range(0, len(clubs_list)):
                 club_event_search = Q(club_id=clubs_list[i].id)
-                club_events.append(queryset.filter(club_event_search).first()) if queryset.filter(club_event_search) else None
-        
+                club_events = club_events.union(queryset.filter(club_event_search))
+
+        club_events = list(club_events.order_by('start_datetime'))
         print("club_events_queryset")
         print(club_events)
 
         # TODO: NOTE: i am going to union the club events with the events beause we should have them available anyways even if not seperated
-        sorted_events_queryset.append(club_events)
+        sorted_events_queryset.extend(club_events)
         return JsonResponse({"events":EventSerializer(sorted_events_queryset, many=True, context={'request': request}).data if len(sorted_events_queryset)>0 else [],
                              "club_events": EventSerializer(club_events, many=True, context={'request': request}).data if len(club_events)>0 else []}, safe=False )
         # `HyperlinkedRelatedField` requires the request in the serializer context. Add `context={'request': request}` when instantiating the serializer.
@@ -234,7 +235,7 @@ def searchEventCategory(request):
 
         
         start_date = datetime.strptime(start_date_str, '%m-%d-%Y')
-        end_date = datetime.strptime(end_date_str, '%m-%d-%Y')
+        end_date = datetime.strptime(end_date_str + " 23:59", '%m-%d-%Y %H:%M')
         
 
         print("current start_date:", start_date)
@@ -244,7 +245,7 @@ def searchEventCategory(request):
         date_search = Q(start_datetime__range=(start_date, end_date))
         queryset = queryset.filter(date_search)
 
-        categoryTerms = request.GET.get("search", "+").split(" ")
+        categoryTerms = request.GET.get("search", "").split(" ")
         category_events = Event.objects.none()
         print(list(category_events))
 
