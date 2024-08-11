@@ -143,16 +143,18 @@ def searchEvents(request):
 
         # date_search = Q(start_datetime__range=(request.body["start_date"], request.body["end_date"]))
         date_search = Q(start_datetime__range=(start_date, end_date))
+        queryset = queryset.filter(date_search)
 
-        searchString = request.GET.get("searchString", "")
-        searchStrs = searchString.split(" ")
+        searchString = request.GET.get("search", "")
+        searchStrs = searchString.split("+") 
+        print(searchStrs)
         event_vals  = {}
         
         title_search = Q(title__icontains=searchString)
         descr_search = Q(description__icontains=searchString)
         club_search = Q(name__icontains=searchString)
         
-        events_queryset = queryset.filter(date_search & (title_search | descr_search | club_search))
+        events_queryset = queryset.filter(title_search | descr_search )
         print("title")
         print(list(queryset.filter(title_search)))
         print("descr")
@@ -171,13 +173,11 @@ def searchEvents(request):
             club_search = Q(name__icontains=term)
             
             print("term: ", term)
-            events_queryset = queryset.filter(date_search & (title_search | descr_search | club_search))
+            events_queryset = queryset.filter(title_search | descr_search )
             print("title")
-            print(list(queryset.filter(date_search &(title_search))))
+            print(list(queryset.filter(title_search)))
             print("descr")
-            print(list(queryset.filter(date_search &(descr_search))))
-            print("club")
-            print(list(queryset.filter(date_search &(club_search))))
+            print(list(queryset.filter(descr_search)))
 
 
             for event in events_queryset.values("id"):
@@ -205,14 +205,71 @@ def searchEvents(request):
         if not searchString == "" and len(clubs_list) > 0:
             for i in  range(0, len(clubs_list)):
                 club_event_search = Q(club_id=clubs_list[i].id)
-                club_events.append(queryset.filter(date_search & club_event_search).first()) if queryset.filter(date_search & club_event_search).first() is not None else None
+                club_events.append(queryset.filter(club_event_search).first()) if queryset.filter(club_event_search) else None
         
         print("club_events_queryset")
         print(club_events)
 
+        # TODO: NOTE: i am going to union the club events with the events beause we should have them available anyways even if not seperated
+        sorted_events_queryset.append(club_events)
+        return JsonResponse({"events":EventSerializer(sorted_events_queryset, many=True, context={'request': request}).data if len(sorted_events_queryset)>0 else [],
+                             "club_events": EventSerializer(club_events, many=True, context={'request': request}).data if len(club_events)>0 else []}, safe=False )
+        # `HyperlinkedRelatedField` requires the request in the serializer context. Add `context={'request': request}` when instantiating the serializer.
+    
+def searchEventCategory(request):
+    """
+    request.body = {start_date=today(), 
+        end_date=inayear(), 
+        searchString="" (to search title, description and club) }
+        # all optional
+    """
+    if request.method == "GET":
+        queryset = Event.objects.all().order_by('start_datetime')
 
-        return JsonResponse({"events":EventSerializer(sorted_events_queryset, many=True, context={'request': request}).data if len(sorted_events_queryset)>0 else {},
-                             "club_events": EventSerializer(club_events, many=True, context={'request': request}).data if len(club_events)>0 else {}}, safe=False )
+        print("DATE!!! ")
+        start_date_str = request.GET.get("start_date", datetime.today().strftime('%m-%d-%Y'))
+        print(start_date_str)
+        end_date_str = request.GET.get("end_date", (datetime.today() + relativedelta(years=1)).strftime('%m-%d-%Y'))
+        print(end_date_str)
+
+        
+        start_date = datetime.strptime(start_date_str, '%m-%d-%Y')
+        end_date = datetime.strptime(end_date_str, '%m-%d-%Y')
+        
+
+        print("current start_date:", start_date)
+        print("end_date:", end_date)
+
+        # date_search = Q(start_datetime__range=(request.body["start_date"], request.body["end_date"]))
+        date_search = Q(start_datetime__range=(start_date, end_date))
+        queryset = queryset.filter(date_search)
+
+        categoryTerms = request.GET.get("search", "+").split(" ")
+        category_events = Event.objects.none()
+        print(list(category_events))
+
+        
+        for term in categoryTerms:
+            title_search = Q(title__icontains=term)
+            descr_search = Q(description__icontains=term)
+            
+            print("term: ", term)
+            events_queryset = queryset.filter(title_search | descr_search)
+            print("title")
+            print(list(queryset.filter(title_search)))
+            print("descr")
+            print(list(queryset.filter(descr_search)))
+            print("category_events.first()")
+            print(list(category_events))
+            print("events_queryset.first()")
+            print(events_queryset.first())
+            category_events = category_events.union(events_queryset)
+            
+
+
+
+        return JsonResponse({"events":EventSerializer(category_events.order_by('start_datetime'), many=True, context={'request': request}).data if len(category_events)>0 else []},
+                             safe=False )
         # `HyperlinkedRelatedField` requires the request in the serializer context. Add `context={'request': request}` when instantiating the serializer.
     
 

@@ -74,7 +74,7 @@ def load_posts(profile_name):
 
     except instaloader.LoginRequiredException:
         print("Login required, skipping profile")
-        return []
+        return -1
     
     except instaloader.PrivateProfileNotFollowedException:
         print("Login required, private instagram. skipping profile")
@@ -82,11 +82,11 @@ def load_posts(profile_name):
     
     except instaloader.InvalidArgumentException:
         print("Invalid arguments. Skipping profile ", profile_name)
-        return []
+        return -1
     
     except instaloader.exceptions as e:
         print("instaloader error: ", e, " in profile: ", profile_name)
-        return []
+        return -1
      
     
 
@@ -115,7 +115,7 @@ def check_profiles(profile_list):
                     posts.extend(loaded_posts)
             except TypeError:
                 print("No posts. Something went wrong :/")
-                return []
+                return -1
                 
 
     return posts        
@@ -125,8 +125,12 @@ def load_club_posts(intput_filename,output_filename):
     clubs = json_fn.read_json(intput_filename)
     posts = []
     for club in clubs:
-        print(club["instagram_usernames"])
-        posts.extend(check_profiles(club["instagram_usernames"]))
+        try: 
+            print(club["instagram_usernames"])
+            posts.extend(check_profiles(club["instagram_usernames"]))
+        except TypeError:
+                print("There was an error. Stop running the program  :[ ")
+                return -1
     
     json_fn.write_json(output_filename, posts)
 
