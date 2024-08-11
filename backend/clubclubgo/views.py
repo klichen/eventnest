@@ -266,8 +266,6 @@ def searchEventCategory(request):
             category_events = category_events.union(events_queryset)
             
 
-
-
         return JsonResponse({"events":EventSerializer(category_events.order_by('start_datetime'), many=True, context={'request': request}).data if len(category_events)>0 else []},
                              safe=False )
         # `HyperlinkedRelatedField` requires the request in the serializer context. Add `context={'request': request}` when instantiating the serializer.
