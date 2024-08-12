@@ -29,4 +29,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('upcoming/', views.getUpcomingEvents),
     path('club/<id>/events/', views.getClubEvents),
+    path('search/', views.searchEvents),
+    path('category/', views.searchEventCategory),
+    path('events/', views.getEvents),
+    path('new/', views.getRecentlyUpdatedEvents)
 ]

@@ -1,6 +1,8 @@
 # pycache
-/clubclubgo/__pycache__/
-/clubclubgobackend/__pycache__/
+**/__pycache__/*
+
+
+/clubclubgo/migrations
 
 # db
 /db.sqlite3
@@ -8,5 +10,6 @@
 # dependencies
 node_modules/
 
-# env
 .env
+/bin/
+**/.env

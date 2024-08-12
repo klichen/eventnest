@@ -1,179 +1,230 @@
-import { FlatList, View, StyleSheet } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { FlatList, View, StyleSheet, Dimensions, TouchableWithoutFeedback, TouchableOpacity, ScrollView } from 'react-native';
 import EventCard from '../components/EventCard';
 import Constants from 'expo-constants';
-import Text from '../components/Text';
-import Button from '../components/Button';
-import { useEffect, useState } from 'react';
-import useRepositories from '../hooks/useRepositories';
+import Text from '../components/atomics/Text';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import TodayEventCard from '../components/TodayEventCard';
+
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    paddingBottom: 48
+    paddingBottom: 20,
+    //backgroundColor: 'white',
   },
-  filterBtns: {
-    // marginHorizontal: 16,
-    width: '90%',
-    paddingHorizontal: 24,
+  pagination: {
     flexDirection: 'row',
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  dot: {
+    height: 6,
+    width: 6,
+    borderRadius: 5,
+    backgroundColor: '#888',
+    margin: 4,
+  },
+  activeDot: {
+    backgroundColor: '#333',
+  },
+  eventItem: {
+    width: width - 40,
+    marginHorizontal: 20,
+  },
+  heading: {
+    alignSelf: 'flex-start',
+    paddingLeft: 20,
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  subHeading: {
+    alignSelf: 'flex-start',
+    paddingLeft: 20,
+    fontSize: 14,
+    fontWeight: 'normal',
+    color: '#666',
+    marginTop: 5,
+  },
+  keywordContainer: {
+    width: '100%',
+    height: 150,
+    marginTop: 0,
+    marginBottom: 20,
     justifyContent: 'center',
-    marginVertical: 16,
-    gap: 16
-
-  }
+  },
+  keywordBox: {
+    width: 75,
+    height: 75,
+    marginHorizontal: 20,
+    borderWidth: 0,
+    borderColor: 'black',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
+  },
+  keywordTextContainer: {
+    alignItems: 'center',
+    marginTop: 5,
+  },
+  keywordText: {
+    textAlign: 'center',
+  },
 });
 
-const repositories = [
+const date1 = new Date('2024-10-31T18:00:00');
+const events = [
   {
-    id: 'jaredpalmer.formik',
-    fullName: 'jaredpalmer/formik',
-    description: 'Build forms in React, without the tears',
-    language: 'TypeScript',
-    forksCount: 1589,
-    stargazersCount: 21553,
-    ratingAverage: 88,
-    reviewCount: 4,
-    ownerAvatarUrl: 'https://avatars2.githubusercontent.com/u/4060187?v=4',
+    id: 'e1',
+    title: 'Board Games Night',
+    dateTime: date1,
+    location: 'Wilson Hall 2002',
+    imageLink: 'tbd',
   },
   {
-    id: 'rails.rails',
-    fullName: 'rails/rails',
-    description: 'Ruby on Rails',
-    language: 'Ruby',
-    forksCount: 18349,
-    stargazersCount: 45377,
-    ratingAverage: 100,
-    reviewCount: 2,
-    ownerAvatarUrl: 'https://avatars1.githubusercontent.com/u/4223?v=4',
-  },
-  {
-    id: 'django.django',
-    fullName: 'django/django',
-    description: 'The Web framework for perfectionists with deadlines.',
-    language: 'Python',
-    forksCount: 21015,
-    stargazersCount: 48496,
-    ratingAverage: 73,
-    reviewCount: 5,
-    ownerAvatarUrl: 'https://avatars2.githubusercontent.com/u/27804?v=4',
-  },
-  {
-    id: 'reduxjs.redux',
-    fullName: 'reduxjs/redux',
-    description: 'Predictable state container for JavaScript apps',
-    language: 'TypeScript',
-    forksCount: 13902,
-    stargazersCount: 52869,
-    ratingAverage: 0,
-    reviewCount: 0,
-    ownerAvatarUrl: 'https://avatars3.githubusercontent.com/u/13142323?v=4',
+    id: 'e2',
+    title: 'Board Games Night',
+    dateTime: date1,
+    location: 'Wilson Hall 2002',
+    imageLink: 'tbd',
   },
 ];
 
-// mock event data
-const date1 = new Date('2024-10-31T18:00:00');
-const events = [
-    {
-        id: "e1",
-        title: "Board Games Night",
-        dateTime: date1,
-        location: "Wilson Hall 2002",
-        imageLink: 'tbd'
-    },
-    {
-        id: "e2",
-        title: "Board Games Night",
-        dateTime: date1,
-        location: "Wilson Hall 2002",
-        imageLink: 'tbd'
-    },
-    {
-        id: "e3",
-        title: "Board Games Night",
-        dateTime: date1,
-        location: "Wilson Hall 2002",
-        imageLink: 'tbd'
-    },
-    {
-        id: "e4",
-        title: "Board Games Night",
-        dateTime: date1,
-        location: "Wilson Hall 2002",
-        imageLink: 'tbd'
-    },
-    {
-        id: "e5",
-        title: "Board Games Night",
-        dateTime: date1,
-        location: "Wilson Hall 2002",
-        imageLink: 'tbd'
-    },
-    {
-        id: "e6",
-        title: "Board Games Night",
-        dateTime: date1,
-        location: "Wilson Hall 2002",
-        imageLink: 'tbd'
-    },
-]
+const todayEvents = [
+  {
+    id: 't1',
+    title: 'Yoga Class',
+    time: '10:00 AM',
+    organizer: 'Health Club',
+    isBookmarked: false,
+  },
+  {
+    id: 't2',
+    title: 'Guest Lecture',
+    time: '2:00 PM',
+    organizer: 'Science Department',
+    //isBookmarked: true,
+  },
+];
 
-const EventItem = ({ item }) => <EventCard title={item.title} location={item.location} dateTime={item.dateTime} imageLink={item.imageLink} id={item.id} />;
+const keywords = [
+  { label: 'Sports', icon: 'soccer-ball-o', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0E0' },
+  { label: 'Social & Party', icon: 'users', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0FF' },
+  { label: 'Food & Drink', icon: 'food', library: 'MaterialCommunityIcons', color: '#FF8C42', backgroundColor: '#FFF0E0' },
+  { label: 'Games', icon: 'gamepad', library: 'FontAwesome', color: '#FF4242', backgroundColor: '#FFE0E0' },
+  { label: 'Arts', icon: 'human-female-dance', library: 'MaterialCommunityIcons', color: 'blue', backgroundColor: '#E0E0FF' },
+  { label: 'Health & Wellness', icon: 'heartbeat', library: 'FontAwesome', color: '#27ae60', backgroundColor: '#E0FFE0' },
+  { label: 'Technology', icon: 'laptop', library: 'FontAwesome', color: '#34495e', backgroundColor: '#E0E0E0' },
+];
+
+const EventItem = ({ item }) => (
+  <View style={styles.eventItem}>
+    <EventCard
+      title={item.title}
+      location={item.location}
+      dateTime={item.dateTime}
+      imageLink={item.imageLink}
+      id={item.id}
+    />
+  </View>
+);
+
+const KeywordItem = ({ item, navigation }) => {
+  const IconComponent = item.library === 'FontAwesome' ? FontAwesomeIcon : MaterialCommunityIcons;
+  return (
+    <View>
+      <TouchableOpacity
+        style={[styles.keywordBox, { backgroundColor: item.backgroundColor }]}
+        onPress={() => {
+          console.log(`Navigating to Search with keyword: ${item.label}`);
+          navigation.navigate('SearchStack', { screen: 'Search', params: { keyword: item.label } });
+        }}
+      >
+        <IconComponent name={item.icon} size={30} color={item.color} />
+      </TouchableOpacity>
+      <View style={styles.keywordTextContainer}>
+        <Text style={styles.keywordText}>{item.label}</Text>
+      </View>
+    </View>
+  );
+};
 
 const HomeScreen = ({ navigation }) => {
-//   const { repositories } = useRepositories();
-  // fetching is done in hooks
-  // const [repositories, setRepositories] = useState();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const flatListRef = useRef(null);
 
-  // const fetchRepositories = async () => {
-  //   // Replace the IP address part with your own IP address!
-  //   const response = await fetch('http://100.66.134.233:5000/api/repositories');
-  //   const json = await response.json();
-  
-  //   console.log(json);
-  
-  //   setRepositories(json);
-  // };
+  const onScroll = (event) => {
+    const contentOffsetX = event.nativeEvent.contentOffset.x;
+    const index = Math.round(contentOffsetX / width);
+    setCurrentIndex(index);
+  };
 
-  // useEffect(() => {
-  //   fetchRepositories();
-  // }, []);
-
-//   const repositoryNodes = repositories
-//     ? repositories.edges.map(edge => edge.node)
-//     : [];
-  
+  const handleBookmarkPress = (eventId) => {
+    console.log(`Bookmark pressed for event id: ${eventId}`);
+    // Handle the bookmark logic here
+  };
 
   return (
     <View style={styles.container}>
-        <Text fontSize="heading" fontWeight="bold">UofT Events</Text>
-        <View style={styles.filterBtns}>
-            {/* TODO: select date, categories, sort by buttons */}
-            <Button
-                title='Date'
-                iconName='caret-down-outline'
-            />
-            <Button
-                title='Categories'
-                iconName='caret-down-outline'
-            />
-            <Button
-                title='Sort By'
-                iconName='caret-down-outline'
-            />
+      <Text style={styles.heading}>Explore</Text>
+      <Text style={styles.subHeading}>Find events around campus!</Text>
+      <ScrollView>
+        <View style={styles.keywordContainer}>
+          <FlatList
+            data={keywords}
+            horizontal
+            showsHorizontalScrollIndicator={true}
+            renderItem={({ item }) => <KeywordItem item={item} navigation={navigation} />}
+            keyExtractor={(item, index) => index.toString()}
+            contentContainerStyle={{ alignItems: 'center' }}  // Center items vertically
+          />
         </View>
+        <Text style={styles.heading}>Recently Added</Text>
+        <TouchableWithoutFeedback>
+          <FlatList
+            data={events}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item }) => <EventItem item={item} />}
+            keyExtractor={(item) => item.id}
+            onScroll={onScroll}
+            ref={flatListRef}
+            style={{ marginTop: 16 }}
+          />
+        </TouchableWithoutFeedback>
+        <View style={styles.pagination}>
+          {events.map((_, index) => (
+            <View
+              key={index}
+              style={[
+                styles.dot,
+                currentIndex === index && styles.activeDot,
+              ]}
+            />
+          ))}
+        </View>
+        <Text style={styles.heading}>What's Happening Today</Text>
         <FlatList
-        data={events}
-        // ItemSeparatorComponent={ItemSeparator}
-        // other props
-        // contentContainerStyle={{ flex: 1, alignSelf: "stretch" }}
-        showsVerticalScrollIndicator={false}
-        style={{ width: "90%" }}
-        renderItem={EventItem}
+          data={todayEvents}
+          renderItem={({ item }) => (
+            <TodayEventCard 
+              event={item} 
+              isBookmarked={item.isBookmarked} 
+              onBookmarkPress={handleBookmarkPress} 
+            />
+          )}
+          keyExtractor={(item) => item.id}
         />
+      </ScrollView>
     </View>
   );
 };
