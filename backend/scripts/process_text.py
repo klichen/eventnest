@@ -35,9 +35,9 @@ class OpenAIBatchProcessor:
         result = '\n'.join(lines)
         return result
 
-    def create_input_file(self, info_file = 'data/posts.json'):
+    def create_input_file(self, info_file):
         
-        extract_info_prompt = '''Based on the provided JSON containing the text of an Instagram event post and its caption, extract the following information: date, location, and time of the event. Additionally, summarize the event and create an appropriate title. Format this information as a JSON object. If any of the date, location, or time information is not available, return that field as null in the JSON output.'''
+        extract_info_prompt = '''Based on the provided JSON containing the text of an Instagram event post and its caption, extract the following information: date (in mm-dd-yyyy format), location, and time of the event. Additionally, summarize the event and create an appropriate title. Format this information as a JSON object. If any of the date, location, or time information is not available, return that field as null in the JSON output.'''
 
         tasks = []
 
@@ -81,7 +81,7 @@ class OpenAIBatchProcessor:
                             "content": info_input
                         }
                     ],
-                    "max_tokens": 350
+                    "max_tokens": 500
                 }
             }
 
@@ -90,7 +90,9 @@ class OpenAIBatchProcessor:
 
         # Creating the batch jsonl file
 
-        file_name = "data/batch1_gpt4o_input.jsonl"
+        # file_name = "data/batch1_gpt4o_input.jsonl"
+        info_file_name = info_file.split('/')[-1].replace('.json', '')
+        file_name = f'files/chatgpt_input_files/batch_input_{info_file_name}.jsonl'
 
         with open(file_name, 'w') as file:
             for obj in tasks:
@@ -109,13 +111,14 @@ class OpenAIBatchProcessor:
     def create_batch_job(self, batch_file):
         batch_job = self.client.batches.create(
             input_file_id = batch_file.id,
+            # input_file_id = batch_file,
             endpoint = "/v1/chat/completions",
             completion_window="24h"
         )
         
         return batch_job
     
-    def check_status_retrieve(self, batch_job):
+    def check_status_retrieve(self, batch_job, batch_file_name):
         cur_batch_job = batch_job
         while cur_batch_job.status not in ["completed", "failed", "cancelled"]:
             time.sleep(5)  # Wait for 30 seconds before checking the status again
@@ -127,7 +130,8 @@ class OpenAIBatchProcessor:
             result_file_id = cur_batch_job.output_file_id
             result = self.client.files.content(result_file_id).content
 
-            result_file_name = "results/batch1_gpt4o_results.jsonl"
+            batch_name = batch_file_name.split('_')[-1].replace('.jsonl', '')
+            result_file_name = f'files/chatgpt_posts/{batch_name}_results.jsonl'
 
             with open(result_file_name, 'wb') as file:
                 file.write(result)
@@ -159,10 +163,14 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 
 processor = OpenAIBatchProcessor(openai_api_key)
 
-# batch_file_name = processor.create_input_file()
-batch_file = processor.upload_input_file('data/batch1_gpt4o_input.jsonl')
+# change name to corresponding processed post json file
+batch_file_name = processor.create_input_file('files/processed_posts/posts12.json')
+batch_file = processor.upload_input_file(batch_file_name)
 batch_job = processor.create_batch_job(batch_file)
-processor.check_status_retrieve(batch_job)
+
+
+# batch_job = processor.get_batch_job('batch_gT1hnSxwcviHv45BPrGAbD7a')
+# processor.check_status_retrieve(batch_job, batch_file_name)
 
 # print(batch_job.id)
 
