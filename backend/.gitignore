@@ -13,3 +13,5 @@ node_modules/
 .env
 /bin/
 **/.env
+
+scripts/files/chatgpt_input_files/
