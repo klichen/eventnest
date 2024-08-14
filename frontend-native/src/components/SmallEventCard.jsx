@@ -7,8 +7,6 @@ import LoadSkeleton from './LoadSkeleton';
 import { useNavigation } from '@react-navigation/native';
 import { removeEventId } from '../utils/AsyncStorage';
 
-const placeholderImage = 'https://reactjs.org/logo-og.png'; // placeholder image
-
 const SmallEventCard = ({ event, removeSavedEvent }) => {
   const { id, eventTitle, startDatetime, endDatetime, clubId, imageLink, eventLink, location, eventDescription } = event;
   const eventId = 'event' + id;
@@ -71,7 +69,6 @@ const SmallEventCard = ({ event, removeSavedEvent }) => {
       <View style={styles.removeIcon}>
         <TouchableOpacity onPress={handleOnPressRemoveIcon} hitSlop={{ top: 25, bottom: 15, left: 25, right: 15 }}>
           <MaterialCommunityIcons name={"bookmark-remove"} size={28} color="#007FA3" />
-          {/* <Ionicons name={"bookmark"} size={24} color="#007FA3" /> */}
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -103,7 +100,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     justifyContent: 'space-between',
-    // alignItems: 'center',
     marginRight: 20,
   },
   eventTime: {
@@ -129,7 +125,6 @@ const styles = StyleSheet.create({
   },
   removeIcon: {
     alignSelf: 'flex-end',
-    // padding: 8
   },
 });
 

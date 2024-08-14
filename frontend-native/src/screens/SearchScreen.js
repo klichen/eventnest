@@ -25,7 +25,7 @@ const SearchScreen = ({ route, navigation }) => {
   const [selectedStartDate, setSelectedStartDate] = useState(null)
   const [selectedEndDate, setSelectedEndDate] = useState(null)
 
-  // set initial events and check if coming from home screen
+  // set initial events and check if coming from home screen category picker
   useEffect(() => {
     if (!!keywords && !!searchLabel) {
       const searchCategoryEvents = async () => {
@@ -118,7 +118,6 @@ const SearchScreen = ({ route, navigation }) => {
   else {
     return (
       <View style={styles.container}>
-        {/* <Text fontSize="heading" fontWeight="bold">UofT Events</Text> */}
         <View style={styles.header}>
           <View style={styles.searchRow}>
             <SearchBar clicked={searchClicked} setClicked={setSearchClicked} searchPhrase={searchPhrase} setSearchPhrase={setSearchPhrase} handleSubmitSearch={handleSubmitSearch} handleCancelSearch={handleCancelSearch} ref={textInputRef} />
@@ -151,11 +150,8 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 20,
     flexDirection: 'column',
-    // justifyContent: 'space-between',
-    // gap: 16
   },
   searchRow: {
-    // paddingHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 16
@@ -164,7 +160,7 @@ const styles = StyleSheet.create({
 
 export default SearchScreen;
 
-// below is for filtering in the frontend
+// below is the filtering implementation in the frontend
 
 // const [confirmedSelectedStartDate, setConfirmedSelectedStartDate] = useState(null)
 // const [confirmedSelectedEndDate, setConfirmedSelectedEndDate] = useState(null)

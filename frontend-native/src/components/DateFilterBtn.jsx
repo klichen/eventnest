@@ -25,7 +25,6 @@ const DateFilterBtn = ({ setSelectedStartDate, setSelectedEndDate }) => {
     }
 
     const handleClickApply = () => {
-      // TODO: add must choose start and end date warning
       if (!startDate || !endDate) {
         mustChooseDatesAlert();
       }

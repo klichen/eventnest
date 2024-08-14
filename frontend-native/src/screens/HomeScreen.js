@@ -13,39 +13,6 @@ import useSearchEvents from '../hooks/useSearchEvents';
 const { width } = Dimensions.get('window');
 
 const date1 = new Date('2024-10-31T18:00:00');
-const events = [
-  {
-    id: 'e1',
-    title: 'Board Games Night',
-    dateTime: date1,
-    location: 'Wilson Hall 2002',
-    imageLink: 'tbd',
-  },
-  {
-    id: 'e2',
-    title: 'Board Games Night',
-    dateTime: date1,
-    location: 'Wilson Hall 2002',
-    imageLink: 'tbd',
-  },
-];
-
-const todayEvents2 = [
-  {
-    id: 't1',
-    title: 'Yoga Class',
-    time: '10:00 AM',
-    organizer: 'Health Club',
-    isBookmarked: false,
-  },
-  {
-    id: 't2',
-    title: 'Guest Lecture',
-    time: '2:00 PM',
-    organizer: 'Science Department',
-    //isBookmarked: true,
-  },
-];
 
 const keywords = [
   { label: 'Sports', icon: 'soccer-ball-o', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0E0', searchString: 'sport tournament match race cheer sports' },

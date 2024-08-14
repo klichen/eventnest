@@ -36,7 +36,6 @@ const SearchBar = forwardRef(({ clicked, setClicked, searchPhrase, setSearchPhra
           </Pressable>
         )}
       </View>
-      {/* cancel button, depending on whether the search bar is clicked or not */}
       {clicked && (
         <View>
           <Button
