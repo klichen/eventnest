@@ -1,6 +1,60 @@
-import React, { useState } from 'react';
-import { ScrollView, View, StyleSheet, Text } from 'react-native';
+import React from 'react';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import SmallEventCard from '../components/SmallEventCard';
+import useGetSavedEvents from '../hooks/useGetSavedEvents';
+import Text from '../components/atomics/Text';
+
+const SavedEventsScreen = ({ navigation }) => {
+  const { savedEvents, setSavedEvents, loading, refetch } = useGetSavedEvents();
+
+  const removeSavedEvent = (eventId) => {
+    setSavedEvents((prev) =>
+      prev
+        .map(section => ({
+          ...section,
+          events: section.events.filter(event => event.id !== eventId)
+        }))
+        .filter(section => section.events.length > 0)
+    );
+  };
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text fontSize="subheading">Loading Saved Events...</Text>
+      </View>
+    )
+  }
+
+  if (savedEvents && savedEvents.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.header}>Saved Events</Text>
+        <Text fontSize="subheading">Find your saved events here!</Text>
+      </View>
+    )
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>Saved Events</Text>
+      <ScrollView>
+        {!!savedEvents && savedEvents.map((section, index) => (
+          <View key={index} style={styles.section}>
+            <Text style={styles.date}>{section.date}</Text>
+            {section.events.map((event) => (
+              <SmallEventCard
+                key={event.id}
+                event={event}
+                removeSavedEvent={removeSavedEvent}
+              />
+            ))}
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -21,80 +75,9 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 15,
     color: '#000000',
-    backgroundColor: '', // Gray background color
     padding: 5,
     marginBottom: 10,
   },
 });
-
-const eventsData = [
-  {
-    date: 'Tuesday, July 9',
-    events: [
-      {
-        id: 1,
-        time: '8AM PT',
-        title: 'US-POLAND SCIENCE AND TECHNOLOGY SYMPOSIUM 2024 blah',
-        organizer: 'Bay Area Council Inc',
-        image: 'path_to_image_1', // replace with actual path
-      },
-    ],
-  },
-  {
-    date: 'Thursday, July 11',
-    events: [
-      {
-        id: 2,
-        time: '8AM PT',
-        title: 'AI Engineering Workshop SF - Build Your First AI App in a Day',
-        organizer: 'Werqwise',
-        image: 'path_to_image_2', // replace with actual path
-      },
-    ],
-  },
-  {
-    date: 'Friday, July 12',
-    events: [
-      {
-        id: 3,
-        time: '5PM PT',
-        title: '"Urban Tides" Art Exhibition Opening Reception',
-        organizer: 'Ferry Building',
-        image: 'path_to_image_3', // replace with actual path
-      },
-    ],
-  },
-];
-
-const SavedEventsScreen = ({ navigation }) => {
-  const [bookmarkedEvents, setBookmarkedEvents] = useState([]);
-
-  const handleBookmarkPress = (eventId) => {
-    setBookmarkedEvents((prev) =>
-      prev.includes(eventId) ? prev.filter((id) => id !== eventId) : [...prev, eventId]
-    );
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Saved Events</Text>
-      <ScrollView>
-        {eventsData.map((section, index) => (
-          <View key={index} style={styles.section}>
-            <Text style={styles.date}>{section.date}</Text>
-            {section.events.map((event) => (
-              <SmallEventCard
-                key={event.id}
-                event={event}
-                isBookmarked={bookmarkedEvents.includes(event.id)}
-                onBookmarkPress={handleBookmarkPress}
-              />
-            ))}
-          </View>
-        ))}
-      </ScrollView>
-    </View>
-  );
-};
 
 export default SavedEventsScreen;
