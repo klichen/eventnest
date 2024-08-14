@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
         gap: 8
     },
     dateDisplay: {
-        // width: '100%',
         flexDirection: 'row',
         flexGrow: 0,
         alignItems: 'center',
@@ -56,7 +55,6 @@ const styles = StyleSheet.create({
 
     },
     clearBtn: {
-        // width: '100%',
         flexDirection: 'row',
         flexGrow: 0,
         alignItems: 'center',

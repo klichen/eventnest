@@ -4,11 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useState, forwardRef } from 'react';
 
 const SearchBar = forwardRef(({ clicked, setClicked, searchPhrase, setSearchPhrase, handleSubmitSearch, handleCancelSearch }, ref) => {
-  const handlePressSearch = ({ nativeEvent: { text: text } }) => {
-    console.log(text)
-    setSearchPhrase(search)
-    setClicked(false)
-  }
+
   return (
     <View style={styles.container}>
       <View
@@ -40,7 +36,6 @@ const SearchBar = forwardRef(({ clicked, setClicked, searchPhrase, setSearchPhra
           </Pressable>
         )}
       </View>
-      {/* cancel button, depending on whether the search bar is clicked or not */}
       {clicked && (
         <View>
           <Button
