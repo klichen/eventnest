@@ -6,13 +6,14 @@ import { parseISOString } from '../utils/helperFunctions';
 import { setEventId, removeEventId } from '../utils/AsyncStorage';
 import useEventSavedStatus from '../hooks/useEventSavedStatus';
 
+const placeholderImage = 'https://reactjs.org/logo-og.png';
+
 const EventCard = ({ title, description, startDatetime, endDatetime, location, imageLink, imageHeight = 200, id, clubId, eventLink }) => {
     const navigation = useNavigation();
     const eventId = "event" + id;
     const dateTime = startDatetime ? parseISOString(startDatetime) : null;
     const [saved, setSaved] = useEventSavedStatus(eventId);
-
-
+    const imageUri = !!imageLink ? imageLink : placeholderImage;
 
     const handleOnPressSave = () => {
         if (saved) {
@@ -44,7 +45,7 @@ const EventCard = ({ title, description, startDatetime, endDatetime, location, i
             <Pressable onPress={handleNavigate} style={({ pressed }) => [
                 { opacity: pressed ? 0.5 : 1.0 }
             ]}>
-                <Image source={{ uri: imageLink }} resizeMode='cover' style={{ width: '100%', height: imageHeight, borderRadius: 16, marginBottom: 16 }} />
+                <Image source={{ uri: imageUri }} resizeMode='cover' style={{ width: '100%', height: imageHeight, borderRadius: 16, marginBottom: 16 }} />
             </Pressable>
             <View style={styles.cardContent}>
                 <Pressable onPress={handleNavigate}>

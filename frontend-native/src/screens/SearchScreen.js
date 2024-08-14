@@ -10,7 +10,8 @@ import DateRangeDisplay from '../components/DateRangeDisplay';
 import useGetUpcomingEvents from '../hooks/useGetUpcomingEvents';
 import useSearchEvents from '../hooks/useSearchEvents';
 
-const SearchScreen = ({ navigation }) => {
+const SearchScreen = ({ route, navigation }) => {
+  const { keywords, searchLabel } = route.params;
   const { events, loading } = useGetUpcomingEvents();
   const { searchLoading, fetchSearchedEvents } = useSearchEvents();
 
@@ -24,9 +25,17 @@ const SearchScreen = ({ navigation }) => {
   const [selectedStartDate, setSelectedStartDate] = useState(null)
   const [selectedEndDate, setSelectedEndDate] = useState(null)
 
+  // set initial events and check if coming from home screen
   useEffect(() => {
-    setFilteredEvents(events);
-  }, [events, loading])
+    if (!!keywords && !!searchLabel) {
+      setSearchPhrase(searchLabel);
+      console.log(keywords);
+      // TODO add new function to search category in getSearch hook.
+    }
+    else {
+      setFilteredEvents(events);
+    }
+  }, [events])
 
   const handleClearSearch = useCallback(() => {
     setSearchPhrase("")

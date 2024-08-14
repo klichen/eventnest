@@ -63,7 +63,7 @@ const SmallEventCard = ({ event, removeSavedEvent }) => {
         {!loading ?
           <Text style={styles.eventOrganizer}>{clubName}</Text>
           :
-          <View style={styles.skeletons}>
+          <View>
             <LoadSkeleton width={'40%'} height={12} />
           </View>}
 
@@ -81,8 +81,8 @@ const SmallEventCard = ({ event, removeSavedEvent }) => {
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    marginBottom: 15,
-    backgroundColor: '#fff', 
+    marginBottom: 16,
+    backgroundColor: '#fff',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#ddd',

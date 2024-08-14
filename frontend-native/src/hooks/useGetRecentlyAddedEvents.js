@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-const useGetUpcomingEvents = () => {
-    const [events, setEvents] = useState();
+const useGetRecentlyAddedEvents = () => {
+    const [recentlyAddedEvents, setRecentlyAddedEvents] = useState();
     const [loading, setLoading] = useState(false);
 
-    const fetchUpcomingEvents = async () => {
+    const fetchRecentlyAddedEvents = async () => {
         setLoading(true);
 
         try {
-            const url = 'https://2b6a-138-51-83-137.ngrok-free.app/upcoming'
+            const url = 'https://2b6a-138-51-83-137.ngrok-free.app/new'
             const response = await fetch(url, {
                 method: "GET",
                 headers: new Headers({
@@ -17,7 +17,7 @@ const useGetUpcomingEvents = () => {
             const json = await response.json();
 
             setLoading(false);
-            setEvents(json);
+            setRecentlyAddedEvents(json.slice(0, 3));
             // console.log(json)
         } catch (error) {
             console.error(error.message)
@@ -26,10 +26,10 @@ const useGetUpcomingEvents = () => {
     };
 
     useEffect(() => {
-        fetchUpcomingEvents();
+        fetchRecentlyAddedEvents();
     }, []);
 
-    return { events, loading, refetch: fetchUpcomingEvents };
+    return { recentlyAddedEvents, loading, refetch: fetchRecentlyAddedEvents };
 };
 
-export default useGetUpcomingEvents;
+export default useGetRecentlyAddedEvents;

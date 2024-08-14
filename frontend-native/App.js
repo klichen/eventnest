@@ -10,16 +10,27 @@ import SavedEventsScreen from './src/screens/SavedEventsScreen';
 import EventScreen from './src/screens/EventScreen';
 
 // screen route names
-const homeRoute = 'Home'
-const eventRoute = 'Event'
-const searchStack = 'SearchStack'
-const searchRoute = 'Search'
-const savedEventsRoute = 'Saved'
-const savedEventsStack = 'SavedStack'
+const homeRoute = 'Home';
+const homeStack = 'HomeStack';
+const eventRoute = 'Event';
+const searchStack = 'SearchStack';
+const searchRoute = 'Search';
+const savedEventsRoute = 'Saved';
+const savedEventsStack = 'SavedStack';
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
 const SearchStack = createNativeStackNavigator();
 const SavedEventsStack = createNativeStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name={homeRoute} component={HomeScreen} />
+      <HomeStack.Screen name={eventRoute} component={EventScreen} />
+    </HomeStack.Navigator>
+  )
+};
 
 function SearchStackScreen() {
   return (
@@ -28,7 +39,7 @@ function SearchStackScreen() {
       <SearchStack.Screen name={eventRoute} component={EventScreen} />
     </SearchStack.Navigator>
   )
-}
+};
 
 function SavedEventsStackScreen() {
   return (
@@ -37,20 +48,20 @@ function SavedEventsStackScreen() {
       <SavedEventsStack.Screen name={eventRoute} component={EventScreen} />
     </SavedEventsStack.Navigator>
   )
-}
+};
 
 const App = () => {
   return (
     <>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName={homeRoute}
+          initialRouteName={homeStack}
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size}) => {
               let iconName;
               let rn = route.name;
 
-              if (rn === homeRoute) {
+              if (rn === homeStack) {
                 iconName = focused ? 'home' : 'home-outline'
               }
               else if (rn === searchStack) {
@@ -66,7 +77,7 @@ const App = () => {
             headerShown: false
           })}
         >
-          <Tab.Screen name={homeRoute} component={HomeScreen} />
+          <Tab.Screen name={homeStack} component={HomeStackScreen} />
           <Tab.Screen name={searchStack} component={SearchStackScreen} />
           <Tab.Screen name={savedEventsStack} component={SavedEventsStackScreen} />
         </Tab.Navigator>

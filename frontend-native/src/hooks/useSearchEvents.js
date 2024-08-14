@@ -22,7 +22,7 @@ const useSearchEvents = () => {
     const fetchSearchedEvents = useCallback(async ({ startDate = null, endDate = null, searchString = null }) => {
         setSearchLoading(true);
         try {
-            const baseUrl = 'https://c2be-2607-fea8-761e-8520-00-546e.ngrok-free.app/search';
+            const baseUrl = 'https://2b6a-138-51-83-137.ngrok-free.app/search';
             const params = new URLSearchParams();
             if (startDate) {
                 params.append('start_date', formatDate(startDate))
@@ -31,7 +31,7 @@ const useSearchEvents = () => {
                 params.append('end_date', formatDate(endDate))
             }
             if (searchString) {
-                params.append('searchString', searchString)
+                params.append('search', searchString)
             }
             const url = new URL(`${baseUrl}?${params}`);
             console.log(url)
