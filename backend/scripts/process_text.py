@@ -140,15 +140,15 @@ class OpenAIBatchProcessor:
             print(f"Batch job failed with status: {batch_job.status}")
             return None
     
-    def download_output_file(self, batch_id):
+    def download_output_file(self, batch_id, output_file_name):
         batch_job = self.client.batches.retrieve(batch_id)
 
         result_file_id = batch_job.output_file_id
         result = self.client.files.content(result_file_id).content
 
-        result_file_name = "results/batch1_results.jsonl"
+        # result_file_name = "results/batch1_results.jsonl"
 
-        with open(result_file_name, 'wb') as file:
+        with open(output_file_name, 'wb') as file:
             file.write(result)
 
     def get_batch_job(self, batch_id):
@@ -164,17 +164,18 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 processor = OpenAIBatchProcessor(openai_api_key)
 
 # change name to corresponding processed post json file
-batch_file_name = processor.create_input_file('files/processed_posts/posts12.json')
-batch_file = processor.upload_input_file(batch_file_name)
-batch_job = processor.create_batch_job(batch_file)
+# batch_file_name = processor.create_input_file('files/processed_posts/posts12.json')
+# batch_file = processor.upload_input_file(batch_file_name)
+# batch_job = processor.create_batch_job(batch_file)
 
 
 # batch_job = processor.get_batch_job('batch_gT1hnSxwcviHv45BPrGAbD7a')
 # processor.check_status_retrieve(batch_job, batch_file_name)
 
-# print(batch_job.id)
-
-# batch_job_id = "batch_X2jexnfdSVA5WeGiYgYU6BCO"
-# batch_job = processor.download_output_file(batch_job_id)
+# ---------------------------------------------------------
+# download batch result file using batch_id
+# batch_job_id = "batch_PeUR5ZpNJi70Q5reSWXZqbSy"
+# output_file_name = 'files/chatgpt_posts/posts12_results.jsonl'
+# batch_job = processor.download_output_file(batch_job_id, output_file_name)
 
 
