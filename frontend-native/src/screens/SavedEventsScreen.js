@@ -26,7 +26,7 @@ const SavedEventsScreen = ({ navigation }) => {
     )
   }
 
-  if (savedEvents && savedEvents.length === 0) {
+  if ((savedEvents && savedEvents.length === 0) || !savedEvents) {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Saved Events</Text>
