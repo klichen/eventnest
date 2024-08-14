@@ -1,6 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getAllEventIds } from '../utils/AsyncStorage';
-import { useFocusEffect } from '@react-navigation/native';
 
 const useSearchEvents = () => {
     const [searchedEvents, setSearchedEvents] = useState([]);
@@ -48,7 +46,35 @@ const useSearchEvents = () => {
             // console.log(data);
             setSearchLoading(false);
             return data;
-            // setSearchedEvents(data);
+        } catch (error) {
+            console.error(error.message);
+            return []
+        }
+    }, []);
+
+    const fetchSearchedEventsByCategory = useCallback(async ({ searchString = null }) => {
+        setSearchLoading(true);
+        try {
+            const baseUrl = 'https://2b6a-138-51-83-137.ngrok-free.app/category';
+            const params = new URLSearchParams();
+            if (searchString) {
+                params.append('search', searchString)
+            }
+            const url = new URL(`${baseUrl}?${params}`);
+            console.log(url)
+
+            const response = await fetch(url, {
+                method: "GET",
+                headers: new Headers({
+                    "ngrok-skip-browser-warning": "25"
+                })
+            });
+            const json = await response.json();
+            // console.log(json);
+            const data = json.events;
+            // console.log(data);
+            setSearchLoading(false);
+            return data;
         } catch (error) {
             console.error(error.message);
             return []
@@ -64,7 +90,7 @@ const useSearchEvents = () => {
     //     setSavedEvents(newEvents);
     // };
 
-    return { searchedEvents, setSearchedEvents, searchLoading, fetchSearchedEvents };
+    return { searchedEvents, setSearchedEvents, searchLoading, fetchSearchedEvents, fetchSearchedEventsByCategory };
 };
 
 export default useSearchEvents;

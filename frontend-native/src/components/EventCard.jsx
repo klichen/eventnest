@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
         marginBottom: 24,
     },
     cardContent: {
-        // flexGrow: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginLeft: 16,

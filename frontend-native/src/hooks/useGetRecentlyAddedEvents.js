@@ -18,7 +18,6 @@ const useGetRecentlyAddedEvents = () => {
 
             setLoading(false);
             setRecentlyAddedEvents(json.slice(0, 3));
-            // console.log(json)
         } catch (error) {
             console.error(error.message)
         }

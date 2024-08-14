@@ -11,9 +11,9 @@ import useGetUpcomingEvents from '../hooks/useGetUpcomingEvents';
 import useSearchEvents from '../hooks/useSearchEvents';
 
 const SearchScreen = ({ route, navigation }) => {
-  const { keywords, searchLabel } = route.params;
+  const { keywords, searchLabel } = route.params || {};
   const { events, loading } = useGetUpcomingEvents();
-  const { searchLoading, fetchSearchedEvents } = useSearchEvents();
+  const { searchLoading, fetchSearchedEvents, fetchSearchedEventsByCategory } = useSearchEvents();
 
   const [filteredEvents, setFilteredEvents] = useState(events);
   const [searchPhrase, setSearchPhrase] = useState("");
@@ -28,17 +28,26 @@ const SearchScreen = ({ route, navigation }) => {
   // set initial events and check if coming from home screen
   useEffect(() => {
     if (!!keywords && !!searchLabel) {
+      const searchCategoryEvents = async () => {
+        console.log(keywords);
+        const searchedEvents = await fetchSearchedEventsByCategory({
+          searchString: keywords
+        });
+        setFilteredEvents(searchedEvents);
+      };
       setSearchPhrase(searchLabel);
-      console.log(keywords);
-      // TODO add new function to search category in getSearch hook.
+      searchCategoryEvents();
     }
     else {
       setFilteredEvents(events);
     }
-  }, [events])
+  }, [events, route])
 
   const handleClearSearch = useCallback(() => {
     setSearchPhrase("")
+    if (confirmedSearchPhrase === "") {
+      setFilteredEvents(events);
+    };
     setConfirmedSearchPhrase("")
     textInputRef.current.focus()
   }, [])
@@ -50,6 +59,9 @@ const SearchScreen = ({ route, navigation }) => {
 
   const handleCancelSearch = useCallback(() => {
     Keyboard.dismiss();
+    if (confirmedSearchPhrase === "") {
+      setFilteredEvents(events);
+    };
     setSearchPhrase("");
     setConfirmedSearchPhrase("");
     setSearchClicked(false);

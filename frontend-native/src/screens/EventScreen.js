@@ -45,7 +45,7 @@ const EventScreen = ({ route, navigation }) => {
     }
 
     return (
-        <ScrollView style={styles.container} contentContainerStyle={{paddingBottom: 32}}>
+        <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 32 }}>
             <Image source={{ uri: imageLink }} resizeMode='cover' style={{ width: '100%', height: 300, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 16, paddingHorizontal: 16 }} />
             <View style={styles.dateLine}>
                 {startDate && endDate && <Text color="textSecondary" fontSize='body2'>{startDate.toDateString()}, {startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>}
@@ -84,29 +84,29 @@ const EventScreen = ({ route, navigation }) => {
             <Text fontSize="subheading" fontWeight="bold" style={{ marginBottom: 8, marginTop: 16 }}>
                 About the club
             </Text>
-            {!loading ? 
-            <View>
-                <Text>
-                    {!!clubDescription && clubDescription}
-                </Text>
-                <Pressable onPress={handleOnPressClubLink} style={({ pressed }) => [
-                    { opacity: pressed ? 0.5 : 1.0 }
-                ]}>
-                    <View style={styles.learnMore}>
-                        <Text color="textSecondary" fontSize="body2">
-                            {clubName}
-                        </Text>
-                        <Ionicons name={"logo-instagram"} size={24} color="#007FA3" />
-                    </View>
-                </Pressable>
-            </View>
-            : 
-            <View style={styles.skeletons}>
-                <LoadSkeleton />    
-                <LoadSkeleton width={'80%'} />    
-                <LoadSkeleton width={'60%'} />    
-            </View>}
-            
+            {!loading ?
+                <View>
+                    <Text>
+                        {!!clubDescription && clubDescription}
+                    </Text>
+                    <Pressable onPress={handleOnPressClubLink} style={({ pressed }) => [
+                        { opacity: pressed ? 0.5 : 1.0 }
+                    ]}>
+                        <View style={styles.learnMore}>
+                            <Text color="textSecondary" fontSize="body2">
+                                {clubName}
+                            </Text>
+                            <Ionicons name={"logo-instagram"} size={24} color="#007FA3" />
+                        </View>
+                    </Pressable>
+                </View>
+                :
+                <View style={styles.skeletons}>
+                    <LoadSkeleton />
+                    <LoadSkeleton width={'80%'} />
+                    <LoadSkeleton width={'60%'} />
+                </View>}
+
         </ScrollView>
     );
 };
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        // paddingBottom: 24,
         paddingHorizontal: 12,
         backgroundColor: '#f5f7fa',
     },
@@ -136,7 +135,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         gap: 4,
         alignItems: 'center',
-        // paddingLeft: 8,
         marginTop: 4
     },
     saveIcon: {

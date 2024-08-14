@@ -48,13 +48,13 @@ const todayEvents2 = [
 ];
 
 const keywords = [
-  { label: 'Sports', icon: 'soccer-ball-o', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0E0', searchString: 'sport+tournament+match+race' },
-  { label: 'Social & Party', icon: 'users', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0FF', searchString: 'party+social+parties+nightlife+community+networking' },
-  { label: 'Food & Drink', icon: 'food', library: 'MaterialCommunityIcons', color: '#FF8C42', backgroundColor: '#FFF0E0', searchString: 'food+drink+ice cream+cooking+baking' },
-  { label: 'Games', icon: 'gamepad', library: 'FontAwesome', color: '#FF4242', backgroundColor: '#FFE0E0', searchString: 'videogame+boardgame+esport+cardgame+trivia+poker' },
-  { label: 'Arts', icon: 'human-female-dance', library: 'MaterialCommunityIcons', color: 'blue', backgroundColor: '#E0E0FF', searchString: 'art+crafts+festival+performance+photography+media' },
-  { label: 'Health & Wellness', icon: 'heartbeat', library: 'FontAwesome', color: '#27ae60', backgroundColor: '#E0FFE0', searchString: 'mental health+fitness+meditation+nutrition+stress' },
-  { label: 'Technology', icon: 'laptop', library: 'FontAwesome', color: '#34495e', backgroundColor: '#E0E0E0', searchString: 'tech+computer+hackathon+code+machine' },
+  { label: 'Sports', icon: 'soccer-ball-o', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0E0', searchString: 'sport tournament match race cheer sports' },
+  { label: 'Social & Party', icon: 'users', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0FF', searchString: 'party socialnparties nightlife community networking' },
+  { label: 'Food & Drink', icon: 'food', library: 'MaterialCommunityIcons', color: '#FF8C42', backgroundColor: '#FFF0E0', searchString: 'food drink icecream cooking baking' },
+  { label: 'Games', icon: 'gamepad', library: 'FontAwesome', color: '#FF4242', backgroundColor: '#FFE0E0', searchString: 'videogame boardgame esport cardgame trivia poker' },
+  { label: 'Arts', icon: 'human-female-dance', library: 'MaterialCommunityIcons', color: 'blue', backgroundColor: '#E0E0FF', searchString: 'art crafts festival performance photography media' },
+  { label: 'Health & Wellness', icon: 'heartbeat', library: 'FontAwesome', color: '#27ae60', backgroundColor: '#E0FFE0', searchString: 'mental health fitness meditation nutrition stress' },
+  { label: 'Technology', icon: 'laptop', library: 'FontAwesome', color: '#34495e', backgroundColor: '#E0E0E0', searchString: 'tech computer hackathon code machine' },
 ];
 
 const KeywordItem = ({ item, navigation }) => {
@@ -64,7 +64,6 @@ const KeywordItem = ({ item, navigation }) => {
       <TouchableOpacity
         style={[styles.keywordBox, { backgroundColor: item.backgroundColor }]}
         onPress={() => {
-          // console.log(`Navigating to Search with keyword: ${item.label}`);
           navigation.navigate('SearchStack', { screen: 'Search', params: { keywords: item.searchString, searchLabel: item.label } });
         }}
       >
@@ -104,11 +103,6 @@ const HomeScreen = ({ navigation }) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
     const index = Math.round(contentOffsetX / width);
     setCurrentIndex(index);
-  };
-
-  const handleBookmarkPress = (eventId) => {
-    console.log(`Bookmark pressed for event id: ${eventId}`);
-    // Handle the bookmark logic here
   };
 
   useEffect(() => {

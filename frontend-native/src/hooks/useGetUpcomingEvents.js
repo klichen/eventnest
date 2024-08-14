@@ -18,7 +18,6 @@ const useGetUpcomingEvents = () => {
 
             setLoading(false);
             setEvents(json);
-            // console.log(json)
         } catch (error) {
             console.error(error.message)
         }
