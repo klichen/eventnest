@@ -64,7 +64,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if API_CALLS <= 0:
-            time.sleep(random.randint(100, 250))
+            time.sleep(random.randint(112, 255))
             API_CALLS = 150
         
         if filename.endswith(FILETYPE) : 
@@ -77,10 +77,15 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
                     target_filename = target_prefix + str(i) + FILETYPE
 
                     if not file_exists(cwd, target_folder, target_filename):
-                        function(cwd + input_folder + filename, cwd + target_folder + target_filename)
+                        return_val = function(cwd + input_folder + filename, cwd + target_folder + target_filename)
+                        if return_val == -1:
+                            pause = random.randint(610, 2001)
+                            print("Pausing for ..........", pause/30, "minutes")
+                            time.sleep(pause)
+                            
                         print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
                         API_CALLS -= 15
-                        time.sleep(random.randint(100, 250))
+                        time.sleep(random.randint(61, 201))
                         
 
             except IndexError:
@@ -92,10 +97,10 @@ def main():
     parse = input("club/post?:")
 
     if parse.startswith("c"):
-        function_for_files("..//files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
+        function_for_files("/files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
 
     else: 
-        function_for_files("..//files/posts/", "posts", "/files/processed_posts/", "posts", image_text.process_posts)
+        function_for_files("/files/posts/", "posts", "/files/processed_posts/", "posts", image_text.process_posts)
 
     
 
