@@ -15,13 +15,14 @@ const { width } = Dimensions.get('window');
 const date1 = new Date('2024-10-31T18:00:00');
 
 const keywords = [
-  { label: 'Sports', icon: 'soccer-ball-o', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0E0', searchString: 'sport tournament match race cheer sports' },
+  { label: 'Sports', icon: 'soccer-ball-o', library: 'FontAwesome', color: 'black', backgroundColor: '#C1EEFF', searchString: 'sport tournament match race cheer sports' },
   { label: 'Social & Party', icon: 'users', library: 'FontAwesome', color: '#000077', backgroundColor: '#E0E0FF', searchString: 'party socialnparties nightlife community networking' },
   { label: 'Food & Drink', icon: 'food', library: 'MaterialCommunityIcons', color: '#FF8C42', backgroundColor: '#FFF0E0', searchString: 'food drink icecream cooking baking' },
-  { label: 'Games', icon: 'gamepad', library: 'FontAwesome', color: '#FF4242', backgroundColor: '#FFE0E0', searchString: 'videogame boardgame esport cardgame trivia poker' },
-  { label: 'Arts', icon: 'human-female-dance', library: 'MaterialCommunityIcons', color: 'blue', backgroundColor: '#E0E0FF', searchString: 'art crafts festival performance photography media' },
+  { label: 'Games', icon: 'cards-playing-outline', library: 'MaterialCommunityIcons', color: '#FF4242', backgroundColor: '#FFE0E0', searchString: 'videogame boardgame esport cardgame trivia poker' },
+  { label: 'Arts', icon: 'human-female-dance', library: 'MaterialCommunityIcons', color: '#2E294E', backgroundColor: '#E5C687', searchString: 'art crafts festival performance photography media' },
   { label: 'Health & Wellness', icon: 'heartbeat', library: 'FontAwesome', color: '#27ae60', backgroundColor: '#E0FFE0', searchString: 'mental health fitness meditation nutrition stress' },
   { label: 'Technology', icon: 'laptop', library: 'FontAwesome', color: '#34495e', backgroundColor: '#E0E0E0', searchString: 'tech computer hackathon code machine' },
+  { label: 'Career', icon: 'handshake-o', library: 'FontAwesome', color: '#020122', backgroundColor: '#F2F3AE', searchString: 'networking job jobs career professor' },
 ];
 
 const KeywordItem = ({ item, navigation }) => {
