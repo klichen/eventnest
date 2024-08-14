@@ -131,7 +131,7 @@ class OpenAIBatchProcessor:
             result = self.client.files.content(result_file_id).content
 
             batch_name = batch_file_name.split('_')[-1].replace('.jsonl', '')
-            result_file_name = f'files/chatgpt_posts/{batch_name}_results.jsonl'
+            result_file_name = f'files/chatgpt_output_files/{batch_name}_results.jsonl'
 
             with open(result_file_name, 'wb') as file:
                 file.write(result)
