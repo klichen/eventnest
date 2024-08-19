@@ -202,10 +202,7 @@ def load_events_to_db(events):
         cnx.close()
 
 
-def process_posts():
-    posts = json_fn.read_json("../files/chatgpt_posts/batch1_data.json")
-    clubs  = json_fn.read_json("../files/club_all.json")
-
+def process_posts(posts, clubs, i):
     completed_posts = []
     unapproved_posts = []
     for post in posts:
@@ -219,9 +216,9 @@ def process_posts():
             unapproved_posts.append(processed_post[1])
     print("Approved Posts: ", completed_posts)
     print("Unapproved Posts: ", unapproved_posts)
-
-    json_fn.write_json("../files/event_posts/filtered_posts00.json", completed_posts)
-    json_fn.write_json("../files/event_posts/unapproved_posts00.json", unapproved_posts)
+    # TODO change output file name
+    json_fn.write_json("../files/event_posts/filtered_posts"+str(i)+".json", completed_posts)
+    json_fn.write_json("../files/event_posts/unapproved_posts"+str(i)+".json", unapproved_posts)
     
 
 
@@ -272,16 +269,28 @@ def runCommand():
 
 
 def main():
+
+    parse = input("filter(f)/upload(u)?:")
+
+    if parse.startswith("f"):
+        posts = json_fn.read_json("../files/chatgpt_posts/batch1_data.json")
+        clubs  = json_fn.read_json("../files/club_all.json")
+        process_posts(posts, clubs, 2)
+        # note where the last parameter is the ith post output (will be labelled in file name)
+
+    elif parse.startswith("u"): 
+        events  = json_fn.read_json("/files/event_posts/filtered_posts00.json")
+        load_events_to_db(events)
+        showTable()
     
     # clubs  = json_fn.read_json("/files/club_all.json")
     # load_clubs_to_db(clubs)
-    # process_posts()
-    showTable()
+    
+
+    # showTable()
     # runCommand()
 
-    # events  = json_fn.read_json("/files/event_posts/filtered_posts00.json")
-    # load_events_to_db(events)
-    # showTable()
+    # 
 
     # print(posts[5]["image_texts"])
     # print(processed_posts)
