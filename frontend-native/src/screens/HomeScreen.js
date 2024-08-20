@@ -97,7 +97,7 @@ const HomeScreen = ({ navigation }) => {
             showsHorizontalScrollIndicator={true}
             renderItem={({ item }) => <KeywordItem item={item} navigation={navigation} />}
             keyExtractor={(item, index) => index.toString()}
-            contentContainerStyle={{ alignItems: 'center' }}  // Center items vertically
+            contentContainerStyle={{ alignItems: 'center' }}
           />
         </View>
         <Text style={styles.heading}>Recently Added</Text>
