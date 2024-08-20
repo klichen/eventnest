@@ -7,7 +7,7 @@ const useGetRecentlyAddedEvents = () => {
         setLoading(true);
 
         try {
-            const url = 'https://2b6a-138-51-83-137.ngrok-free.app/new'
+            const url = 'https://c102-138-51-80-140.ngrok-free.app/new'
             const response = await fetch(url, {
                 method: "GET",
                 headers: new Headers({

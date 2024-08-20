@@ -9,7 +9,7 @@ def read_json(fileName):
     suffix = fileName.split(".")
     print(suffix)
     if suffix[-1] == "json":
-        with open(fileName, 'r') as openfile:
+        with open(fileName, 'r', encoding='utf8') as openfile:
     
             # Reading from json file
             json_object = json.load(openfile)

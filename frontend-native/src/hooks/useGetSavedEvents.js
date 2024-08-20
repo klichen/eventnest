@@ -70,7 +70,7 @@ const useGetSavedEvents = () => {
     const fetchSavedEvents = useCallback(async () => {
         setLoading(true);
         try {
-            const baseUrl = 'https://2b6a-138-51-83-137.ngrok-free.app/events';
+            const baseUrl = 'https://c102-138-51-80-140.ngrok-free.app/events';
             const url = new URL(baseUrl);
             savedEventIds.forEach(id => url.searchParams.append('event_id', id));
 
