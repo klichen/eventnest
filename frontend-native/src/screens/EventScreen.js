@@ -16,6 +16,7 @@ const EventScreen = ({ route, navigation }) => {
     const { clubInfo = {}, loading } = useGetClubInformation(clubId)
     const { description: clubDescription, name: clubName, website_type, website_link } = clubInfo
     const [saved, setSaved] = useEventSavedStatus(eventId)
+    const instagramHandle = website_type === "IN" ? website_link.match(/instagram\.com\/([a-zA-Z0-9._]+)/)[1] : '';
 
 
     useEffect(() => {
@@ -89,16 +90,16 @@ const EventScreen = ({ route, navigation }) => {
                     <Text>
                         {!!clubDescription && clubDescription}
                     </Text>
-                    <Pressable onPress={handleOnPressClubLink} style={({ pressed }) => [
+                    {!!instagramHandle && <Pressable onPress={handleOnPressClubLink} style={({ pressed }) => [
                         { opacity: pressed ? 0.5 : 1.0 }
                     ]}>
                         <View style={styles.learnMore}>
                             <Text color="textSecondary" fontSize="body2">
-                                {clubName}
+                                {instagramHandle}
                             </Text>
                             <Ionicons name={"logo-instagram"} size={24} color="#007FA3" />
                         </View>
-                    </Pressable>
+                    </Pressable>}
                 </View>
                 :
                 <View style={styles.skeletons}>

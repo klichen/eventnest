@@ -58,8 +58,8 @@ const DateFilterBtn = ({ setSelectedStartDate, setSelectedEndDate }) => {
                       allowRangeSelection={true}
                       // minDate={minDate}
                       // maxDate={maxDate}
-                      todayBackgroundColor="#f2e6ff"
-                      selectedDayColor="#007FA3"
+                      todayBackgroundColor={"#f2e6ff"}
+                      selectedDayColor={"#007FA3"}
                       onDateChange={(date, type) => handleDateChange(date, type)}
                     />
                     <View style={styles.actionBtns}>

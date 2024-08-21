@@ -6,16 +6,17 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import DateFilterBtn from '../components/DateFilterBtn';
 import SearchBar from '../components/SearchBar';
 import SearchEmptyState from '../components/SearchEmptyState';
-import DateRangeDisplay from '../components/DateRangeDisplay';
+import SearchDateRangeRemovers from '../components/SearchDateRangeRemovers';
 import useGetUpcomingEvents from '../hooks/useGetUpcomingEvents';
 import useSearchEvents from '../hooks/useSearchEvents';
 
 const SearchScreen = ({ route, navigation }) => {
   const { keywords, searchLabel } = route.params || {};
-  const { events, loading } = useGetUpcomingEvents();
+  const { events, loading, refetch } = useGetUpcomingEvents();
   const { searchLoading, fetchSearchedEvents, fetchSearchedEventsByCategory } = useSearchEvents();
 
   const [filteredEvents, setFilteredEvents] = useState(events);
+  const [categoryEvents, setCategoryEvents] = useState(null);
   const [searchPhrase, setSearchPhrase] = useState("");
   const [confirmedSearchPhrase, setConfirmedSearchPhrase] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
@@ -25,14 +26,18 @@ const SearchScreen = ({ route, navigation }) => {
   const [selectedStartDate, setSelectedStartDate] = useState(null)
   const [selectedEndDate, setSelectedEndDate] = useState(null)
 
+  // distinguish whether searching category or using searchbar
+  const [isSearchingCategory, setIsSearchingCategory] = useState(false)
+
   // set initial events and check if coming from home screen category picker
   useEffect(() => {
     if (!!keywords && !!searchLabel) {
+      setIsSearchingCategory(true);
       const searchCategoryEvents = async () => {
-        console.log(keywords);
         const searchedEvents = await fetchSearchedEventsByCategory({
           searchString: keywords
         });
+        setCategoryEvents(searchedEvents);
         setFilteredEvents(searchedEvents);
       };
       setSearchPhrase(searchLabel);
@@ -40,30 +45,30 @@ const SearchScreen = ({ route, navigation }) => {
     }
     else {
       setFilteredEvents(events);
+      setIsSearchingCategory(false);
     }
   }, [events, route])
 
   const handleClearSearch = useCallback(() => {
-    setSearchPhrase("")
-    if (confirmedSearchPhrase === "") {
-      setFilteredEvents(events);
-    };
-    setConfirmedSearchPhrase("")
-    textInputRef.current.focus()
-  }, [])
+    setSearchPhrase("");
+    setConfirmedSearchPhrase("");
+    setFilteredEvents(events);
+  }, []);
+
+  const handleClearCategorySearch = useCallback(() => {
+    setSearchPhrase("");
+    setIsSearchingCategory(false);
+    setFilteredEvents(events);
+  }, []);
 
   const handleSubmitSearch = useCallback(() => {
+    setIsSearchingCategory(false);
     setConfirmedSearchPhrase(searchPhrase)
     setSearchClicked(false);
   }, [searchPhrase, filteredEvents]);
 
   const handleCancelSearch = useCallback(() => {
     Keyboard.dismiss();
-    if (confirmedSearchPhrase === "") {
-      setFilteredEvents(events);
-    };
-    setSearchPhrase("");
-    setConfirmedSearchPhrase("");
     setSearchClicked(false);
   }, [events]);
 
@@ -81,13 +86,30 @@ const SearchScreen = ({ route, navigation }) => {
       });
       setFilteredEvents(searchedEvents);
     };
+    const searchAndSetCategoryEvents = async () => {
+      const searchedEvents = await fetchSearchedEventsByCategory({
+        startDate: selectedStartDate,
+        endDate: selectedEndDate,
+        searchString: keywords
+      });
+      setFilteredEvents(searchedEvents);
+    };
+
     if (!confirmedSearchPhrase && !selectedStartDate && !selectedEndDate) {
-      setFilteredEvents(events);
+      if (isSearchingCategory) {
+        setFilteredEvents(categoryEvents);
+      }
+      else {
+        setFilteredEvents(events);
+      }
+    }
+    else if (isSearchingCategory) {
+      searchAndSetCategoryEvents();
     }
     else {
       searchAndSetEvents();
     }
-  }, [selectedStartDate, selectedEndDate, confirmedSearchPhrase]);
+  }, [selectedStartDate, selectedEndDate, confirmedSearchPhrase, isSearchingCategory]);
 
   const EventItem = ({ item }) => <EventCard
     title={item.title}
@@ -123,7 +145,8 @@ const SearchScreen = ({ route, navigation }) => {
             <SearchBar clicked={searchClicked} setClicked={setSearchClicked} searchPhrase={searchPhrase} setSearchPhrase={setSearchPhrase} handleSubmitSearch={handleSubmitSearch} handleCancelSearch={handleCancelSearch} ref={textInputRef} />
             {!searchClicked && <DateFilterBtn setSelectedStartDate={setSelectedStartDate} setSelectedEndDate={setSelectedEndDate} />}
           </View>
-          {selectedStartDate && selectedEndDate && <DateRangeDisplay selectedStartDate={selectedStartDate} selectedEndDate={selectedEndDate} handleClearDates={handleClearDates} />}
+          {(confirmedSearchPhrase || (selectedStartDate && selectedEndDate) && !isSearchingCategory) ? <SearchDateRangeRemovers selectedStartDate={selectedStartDate} selectedEndDate={selectedEndDate} handleClearDates={handleClearDates} confirmedSearchPhrase={confirmedSearchPhrase} handleClearSearch={handleClearSearch} /> : null}
+          {isSearchingCategory ? <SearchDateRangeRemovers selectedStartDate={selectedStartDate} selectedEndDate={selectedEndDate} handleClearDates={handleClearDates} confirmedSearchPhrase={confirmedSearchPhrase} handleClearSearch={handleClearCategorySearch} searchingCategory={isSearchingCategory} /> : null}
         </View>
         <FlatList
           data={filteredEvents}
@@ -131,7 +154,7 @@ const SearchScreen = ({ route, navigation }) => {
           showsVerticalScrollIndicator={true}
           style={{ width: "100%", paddingHorizontal: 24, marginTop: 16, marginBottom: 16 }}
           renderItem={EventItem}
-          ListEmptyComponent={<SearchEmptyState searchPhrase={searchPhrase} handleClearSearch={handleClearSearch} hasDateRange={!!selectedStartDate} />}
+          ListEmptyComponent={<SearchEmptyState searchPhrase={searchPhrase} hasDateRange={!!selectedStartDate} refetch={refetch} />}
         />
       </View>
     );
@@ -140,7 +163,7 @@ const SearchScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,

@@ -1,9 +1,9 @@
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet, Image, Pressable, TouchableOpacity } from 'react-native';
 import Text from './atomics/Text';
 import Button from './atomics/Button';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const DateRangeDisplay = ({ selectedStartDate, selectedEndDate, handleClearDates }) => {
+const SearchDateRangeRemovers = ({ selectedStartDate, selectedEndDate, handleClearDates, confirmedSearchPhrase, handleClearSearch, searchingCategory }) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const startDate = selectedStartDate ? selectedStartDate.getDate() : null
     const startMonth = selectedStartDate ? months[selectedStartDate.getMonth()] : null
@@ -11,7 +11,7 @@ const DateRangeDisplay = ({ selectedStartDate, selectedEndDate, handleClearDates
     const endMonth = selectedEndDate ? months[selectedEndDate.getMonth()] : null
     return (
         <View style={styles.container}>
-            <View style={styles.clearBtn}>
+            {/* <View style={styles.clearBtn}>
                 <Button
                     title="Clear"
                     iconName="close"
@@ -22,11 +22,23 @@ const DateRangeDisplay = ({ selectedStartDate, selectedEndDate, handleClearDates
                     textWeight='medium'
                     onPress={handleClearDates}
                 />
-            </View>
-            <View style={styles.dateDisplay}>
-                <Ionicons name="calendar-clear-outline" size={24} color="white" />
-                <Text color="white">{startMonth} {startDate} - {endMonth} {endDate}</Text>
-            </View>
+            </View> */}
+            {(!!confirmedSearchPhrase || searchingCategory) ?
+                <TouchableOpacity style={styles.dateDisplay} onPress={handleClearSearch}>
+                    {/* <Ionicons name="calendar-clear-outline" size={24} color="white" /> */}
+                    <Ionicons name="close" size={24} color="white" />
+                    <Text color="white">Clear search</Text>
+                </TouchableOpacity>
+                : null
+            }
+            {!!selectedStartDate ?
+                !!selectedEndDate && <TouchableOpacity style={styles.dateDisplay} onPress={handleClearDates}>
+                    {/* <Ionicons name="calendar-clear-outline" size={24} color="white" /> */}
+                    <Ionicons name="close" size={24} color="white" />
+                    <Text color="white">{startMonth} {startDate} - {endMonth} {endDate}</Text>
+                </TouchableOpacity>
+                : null
+            }
         </View>
     )
 }
@@ -67,6 +79,6 @@ const styles = StyleSheet.create({
         borderColor: '#007FA3',
         borderRadius: 8,
     }
-  });
+});
 
-export default DateRangeDisplay
+export default SearchDateRangeRemovers

@@ -133,7 +133,9 @@ const HomeScreen = ({ navigation }) => {
                 />
               ))}
             </View>
-          </View>}
+          </View>
+        }
+
         <Text style={styles.heading}>What's Happening Today</Text>
         {eventsTodayLoading ?
           <View style={styles.skeletons}>
@@ -159,6 +161,10 @@ const HomeScreen = ({ navigation }) => {
             ))}
           </ScrollView>
         }
+        {(!!todayEvents && todayEvents.length === 0 && !eventsTodayLoading) ?
+          <Text fontSize="body2" style={styles.todayEmptyState}>{'We couldn\'t find events happening today :('}</Text>
+          : null
+        }
       </ScrollView>
     </View>
   );
@@ -166,10 +172,11 @@ const HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    paddingBottom: 20,
+    // paddingBottom: 20,
     backgroundColor: '#f5f7fa',
   },
   pagination: {
@@ -238,6 +245,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     gap: 8
+  },
+  todayEmptyState: {
+    // alignSelf: 'center',
+    paddingLeft: 20,
+    marginTop: 12
   }
 });
 
