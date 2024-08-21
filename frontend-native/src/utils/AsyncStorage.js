@@ -32,7 +32,7 @@ export const getAllEventIds = async () => {
     let ids = []
     try {
         ids = await AsyncStorage.getAllKeys()
-        console.log(ids)
+        // console.log(ids)
         return ids.map((id) => id.replace('event', ''));
     }
     catch (e) {
