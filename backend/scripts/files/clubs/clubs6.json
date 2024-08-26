@@ -10,24 +10,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/friends-of-nan-uoft/",
-        "instagram_links": [
-            "https://www.instagram.com/nanangels.uoft/?hl=en"
-        ],
-        "instagram_usernames": [
-            "nanangels.uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/friends-of-medecins-sans-frontieres-doctors-without-borders-msf-u-of-t-chapter-fomsf/",
-        "instagram_links": [
-            "https://www.instagram.com/friendsmsf_uoft/?hl=en"
-        ],
-        "instagram_usernames": [
-            "friendsmsf_uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/french-course-union/",
         "instagram_links": [
             "https://www.instagram.com/fcu.utoronto/?hl=en"
@@ -55,26 +37,8 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/formula-sae-racing-team/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftfsae"
-        ],
-        "instagram_usernames": [
-            "uoftfsae"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/deepspark-uoft-3/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-torontos-formula-for-our-future-tffof/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftffof/"
-        ],
-        "instagram_usernames": [
-            "uoftffof"
-        ]
     }
 ]

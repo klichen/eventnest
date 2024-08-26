@@ -1,14 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/student-dermatology-society-at-uoft-sdsu/",
-        "instagram_links": [
-            "https://www.instagram.com/sdsuoft/"
-        ],
-        "instagram_usernames": [
-            "sdsuoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/chapter-for-healthcare-improvement-at-u-of-t/",
         "instagram_links": [
             "https://www.instagram.com/uoft_ihi/?hl=en"
@@ -20,7 +11,7 @@
     {
         "club_page": "https://sop.utoronto.ca/group/connection-calls-cc/",
         "instagram_links": [
-            "https://www.instagram.com/sage.utsg/?utm_source=ig_web_button_share_sheet&igshid=ODE2OTA4Y2Y1MQ=="
+            "https://www.instagram.com/sage.utsg"
         ],
         "instagram_usernames": [
             "sage.utsg"
@@ -41,25 +32,7 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/stem-fellowship-utsg-branch/",
-        "instagram_links": [
-            "https://www.instagram.com/stemfellowship_utsg/?hl=en"
-        ],
-        "instagram_usernames": [
-            "stemfellowship_utsg"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/st-george-squash-club/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftsquashclub/"
-        ],
-        "instagram_usernames": [
-            "uoftsquashclub"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/st-george-squash-club-2/",
         "instagram_links": [
             "https://www.instagram.com/uoftsquashclub/"
         ],

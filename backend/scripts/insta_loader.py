@@ -125,9 +125,10 @@ def load_club_posts(intput_filename,output_filename):
     clubs = json_fn.read_json(intput_filename)
     posts = []
     for club in clubs:
-        try: 
-            print(club["instagram_usernames"])
-            posts.extend(check_profiles(club["instagram_usernames"]))
+        try:
+            if club["instagram_usernames"] is not None:
+                print(club["instagram_usernames"])
+                posts.extend(check_profiles(club["instagram_usernames"]))
         except TypeError:
                 print("There was an error. Stop running the program  :[ ")
                 return -1

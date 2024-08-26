@@ -1,23 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/stem-cell-club/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_stemcellclub/"
-        ],
-        "instagram_usernames": [
-            "uoft_stemcellclub"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/ukrainian-students-club/",
-        "instagram_links": [
-            "https://www.instagram.com/uscuoft/?hl=en"
-        ],
-        "instagram_usernames": [
-            "uscuoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/u-of-t-tolkien-club/",
         "instagram_links": [
             "https://www.instagram.com/ut.tolkien.club/"
@@ -61,15 +43,6 @@
         ],
         "instagram_usernames": [
             "uoftimprov"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/k-pop-dance-crew/",
-        "instagram_links": [
-            "https://www.instagram.com/utkdc_official/"
-        ],
-        "instagram_usernames": [
-            "utkdc_official"
         ]
     },
     {

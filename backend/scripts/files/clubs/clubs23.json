@@ -19,58 +19,13 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/choose-humanity/",
-        "instagram_links": [
-            "https://www.instagram.com/choosehumanityuoft/"
-        ],
-        "instagram_usernames": [
-            "choosehumanityuoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/chinese-volunteer-association/",
-        "instagram_links": [
-            "https://www.instagram.com/utcvacare"
-        ],
-        "instagram_usernames": [
-            "utcvacare"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-chinese-political-roundtable/",
-        "instagram_links": [
-            "https://www.instagram.com/ut_cpr/"
-        ],
-        "instagram_usernames": [
-            "ut_cpr"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-chinese-music-club-utcmc/",
         "instagram_links": null,
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-pre-pharmacy-society-utpps/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftprepharmacy/"
-        ],
-        "instagram_usernames": [
-            "uoftprepharmacy"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-fintech-association-utfta/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/quidditch-team/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft.quadball/"
-        ],
-        "instagram_usernames": [
-            "uoft.quadball"
-        ]
     }
 ]

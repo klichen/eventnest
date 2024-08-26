@@ -24,24 +24,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/refugeaid-uoft/",
-        "instagram_links": [
-            "https://www.instagram.com/refugeaiduoft/"
-        ],
-        "instagram_usernames": [
-            "refugeaiduoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/rational-capital-investment-fund/",
-        "instagram_links": [
-            "https://www.instagram.com/rcif.uoft/?hl=en"
-        ],
-        "instagram_usernames": [
-            "rcif.uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/queersphere/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -58,15 +40,6 @@
         ],
         "instagram_usernames": [
             "puebloscience.uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/quantitative-finance-lab-quantlab/",
-        "instagram_links": [
-            "https://www.instagram.com/quantlab_uoft/"
-        ],
-        "instagram_usernames": [
-            "quantlab_uoft"
         ]
     }
 ]

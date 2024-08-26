@@ -9,15 +9,6 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-engineering-students-consulting-association/",
-        "instagram_links": [
-            "https://www.instagram.com/utesca/"
-        ],
-        "instagram_usernames": [
-            "utesca"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/emergency-first-responders/",
         "instagram_links": [
             "https://www.instagram.com/uoft_utefr/"
@@ -30,24 +21,6 @@
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-electronic-music-community-utemc/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-elite-student-union/",
-        "instagram_links": [
-            "https://www.instagram.com/uofteliteunion/"
-        ],
-        "instagram_usernames": [
-            "uofteliteunion"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-effective-altruism/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_ea/"
-        ],
-        "instagram_usernames": [
-            "uoft_ea"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-economics-club-econ/",
@@ -67,14 +40,5 @@
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-digital-currency-club/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-concrete-toboggan-team/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftbog/"
-        ],
-        "instagram_usernames": [
-            "uoftbog"
-        ]
     }
 ]

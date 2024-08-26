@@ -1,47 +1,11 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/the-quantitative-finance-club-qfc/",
-        "instagram_links": [
-            "https://www.instagram.com/quantfinance.uoft/"
-        ],
-        "instagram_usernames": [
-            "quantfinance.uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/the-ontario-public-interest-research-group-opirg-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/opirgtoronto/"
-        ],
-        "instagram_usernames": [
-            "opirgtoronto"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/the-neurogenesis-student-project/",
-        "instagram_links": [
-            "https://www.instagram.com/neurogenesisprojectutsg/"
-        ],
-        "instagram_usernames": [
-            "neurogenesisprojectutsg"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/the-nyantende-foundation-uoft-student-chapter/",
         "instagram_links": [
             "https://www.instagram.com/thenyantendefoundationuoft/"
         ],
         "instagram_usernames": [
             "thenyantendefoundationuoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/the-mindful-project/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftthemindfulproject/"
-        ],
-        "instagram_usernames": [
-            "uoftthemindfulproject"
         ]
     },
     {
@@ -55,30 +19,12 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/the-innis-herald/",
-        "instagram_links": [
-            "https://www.instagram.com/theinnisherald/"
-        ],
-        "instagram_usernames": [
-            "theinnisherald"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/the-material-merge/",
         "instagram_links": [
             "https://www.instagram.com/material_merge/"
         ],
         "instagram_usernames": [
             "material_merge"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/uoft-hope/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_hope/"
-        ],
-        "instagram_usernames": [
-            "uoft_hope"
         ]
     }
 ]

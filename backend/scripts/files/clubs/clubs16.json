@@ -39,26 +39,8 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/students-for-palestinian-human-rights/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftpalrights/"
-        ],
-        "instagram_usernames": [
-            "uoftpalrights"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/students-against-traficking-sat/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/students-for-life/",
-        "instagram_links": [
-            "https://www.instagram.com/utsfl"
-        ],
-        "instagram_usernames": [
-            "utsfl"
-        ]
     }
 ]
