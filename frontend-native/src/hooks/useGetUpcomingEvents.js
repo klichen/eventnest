@@ -7,7 +7,7 @@ const useGetUpcomingEvents = () => {
         setLoading(true);
 
         try {
-            const url = 'http://3.139.60.94:8000/upcoming'
+            const url = 'http://18.118.132.176:8000/upcoming'
             const response = await fetch(url, {
                 method: "GET",
                 headers: new Headers({

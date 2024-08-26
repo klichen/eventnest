@@ -71,7 +71,7 @@ const useGetSavedEvents = () => {
     const fetchSavedEvents = useCallback(async () => {
         setLoading(true);
         try {
-            const baseUrl = 'http://3.139.60.94:8000/events';
+            const baseUrl = 'http://18.118.132.176:8000/events';
             const url = new URL(baseUrl);
             savedEventIds.forEach(id => url.searchParams.append('event_id', id));
 

@@ -27,7 +27,9 @@
     "react-native-screens": "3.31.1",
     "react-native-vector-icons": "^10.1.0",
     "react-native-web": "~0.19.6",
-    "react-router-native": "^6.23.1"
+    "react-router-native": "^6.23.1",
+    "expo-updates": "~0.25.24",
+    "expo-build-properties": "~0.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
