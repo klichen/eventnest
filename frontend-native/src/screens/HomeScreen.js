@@ -89,6 +89,13 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.heading}>Explore</Text>
       <Text style={styles.subHeading}>Find events around campus!</Text>
+      <View
+        style={{
+          width: '100%',
+          borderBottomColor: '#d8d8d8',
+          borderBottomWidth: StyleSheet.hairlineWidth,
+        }}
+      />
       <ScrollView>
         <View style={styles.keywordContainer}>
           <FlatList
@@ -143,7 +150,7 @@ const HomeScreen = ({ navigation }) => {
             <LoadSkeleton height={85} width='90%' />
           </View>
           :
-          <ScrollView>
+          <ScrollView contentContainerStyle={{paddingBottom: 48}}>
             {!!todayEvents && todayEvents.map((item, index) => (
               <View key={index}>
                 <TodayEventCard
@@ -207,10 +214,11 @@ const styles = StyleSheet.create({
   subHeading: {
     alignSelf: 'flex-start',
     paddingLeft: 20,
+    paddingBottom: 8,
     fontSize: 14,
     fontWeight: 'normal',
     color: '#666',
-    marginTop: 5,
+    marginTop: 4,
   },
   keywordContainer: {
     width: '100%',
@@ -249,7 +257,8 @@ const styles = StyleSheet.create({
   todayEmptyState: {
     // alignSelf: 'center',
     paddingLeft: 20,
-    marginTop: 12
+    marginTop: 12,
+    paddingBottom: 96
   }
 });
 

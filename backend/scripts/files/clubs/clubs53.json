@@ -5,15 +5,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/sgi-uoft-buddhist-group/",
-        "instagram_links": [
-            "https://www.instagram.com/sgi_canada/"
-        ],
-        "instagram_usernames": [
-            "sgi_canada"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/sexual-education-centre/",
         "instagram_links": [
             "https://www.instagram.com/utsec/?hl=en"
@@ -28,30 +19,12 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/secondary-school-interactive-crisis-simulation/",
-        "instagram_links": [
-            "https://www.instagram.com/ssicsim/"
-        ],
-        "instagram_usernames": [
-            "ssicsim"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/screenwriting-at-victoria-college/",
         "instagram_links": [
             "https://www.instagram.com/vicscreenwriting/?hl=en"
         ],
         "instagram_usernames": [
             "vicscreenwriting"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/science-students-society-sss/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft.ssc"
-        ],
-        "instagram_usernames": [
-            "uoft.ssc"
         ]
     },
     {

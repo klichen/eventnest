@@ -1,35 +1,8 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/engineers-without-borders/",
-        "instagram_links": [
-            "https://www.instagram.com/ewbuoft/"
-        ],
-        "instagram_usernames": [
-            "ewbuoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/english-association/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/engineers-in-action/",
-        "instagram_links": [
-            "https://www.instagram.com/eia.uoft/"
-        ],
-        "instagram_usernames": [
-            "eia.uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/engineering-society-engsoc/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftengsoc/?hl=en"
-        ],
-        "instagram_usernames": [
-            "uoftengsoc"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/engineering-athletic-association-eaa/",
@@ -50,23 +23,5 @@
         "club_page": "https://sop.utoronto.ca/group/emmanuel-college-students-society/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/empowart-uoft/",
-        "instagram_links": [
-            "https://www.instagram.com/empowart.uoft/"
-        ],
-        "instagram_usernames": [
-            "empowart.uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/electrical-and-computer-engineering-graduate-students-society/",
-        "instagram_links": [
-            "https://www.instagram.com/ecegssofficial/"
-        ],
-        "instagram_usernames": [
-            "ecegssofficial"
-        ]
     }
 ]

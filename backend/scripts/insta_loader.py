@@ -4,6 +4,7 @@ import csv
 import json_fn
 import time
 import random
+from datetime import datetime
 
 
 
@@ -28,19 +29,24 @@ def write_posts_csv(rows):
 
 def load_posts(profile_name):
     L = instaloader.Instaloader()
-    #L.login("username", "password")
+    L.login("clubclubgogo", "fakepassword!")
 
     # Get the Profile instance
     try:
         profile = instaloader.Profile.from_username(L.context, profile_name)
     
         posts = []
-        
-        i = 0 # only read the 5 most recent posts
+        month_start = datetime.today().replace(day=1)
+        pinned_posts_buffer = 0
+
         for post in profile.get_posts():
-            if (i == 5):
-                break
-            i += 1
+            if post.date < month_start:
+                # allow for pinned posts to be skipped without skipping recently uploaded posts
+                if pinned_posts_buffer == 3:
+                    break
+                else:
+                    pinned_posts_buffer += 1
+                    continue
 
             # check if post has multiple images
             if post.mediacount > 1:
@@ -55,9 +61,12 @@ def load_posts(profile_name):
                         "date_posted": post.date, 
                         "image_urls": url, 
                         "caption": post.caption})
-            time.sleep(random.randint(1, 6))
+            time.sleep(random.randint(2,8))
+            
             # profile name|post id|date|image url|post caption
-
+        rand = random.randint(34, 125)
+        print("sleeping for ", rand, " seconds")
+        time.sleep(rand)
         return posts
     
     except instaloader.ProfileNotExistsException:

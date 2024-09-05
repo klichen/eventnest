@@ -1,32 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/cantonese-debate-club/",
-        "instagram_links": [
-            "https://www.instagram.com/ut_cdc/"
-        ],
-        "instagram_usernames": [
-            "ut_cdc"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/business-association/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftba/"
-        ],
-        "instagram_usernames": [
-            "uoftba"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-blockchain-group/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftbg/"
-        ],
-        "instagram_usernames": [
-            "uoftbg"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-business-ethics-club-uoft-bec/",
         "instagram_links": [
             "https://www.instagram.com/uoftbec/"
@@ -45,30 +18,12 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-buddhas-light-club/",
-        "instagram_links": [
-            "https://www.instagram.com/utblc/"
-        ],
-        "instagram_usernames": [
-            "utblc"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/biztech-association/",
         "instagram_links": [
             "https://www.instagram.com/uoftbiztech/"
         ],
         "instagram_usernames": [
             "uoftbiztech"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-biomedical-engineering-design-team/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftbiome/"
-        ],
-        "instagram_usernames": [
-            "uoftbiome"
         ]
     },
     {

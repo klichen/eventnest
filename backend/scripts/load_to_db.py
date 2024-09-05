@@ -273,7 +273,7 @@ def main():
     parse = input("filter(f)/upload(u)?:")
 
     if parse.startswith("f"):
-        posts = json_fn.read_json("files/chatgpt_posts/posts10_final_data.json")
+        posts = json_fn.read_json("files/chatgpt_posts/all_posts_final_data.json")
         clubs  = json_fn.read_json("files/club_all.json")
         process_posts(posts, clubs, 2)
         # note where the last parameter is the ith post output (will be labelled in file name)

@@ -1,38 +1,11 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/hong-kong-students-association-uthksa/",
-        "instagram_links": [
-            "https://www.instagram.com/uthksa/"
-        ],
-        "instagram_usernames": [
-            "uthksa"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-indonesian-student-association/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftisa/"
-        ],
-        "instagram_usernames": [
-            "uoftisa"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-international-genetically-engineered-machine-igem-toronto/",
         "instagram_links": [
             "https://www.instagram.com/igemtoronto/?hl=en"
         ],
         "instagram_usernames": [
             "igemtoronto"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-graduate-students-union-utgsu/",
-        "instagram_links": [
-            "https://www.instagram.com/utgsu/"
-        ],
-        "instagram_usernames": [
-            "utgsu"
         ]
     },
     {
@@ -59,26 +32,8 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-flutter-devs-organization-uoftfdo/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftflutterdevs/"
-        ],
-        "instagram_usernames": [
-            "uoftflutterdevs"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-fighting-game-community-uoft-fgc/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-flash-photography-club/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft.flash/"
-        ],
-        "instagram_usernames": [
-            "uoft.flash"
-        ]
     }
 ]

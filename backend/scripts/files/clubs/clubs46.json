@@ -1,14 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/toronto-university-basketball-club-tubc/",
-        "instagram_links": [
-            "https://www.instagram.com/tubctrt/"
-        ],
-        "instagram_usernames": [
-            "tubctrt"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/toronto-undergraduate-geography-society-tugs/",
         "instagram_links": [
             "https://www.instagram.com/tugs.uoft/?hl=en"
@@ -49,15 +40,6 @@
         ],
         "instagram_usernames": [
             "ysoc_uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/the-womens-network-twn/",
-        "instagram_links": [
-            "https://www.instagram.com/thewomensnetwork_toronto/"
-        ],
-        "instagram_usernames": [
-            "thewomensnetwork_toronto"
         ]
     },
     {

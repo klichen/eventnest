@@ -19,15 +19,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/canadian-association-of-latin-medical-students-at-the-university-of-toronto-calms-at-uoft/",
-        "instagram_links": [
-            "https://www.instagram.com/calms.uoft/"
-        ],
-        "instagram_usernames": [
-            "calms.uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/canadian-black-nurses-alliance-university-of-toronto/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -47,26 +38,8 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/by-people-in-toronto-byto/",
-        "instagram_links": [
-            "https://www.instagram.com/bypeopleintoronto/"
-        ],
-        "instagram_usernames": [
-            "bypeopleintoronto"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/campfire-club/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/cams-kids-university-of-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/camskids_8/"
-        ],
-        "instagram_usernames": [
-            "camskids_8"
-        ]
     }
 ]

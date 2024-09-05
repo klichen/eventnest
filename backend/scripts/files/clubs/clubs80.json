@@ -23,58 +23,13 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/bioinformatics-society-for-networking-and-collaboration-bio-sync/",
-        "instagram_links": [
-            "https://www.instagram.com/biosync.research/"
-        ],
-        "instagram_usernames": [
-            "biosync.research"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/bioinformatics-computational-biology-student-union-bcbsu/",
-        "instagram_links": [
-            "https://www.instagram.com/bcbsa.uoft/"
-        ],
-        "instagram_usernames": [
-            "bcbsa.uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/biochemistry-graduate-student-union/",
         "instagram_links": null,
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/biochemistry-undergraduate-students-society/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftbuss"
-        ],
-        "instagram_usernames": [
-            "uoftbuss"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/ask-an-undergrad-uoft-student-chapter/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/the-association-of-korean-canadian-scientists-and-engineers-akcse/",
-        "instagram_links": [
-            "https://www.instagram.com/akcse.uoft/"
-        ],
-        "instagram_usernames": [
-            "akcse.uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/architecture-and-visual-studies-students-union/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft.avssu/"
-        ],
-        "instagram_usernames": [
-            "uoft.avssu"
-        ]
     }
 ]

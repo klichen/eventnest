@@ -114,8 +114,6 @@ const useGetSavedEvents = () => {
     );
 
     useEffect(() => {
-        console.log(prevSavedEventIdsRef.current);
-        console.log(savedEventIds);
         if (savedEventIds.length > 0 && savedEventIds.length !== prevSavedEventIdsRef.current.length) {
             fetchSavedEvents();
             // fetchMockData();

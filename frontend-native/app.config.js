@@ -56,6 +56,9 @@ export default {
     },
     splash: {
       backgroundColor: "#ffffff"
-    }
+    },
+    ios: {
+      bundleIdentifier: "com.uoftevents"
+    },
   },
 };

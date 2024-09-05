@@ -1,23 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/asian-institute-migration-analysis-society/",
-        "instagram_links": [
-            "https://www.instagram.com/aimas_uoft?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-        ],
-        "instagram_usernames": [
-            "aimas_uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/asian-youth-culture-association/",
-        "instagram_links": [
-            "https://www.instagram.com/utsg_aya/"
-        ],
-        "instagram_usernames": [
-            "utsg_aya"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/asian-culture-association/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -28,15 +10,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/ascend-university-of-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/ascenduoft/"
-        ],
-        "instagram_usernames": [
-            "ascenduoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/architectural-studies-society/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -45,15 +18,6 @@
         "club_page": "https://sop.utoronto.ca/group/armenian-students-association-of-the-university-of-toronto/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/arab-students-association-asa/",
-        "instagram_links": [
-            "https://www.instagram.com/asa.utsg/"
-        ],
-        "instagram_usernames": [
-            "asa.utsg"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/appassionata-music-group/",
@@ -94,23 +58,5 @@
         "club_page": "https://sop.utoronto.ca/group/american-rock-mechanics-association-university-of-toronto-student-chapter/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/amnesty-international-university-of-toronto-chapter/",
-        "instagram_links": [
-            "https://www.instagram.com/amnestyuoft/"
-        ],
-        "instagram_usernames": [
-            "amnestyuoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/alpha-education-u-of-t-student-chapter/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_alpha/"
-        ],
-        "instagram_usernames": [
-            "uoft_alpha"
-        ]
     }
 ]

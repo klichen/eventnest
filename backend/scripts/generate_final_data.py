@@ -13,6 +13,16 @@ def extract_post_id():
     with open('data/post_ids.json', 'w') as file:
         json.dump(posts, file)
 
+def update_image_urls():
+    with open('files/posts/all_posts.json', 'r') as f:
+        posts = json.load(f)
+        for post in posts:
+            new_image_url = f"https://www.instagram.com/p/{post['post_id']}/media"
+            post['image_urls'] = [new_image_url]
+    
+    with open('files/posts/all_posts.json', 'w') as f:
+        json.dump(posts, f)
+
 def update_custom_id():
     id_list = []
     with open('data/post_ids.json') as f:
@@ -53,9 +63,9 @@ def create_base_data(info_file = 'data/posts.json'):
             
 
 
-def extract_content(postsStr = 'posts12'):
+def extract_content(postsStr = 'all_posts'):
     info_file = f'files/processed_posts/{postsStr}.json'
-    chatgpt_output_file = f'files/chatgpt_posts/{postsStr}_results.jsonl'
+    chatgpt_output_file = f'files/chatgpt_output_files/{postsStr}_results.jsonl'
     final_result_file = f'files/chatgpt_posts/{postsStr}_final_data.json'
     full_data = []
     base_data = create_base_data(info_file)
@@ -75,6 +85,7 @@ def extract_content(postsStr = 'posts12'):
         file.write(json.dumps(full_data, indent=4))
 
 
+# update_image_urls()
 extract_content()
 # create_base_data()
 # extract_post_id()

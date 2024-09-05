@@ -5,15 +5,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/students-for-vaccine-equity/",
-        "instagram_links": [
-            "https://www.instagram.com/studentsforvaccineequity/?hl=en"
-        ],
-        "instagram_usernames": [
-            "studentsforvaccineequity"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/speech-language-pathology-student-union-slpsu/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -57,24 +48,6 @@
         ],
         "instagram_usernames": [
             "uoftslugs"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/socialist-fightback-students/",
-        "instagram_links": [
-            "https://www.instagram.com/socialistfightback/?hl=en"
-        ],
-        "instagram_usernames": [
-            "socialistfightback"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/socialist-action/",
-        "instagram_links": [
-            "https://www.instagram.com/smash_uoft/"
-        ],
-        "instagram_usernames": [
-            "smash_uoft"
         ]
     }
 ]

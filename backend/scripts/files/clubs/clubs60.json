@@ -18,27 +18,9 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/medics-in-armenia-chapter-at-university-of-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/mia_uoft/"
-        ],
-        "instagram_usernames": [
-            "mia_uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/medical-society-medsoc/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/medical-sciences-student-union/",
-        "instagram_links": [
-            "https://www.instagram.com/mssu.ut/"
-        ],
-        "instagram_usernames": [
-            "mssu.ut"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/medical-radiation-sciences-society-mrss/",
@@ -54,23 +36,5 @@
         "club_page": "https://sop.utoronto.ca/group/mechanical-and-industrial-graduate-students/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/meal-care-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/mealcare_toronto"
-        ],
-        "instagram_usernames": [
-            "mealcare_toronto"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/life-science-career-development-society-lscds/",
-        "instagram_links": [
-            "https://www.instagram.com/lscdsuoft/"
-        ],
-        "instagram_usernames": [
-            "lscdsuoft"
-        ]
     }
 ]

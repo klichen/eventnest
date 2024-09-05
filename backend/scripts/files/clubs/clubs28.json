@@ -10,24 +10,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/vicky-eaters/",
-        "instagram_links": [
-            "https://www.instagram.com/vickyeaters/?hl=en"
-        ],
-        "instagram_usernames": [
-            "vickyeaters"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/vertige-investment-group/",
-        "instagram_links": [
-            "https://www.instagram.com/vertigeinvestmentgroup?igsh=MnQxeGppNG4ycXhi&utm_source=qr"
-        ],
-        "instagram_usernames": [
-            "vertigeinvestmentgroup"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/varsity-publications-inc/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -38,39 +20,12 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/varsity-blues-mock-trial-team/",
-        "instagram_links": [
-            "https://www.instagram.com/varsitybluesmocktrial/"
-        ],
-        "instagram_usernames": [
-            "varsitybluesmocktrial"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/utwind/",
         "instagram_links": [
             "https://www.instagram.com/utwindclub/"
         ],
         "instagram_usernames": [
             "utwindclub"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/tamil-students-association/",
-        "instagram_links": [
-            "https://www.instagram.com/utsgtsa/"
-        ],
-        "instagram_usernames": [
-            "utsgtsa"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/project-sunshine/",
-        "instagram_links": [
-            "https://www.instagram.com/utsgprojectsunshine/"
-        ],
-        "instagram_usernames": [
-            "utsgprojectsunshine"
         ]
     }
 ]

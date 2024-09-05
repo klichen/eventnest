@@ -9,7 +9,9 @@ def image_to_text(image_urls):
     image_texts = []
 
     for image_url in image_urls:
-        time.sleep(random.randint(1, 6))
+        rand = random.randint(1, 9)
+        print('sleeping for ', rand)
+        time.sleep(rand)
         response = requests.get(image_url)
         files = {'image': response.content}
         r = requests.post(api_url, files=files)
@@ -34,7 +36,7 @@ def process_posts(intput_filepath, output_filepath):
 
     json_fn.write_json(output_filepath, posts)
 
-    print("Completed processing " + intput_filepath  + " and outputted into " +output_filepath + "!")
+    print("Completed processing " + intput_filepath  + " and outputted into " + output_filepath + "!")
 
 
 def main():

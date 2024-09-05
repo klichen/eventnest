@@ -1,32 +1,372 @@
 [
     {
-        "date": "07-25-2023",
+        "date": "08-27-2023",
         "location": null,
-        "time": "11:59 PM",
-        "summary": "The Innis Residence Council (IRC) is hiring committee co-chairs for the GAME and Environmental committees. This opportunity allows residents to gain leadership experience while contributing to the community. The application deadline is July 25th at 11:59 PM, with interviews conducted on a rolling basis.",
-        "title": "Hiring Committee Co-Chairs for GAME and Environmental Committees",
-        "post_id": "C9K1H8CPU6T",
-        "username": "innisirc",
-        "date_posted": "2024-07-08T16:57:07"
-    },
-    {
-        "date": "06-04-2024",
-        "location": null,
-        "time": "11:59 PM",
-        "summary": "The Innis Residence Council (IRC) is hiring House Representatives for the upcoming school year. This is an opportunity for residents to gain leadership experience. Interested applicants can apply by scanning the QR code or visiting the IRC website. The application deadline is June 4th at 11:59 PM, with interviews conducted on a rolling basis.",
-        "title": "Hiring House Representatives at Innis Residence",
-        "post_id": "C7ZbnJhPYEC",
-        "username": "innisirc",
-        "date_posted": "2024-05-25T16:00:01"
+        "time": "6:30-8:30 PM",
+        "summary": "Join us for a free, hands-on bicycle maintenance workshop where participants will learn easy techniques for cleaning and maintaining their bikes. This interactive session will allow attendees to practice maintenance steps on their own bikes.",
+        "title": "Free Bicycle Maintenance Workshop",
+        "post_id": "C_KH7ihNAdn",
+        "username": "bikechainut",
+        "date_posted": "2024-08-27T03:25:00"
     },
     {
         "date": null,
-        "location": "UC257",
-        "time": "3:00 PM - 5:00 PM",
-        "summary": "The meeting times have been rescheduled to Friday afternoons.",
-        "title": "Rescheduled Meeting Announcement",
-        "post_id": "C3814fhvTVS",
-        "username": "inkling.writers.circle",
-        "date_posted": "2024-02-29T23:57:25"
+        "location": "Student Commons",
+        "time": "5pm - 9pm",
+        "summary": "Miniature Mondays is a weekly event where participants can play miniature war games, paint miniatures, and socialize. First-time attendees can build and paint a miniature for free, with supplies available for members and non-members.",
+        "title": "Miniature Mondays at Student Commons",
+        "post_id": "C_GN767PHp4",
+        "username": "torontotabletopgamingclub",
+        "date_posted": "2024-08-25T15:00:32"
+    },
+    {
+        "date": "08-30-2023",
+        "location": null,
+        "time": "1:00 PM - 4:00 PM",
+        "summary": "Join us at booth G59 during the Clubs Fair to meet the executive team, learn about our plans for the year, and register as a member. Engage with us and discover what we offer!",
+        "title": "Clubs Fair at UofT - Meet & Greet",
+        "post_id": "C_BLNhXPuxV",
+        "username": "torontotabletopgamingclub",
+        "date_posted": "2024-08-23T16:00:31"
+    },
+    {
+        "date": null,
+        "location": "Student Commons, University of Toronto",
+        "time": "6:30pm - 11pm",
+        "summary": "Join the University of Toronto Tabletop Gaming Club for a fun-filled General Game Night every Friday. Enjoy a variety of games including board games, RPGs, card games, and video games. Everyone is welcome, and attendees can bring their own games or consoles.",
+        "title": "General Game Night at University of Toronto",
+        "post_id": "C--tSoJJDjt",
+        "username": "torontotabletopgamingclub",
+        "date_posted": "2024-08-22T17:00:35"
+    },
+    {
+        "date": "09-29-2023",
+        "location": null,
+        "time": "7:30pm - 9:30pm",
+        "summary": "The GM101 event is designed for individuals interested in learning how to run a role-playing game (RPG). It is system neutral, making it applicable to any RPG system, and is aimed at those with limited experience. This event will take place during the General Game Night and will be a regular monthly feature starting in September.",
+        "title": "GM101: Introduction to Running RPGs",
+        "post_id": "C-24B3us_oL",
+        "username": "torontotabletopgamingclub",
+        "date_posted": "2024-08-19T16:00:29"
+    },
+    {
+        "date": null,
+        "location": "Student Commons, University of Toronto",
+        "time": "6:30pm - 11pm",
+        "summary": "Join the University of Toronto Tabletop Gaming Club for a fun-filled General Game Night every Friday. Enjoy a variety of games including board games, RPGs, card games, and video games. Everyone is welcome, and attendees can bring their own games or consoles.",
+        "title": "General Game Night at University of Toronto",
+        "post_id": "C-tHL2QPV2V",
+        "username": "torontotabletopgamingclub",
+        "date_posted": "2024-08-15T21:00:31"
+    },
+    {
+        "date": null,
+        "location": "Student Commons",
+        "time": "5pm - 9pm",
+        "summary": "Miniature Mondays is a weekly event where participants can play miniature war games, paint miniatures, and socialize. First-time attendees can build and paint a miniature for free, with supplies available for members and non-members.",
+        "title": "Miniature Mondays at Student Commons",
+        "post_id": "C-iRqdkCY52",
+        "username": "torontotabletopgamingclub",
+        "date_posted": "2024-08-11T16:00:27"
+    },
+    {
+        "date": "08-30-2023",
+        "location": null,
+        "time": "1:00 PM - 4:00 PM",
+        "summary": "The Clubs' Carnival is a free event where all students are invited to attend the Cheer-off and Club\u2019s Carnival. All club tables have been reserved, and the event is sold out for club participation.",
+        "title": "Clubs' Carnival Orientation",
+        "post_id": "C-u5zHeNb_u",
+        "username": "uoftsu",
+        "date_posted": "2024-08-16T13:42:03"
+    },
+    {
+        "date": "10-20-2023",
+        "location": null,
+        "time": "1:00 PM",
+        "summary": "The UTSU Annual General Meeting will take place on October 20th at 1 PM. Registration opens on September 20th and closes on October 15th. Attendees have a chance to win one of three $75 Amazon gift cards.",
+        "title": "UTSU Annual General Meeting",
+        "post_id": "C-YRF4OMgXt",
+        "username": "uoftsu",
+        "date_posted": "2024-08-07T18:43:03"
+    },
+    {
+        "date": "09-05-2023",
+        "location": null,
+        "time": "8:00 PM",
+        "summary": "The September AstroTour features a talk by PhD Candidate Dang Pham on comets, followed by astronomy demonstrations and telescope tours.",
+        "title": "September AstroTour: Exploring Comets",
+        "post_id": "C_BXoztuKoV",
+        "username": "uoftastrotours",
+        "date_posted": "2024-08-23T17:49:05"
+    },
+    {
+        "date": "09-10-2023",
+        "location": null,
+        "time": "11:59 PM",
+        "summary": "The Innis Residence Council (IRC) is hiring new members. This is an opportunity for Innis residents to engage with the community, develop leadership skills, and advocate for fellow residents. Interested individuals are encouraged to apply before the deadline on September 10th at 11:59 PM.",
+        "title": "Innis Residence Council Hiring Opportunity",
+        "post_id": "C_GsIUCvRMN",
+        "username": "innisirc",
+        "date_posted": "2024-08-25T19:24:21"
+    },
+    {
+        "date": "08-19-2024",
+        "location": null,
+        "time": "11:59 PM",
+        "summary": "The event is a recruitment drive for various positions including Directors of Sponsorship, Directors of Outreach and Events, and a First-Year Representative. The deadline for applications has been extended to August 19th, 2024, at 11:59 PM.",
+        "title": "Love146 Recruitment Drive - Deadline Extended",
+        "post_id": "C-d9LVmv14k",
+        "username": "ut146",
+        "date_posted": "2024-08-09T23:44:27"
+    },
+    {
+        "date": "08-16-2024",
+        "location": null,
+        "time": "23:59 EST",
+        "summary": "The OISE Graduate Student Research Conference (GSRC) is seeking at least three students to co-chair the event in 2025. Co-chairs will receive $500 each and are expected to have experience in organizing conferences. Interested candidates should submit their applications by August 16, 2024.",
+        "title": "Call for Co-Chairs: OISE Graduate Student Research Conference 2025",
+        "post_id": "C-bUN7lPV1i",
+        "username": "oisestudents",
+        "date_posted": "2024-08-08T23:08:04"
+    },
+    {
+        "date": "08-27-2023",
+        "location": null,
+        "time": "09:07",
+        "summary": "UDesign is hiring two project managers specializing in creative and product design. The role involves leading project and design teams, developing leadership skills, and managing complex projects. Applications are open until September 7th at 6:00 PM.",
+        "title": "Join the UDesign Team: Hiring Project Managers",
+        "post_id": "C_LXfQKRk10",
+        "username": "udesignstudio",
+        "date_posted": "2024-08-27T15:00:00"
+    },
+    {
+        "date": "08-25-2023",
+        "location": null,
+        "time": "18:00",
+        "summary": "UDesign is hiring new creative designers for their '24-'25 Brat Designer Era. Applications are open until August 25th at 6:00pm, providing an opportunity for creatives to connect, make an impact, and enhance their portfolios.",
+        "title": "Join UDesign's Creative Team for '24-'25!",
+        "post_id": "C-2qRYnvCeA",
+        "username": "udesignstudio",
+        "date_posted": "2024-08-19T14:00:00"
+    },
+    {
+        "date": "08-25-2023",
+        "location": null,
+        "time": "18:00",
+        "summary": "UDesign is hiring designers for their '24-'25 team, offering an opportunity for design enthusiasts to connect, make an impact, and enhance their portfolios. Applications close on August 25th at 6:00 PM.",
+        "title": "Join UDesign: Hiring Designers for '24-'25 Team",
+        "post_id": "C-sfcxYxVms",
+        "username": "udesignstudio",
+        "date_posted": "2024-08-15T15:13:18"
+    },
+    {
+        "date": "08-30-2023",
+        "location": "Front campus",
+        "time": null,
+        "summary": "Join us at the Clubs fair on Front campus where we will be at booth F29. It's a great opportunity to meet new and familiar faces!",
+        "title": "Clubs Fair at Front Campus",
+        "post_id": "C_CLwhlvq6G",
+        "username": "uoftnaginata",
+        "date_posted": "2024-08-24T01:24:32"
+    },
+    {
+        "date": "08-18-2024",
+        "location": null,
+        "time": "11:59 PM EST",
+        "summary": "UofT Blueprint is hiring project leads, product managers, and designers for the 2024-2025 school year. Interested candidates can apply through the provided link or website before the application deadline.",
+        "title": "UofT Blueprint Hiring for 2024-2025",
+        "post_id": "C-Q9_k6sHVk",
+        "username": "uoftblueprint",
+        "date_posted": "2024-08-04T22:41:28"
+    },
+    {
+        "date": "09-07-2024",
+        "location": "Seattle",
+        "time": null,
+        "summary": "The Yu-Gi-Oh! World Championship 2024 is a prestigious tournament for the Yu-Gi-Oh! Official and Trading Card Game, taking place in Seattle on September 7-8, 2024. This event will also feature the Duel Links and Master Duel World Championships, marking the first World Championship in North America since 2016.",
+        "title": "Yu-Gi-Oh! World Championship 2024",
+        "post_id": "C-rIjRGpw5e",
+        "username": "uoftcgc",
+        "date_posted": "2024-08-15T02:34:13"
+    },
+    {
+        "date": "08-16-2024",
+        "location": "Honolulu, Hawai\u02bbi",
+        "time": null,
+        "summary": "The 2024 Pok\u00e9mon World Championships will take place from August 16 to August 18 in Honolulu, Hawai\u02bbi. This prestigious event showcases the best Pok\u00e9mon players globally, competing for a prize pool exceeding 2 million dollars and the title of Pok\u00e9mon World Champion.",
+        "title": "2024 Pok\u00e9mon World Championships",
+        "post_id": "C-rGZTmpAc2",
+        "username": "uoftcgc",
+        "date_posted": "2024-08-15T02:15:24"
+    },
+    {
+        "date": null,
+        "location": "Casa Loma",
+        "time": "7:00 PM",
+        "summary": "Join us for a fun run along the iconic Casa Loma route, happening tomorrow evening!",
+        "title": "Evening Run at Casa Loma",
+        "post_id": "C-m_wGGRoly",
+        "username": "uoftrunclub",
+        "date_posted": "2024-08-13T12:00:00"
+    },
+    {
+        "date": "08-24-2023",
+        "location": null,
+        "time": "1:00 PM - 3:00 PM",
+        "summary": "Join us for a virtual re-run of the Beheaded Businessman murder mystery event, where participants will engage in solving the mystery.",
+        "title": "Virtual Beheaded Businessman Murder Mystery Event",
+        "post_id": "C-tSekIsxyE",
+        "username": "uoft_mysteryclub",
+        "date_posted": "2024-08-15T22:39:11"
+    },
+    {
+        "date": "10-06-2023",
+        "location": "SMC Clubs Fair, UofT",
+        "time": null,
+        "summary": "An information session booth about UofT Taekwondo will be held at the SMC Clubs Fair today and at the UTSU Clubs Fair this Friday, offering attendees a chance to learn about the club and participate in breaking boards.",
+        "title": "UofT Taekwondo Information Session Booth",
+        "post_id": "C_LQiA0RmQB",
+        "username": "uofttaekwondo",
+        "date_posted": "2024-08-27T13:59:24"
+    },
+    {
+        "date": "08-25-2024",
+        "location": null,
+        "time": "11:59 PM EST",
+        "summary": "The event is an opportunity for UofT students to apply for the Consulting Group Team Lead positions, where they can gain real-world experience in management consulting by leading teams to solve problems for startups and nonprofits.",
+        "title": "UofT Consulting Group Team Lead Applications Open",
+        "post_id": "C-0ss4FMACI",
+        "username": "utca.news",
+        "date_posted": "2024-08-18T19:43:01"
+    },
+    {
+        "date": "08-08-2024",
+        "location": null,
+        "time": "7:00 - 8:30 pm",
+        "summary": "The Summer Firm Series, hosted by UTCA, is an annual event connecting industry leaders with emerging talent in consulting. This event features panel discussions and networking sessions, focusing on opportunities at top consulting firms, particularly EY Parthenon. Attendees will gain insights into internships, full-time positions, and valuable application tips.",
+        "title": "Summer Firm Series: Consulting Careers with EY Parthenon",
+        "post_id": "C-QZeYkv5S7",
+        "username": "utca.news",
+        "date_posted": "2024-08-04T17:22:21"
+    },
+    {
+        "date": "08-10-2024",
+        "location": null,
+        "time": "11:59 PM EST",
+        "summary": "The application deadline for becoming a Robonars Associate has been extended to August 10th, 2024. This role offers an opportunity to engage in event organization and networking within the robotics community.",
+        "title": "Extended Application Deadline for Robonars Associate",
+        "post_id": "C-LBpNOTepW",
+        "username": "utra_uoft",
+        "date_posted": "2024-08-02T15:17:55"
+    },
+    {
+        "date": "08-16-2023",
+        "location": null,
+        "time": "11:59 PM EST",
+        "summary": "This event is a call for applications for project proposals, where team leads can form and lead their own project teams, collaborate with developers, and present their projects at UTMIST showcase events throughout the year. The deadline for applications is August 16th at 11:59 PM EST.",
+        "title": "Final Call for Project Proposals - Applications Due August 16th",
+        "post_id": "C-tltLavVJu",
+        "username": "uoft_utmist",
+        "date_posted": "2024-08-16T01:27:13"
+    },
+    {
+        "date": "08-05-2024",
+        "location": null,
+        "time": "11:59 PM EST",
+        "summary": "Applications for the 2024-2025 Associates & Directors positions are due on August 5th at 11:59 PM EST. Various roles are available across different departments, and applications will be reviewed on a rolling basis.",
+        "title": "2024-2025 Associates & Directors Application Deadline",
+        "post_id": "C-QtEHzvXRF",
+        "username": "uoft_utmist",
+        "date_posted": "2024-08-04T20:13:32"
+    },
+    {
+        "date": "08-31-2023",
+        "location": null,
+        "time": "11:59 PM",
+        "summary": "UofT BEES is looking for a new events coordinator and is accepting applications until August 31st at 11:59 PM.",
+        "title": "Hiring Event for Events Coordinator",
+        "post_id": "C-3sq6EPuM3",
+        "username": "uoftbees",
+        "date_posted": "2024-08-19T23:40:28"
+    },
+    {
+        "date": "09-06-2024",
+        "location": null,
+        "time": "11:59 PM",
+        "summary": "Veg Club is hiring for its 2024-25 Executive Team, seeking a Vice President and 2-3 Communications/Social Media Executives. Applications are due by September 6 at 11:59 PM.",
+        "title": "Veg Club Executive Team Hiring",
+        "post_id": "C-x_keQyUDn",
+        "username": "vegclubuoft",
+        "date_posted": "2024-08-17T18:30:10"
+    },
+    {
+        "date": "08-31-2024",
+        "location": null,
+        "time": "11:59 PM",
+        "summary": "The organization is announcing that they are hiring for the 2024-2025 academic year and encouraging applicants to apply before the deadline.",
+        "title": "Hiring Announcement for 2024-2025 Academic Year",
+        "post_id": "C-4HFwIR8Mg",
+        "username": "uoftsosa",
+        "date_posted": "2024-08-20T03:31:20"
+    },
+    {
+        "date": "08-11-2023",
+        "location": null,
+        "time": "11:59 PM ET",
+        "summary": "The Skule Nite 2T5 team is inviting applications for executive and marketing roles. Interested individuals can apply through the provided link, with the deadline set for August 11th at 11:59 PM ET.",
+        "title": "Join the Skule Nite 2T5 Team - Applications Open!",
+        "post_id": "C-VDd0jJSIy",
+        "username": "skulenite",
+        "date_posted": "2024-08-06T12:46:15"
+    },
+    {
+        "date": "08-27-2023",
+        "location": "MP 102",
+        "time": null,
+        "summary": "Join Professor Erica Rosenblum for a talk on her research regarding the Earth's cryosphere and oceans, along with insights into her academic journey. The event will also provide information about UofT's EAPP group and the diverse physical systems studied in Physics, followed by refreshments in the PhySU lounge.",
+        "title": "PhySU Prof Talk: Research on Earth's Cryosphere and Oceans",
+        "post_id": "C_KHfBOs0dB",
+        "username": "physu",
+        "date_posted": "2024-08-27T03:21:57"
+    },
+    {
+        "date": null,
+        "location": "Kings College Circle",
+        "time": "1-4pm",
+        "summary": "The UTSU Club Fair is an event organized by the University of Toronto Students\u2019 Union, showcasing a variety of clubs and organizations at U of T. OLAS will have a booth (D43) at the fair.",
+        "title": "UTSU Club Fair Featuring OLAS",
+        "post_id": "C_HD_QkPl6c",
+        "username": "olasstgeorge",
+        "date_posted": "2024-08-25T22:52:50"
+    },
+    {
+        "date": "08-28-2023",
+        "location": null,
+        "time": "4:00 PM - 7:00 PM",
+        "summary": "The OLAS organization is hosting a New College Fair to welcome new students and introduce them to the team and activities.",
+        "title": "New College Fair by OLAS",
+        "post_id": "C_G86v0vIDK",
+        "username": "olasstgeorge",
+        "date_posted": "2024-08-25T21:51:03"
+    },
+    {
+        "date": "09-13-2024",
+        "location": "Downtown Toronto",
+        "time": null,
+        "summary": "LatinXcellence 2024 is an event aimed at bringing together students and young professionals from the Latino community for a day filled with interactive workshops, networking opportunities, and inspiration, celebrating the excellence and diversity of the community.",
+        "title": "LatinXcellence 2024: Celebrating Latino Excellence",
+        "post_id": "C--8cfxvRK0",
+        "username": "olasstgeorge",
+        "date_posted": "2024-08-22T19:13:00"
+    },
+    {
+        "date": "09-29-2024",
+        "location": null,
+        "time": "11:59 PM",
+        "summary": "MusicBox UofT is seeking volunteers for the 2024-2025 year to teach music to marginalized children. The application deadline is September 29th, 2024, at 11:59 PM. Volunteers will receive training and can earn CCR certification.",
+        "title": "Volunteer Opportunity: MusicBox UofT Music Teacher Applications Open",
+        "post_id": "C_IwJ8KReSs",
+        "username": "MusicBox_UofT",
+        "date_posted": "2024-08-26T14:38:01"
     }
 ]

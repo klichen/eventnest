@@ -1,14 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/uoft-ml-wealth-management-club/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftwm/"
-        ],
-        "instagram_usernames": [
-            "uoftwm"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/uoft-golf-club-utgc/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -33,36 +24,9 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/uoft-ebenezer/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_ebenezer/"
-        ],
-        "instagram_usernames": [
-            "uoft_ebenezer"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/eritrean-and-ethiopian-students-association/",
-        "instagram_links": [
-            "https://www.instagram.com/eesa_uoft/"
-        ],
-        "instagram_usernames": [
-            "eesa_uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/uoft-formula-1-enthusiast-club-uoft-f1/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/drama-coalition-utdc/",
-        "instagram_links": [
-            "https://www.instagram.com/utdramacoalition/"
-        ],
-        "instagram_usernames": [
-            "utdramacoalition"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/uoft-dentistry-beyond-borders-uoftdbb/",

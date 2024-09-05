@@ -5,24 +5,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-students-for-liberty/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftsfl"
-        ],
-        "instagram_usernames": [
-            "uoftsfl"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-students-for-a-free-iran/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_sfi/"
-        ],
-        "instagram_usernames": [
-            "uoft_sfi"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-consulting-association/",
         "instagram_links": [
             "https://www.instagram.com/utca.news/"
@@ -55,30 +37,12 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/coalition-fund/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftcf/?igshid=ZDdkNTZiNTM%3D"
-        ],
-        "instagram_usernames": [
-            "uoftcf"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/anime-and-manga-association/",
         "instagram_links": [
             "https://www.instagram.com/ut.anime/"
         ],
         "instagram_usernames": [
             "ut.anime"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/ski-and-snowboard-club/",
-        "instagram_links": [
-            "https://www.instagram.com/utssc/"
-        ],
-        "instagram_usernames": [
-            "utssc"
         ]
     }
 ]

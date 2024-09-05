@@ -35,26 +35,8 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/graduate-business-council-gbc/",
-        "instagram_links": [
-            "https://www.instagram.com/rotmangbc/"
-        ],
-        "instagram_usernames": [
-            "rotmangbc"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/graduate-architecture-landscape-design-student-union-galdsu/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/got7-uoft-fanclub/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftahgases/"
-        ],
-        "instagram_usernames": [
-            "uoftahgases"
-        ]
     }
 ]

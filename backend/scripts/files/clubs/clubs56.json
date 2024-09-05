@@ -1,35 +1,8 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/peace-and-conflict-society/",
-        "instagram_links": [
-            "https://www.instagram.com/pcjsociety_uoft/"
-        ],
-        "instagram_usernames": [
-            "pcjsociety_uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/paws-for-thoughts/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/paw-pals-rescue-club-pprc/",
-        "instagram_links": [
-            "https://www.instagram.com/pprc_pawpals/"
-        ],
-        "instagram_usernames": [
-            "pprc_pawpals"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/pakistan-students-federation-psf-2/",
-        "instagram_links": [
-            "https://www.instagram.com/psfuoft/"
-        ],
-        "instagram_usernames": [
-            "psfuoft"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/pair-a-dice-gaming/",
@@ -46,39 +19,12 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/osot-student-association/",
-        "instagram_links": [
-            "https://www.instagram.com/otstudentlifeuoft/?hl=en"
-        ],
-        "instagram_usernames": [
-            "otstudentlifeuoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/orthodox-christian-student-association-ocsa/",
-        "instagram_links": [
-            "https://www.instagram.com/ocsatoronto/"
-        ],
-        "instagram_usernames": [
-            "ocsatoronto"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/organization-of-latin-american-students-olas/",
         "instagram_links": [
             "https://www.instagram.com/olasstgeorge/"
         ],
         "instagram_usernames": [
             "olasstgeorge"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/opendh-u-of-t/",
-        "instagram_links": [
-            "https://www.instagram.com/opendh.uoft/"
-        ],
-        "instagram_usernames": [
-            "opendh.uoft"
         ]
     }
 ]

@@ -1,5 +1,5 @@
 from openai import OpenAI
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import os
 import json
 import time
@@ -118,7 +118,7 @@ class OpenAIBatchProcessor:
         
         return batch_job
     
-    def check_status_retrieve(self, batch_job, batch_file_name):
+    def check_status_retrieve(self, batch_job, batch_file_name = ''):
         cur_batch_job = batch_job
         while cur_batch_job.status not in ["completed", "failed", "cancelled"]:
             time.sleep(5)  # Wait for 30 seconds before checking the status again
@@ -130,8 +130,9 @@ class OpenAIBatchProcessor:
             result_file_id = cur_batch_job.output_file_id
             result = self.client.files.content(result_file_id).content
 
-            batch_name = batch_file_name.split('_')[-1].replace('.jsonl', '')
-            result_file_name = f'files/chatgpt_output_files/{batch_name}_results.jsonl'
+            # batch_name = batch_file_name.split('_')[-1].replace('.jsonl', '')
+
+            result_file_name = f'files/chatgpt_output_files/all_posts_results.jsonl'
 
             with open(result_file_name, 'wb') as file:
                 file.write(result)
@@ -157,20 +158,22 @@ class OpenAIBatchProcessor:
         
 
 # get API key and start openai client
-load_dotenv()
+load_dotenv(find_dotenv())
 openai_api_key = os.getenv("OPENAI_API_KEY")
 # client = OpenAI(api_key=openai_api_key)
 
-processor = OpenAIBatchProcessor(openai_api_key)
+processor = OpenAIBatchProcessor(api_key=openai_api_key)
 
 # change name to corresponding processed post json file
-# batch_file_name = processor.create_input_file('files/processed_posts/posts12.json')
+# batch_file_name = processor.create_input_file('files/processed_posts/all_posts.json')
+
+# batch_file_name = 'files/chatgpt_input_files/batch_input_all_posts.jsonl'
 # batch_file = processor.upload_input_file(batch_file_name)
 # batch_job = processor.create_batch_job(batch_file)
 
 
-# batch_job = processor.get_batch_job('batch_gT1hnSxwcviHv45BPrGAbD7a')
-# processor.check_status_retrieve(batch_job, batch_file_name)
+batch_job = processor.get_batch_job('batch_HV4ChQpM4zPEIClwW8PANdGn')
+processor.check_status_retrieve(batch_job)
 
 # ---------------------------------------------------------
 # download batch result file using batch_id

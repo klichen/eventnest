@@ -5,15 +5,6 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-ethical-principles-in-ai-student-group/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_tmi/"
-        ],
-        "instagram_usernames": [
-            "uoft_tmi"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-trading-card-game-club-uoftcgc/",
         "instagram_links": [
             "https://www.instagram.com/uoftcgc/"
@@ -35,24 +26,6 @@
         "club_page": "https://sop.utoronto.ca/group/vote-from-abroad-club/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/volunteers-connect/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_volunteers_connect/"
-        ],
-        "instagram_usernames": [
-            "uoft_volunteers_connect"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/volunteer-organization-of-korean-life-science-students-vokls/",
-        "instagram_links": [
-            "https://www.instagram.com/voklsuoft/"
-        ],
-        "instagram_usernames": [
-            "voklsuoft"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/volunteer-interpretation-service-for-north-and-south-koreans-in-toronto/",

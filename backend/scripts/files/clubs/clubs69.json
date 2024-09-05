@@ -1,44 +1,8 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/google-developer-student-club-university-of-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/gdscutsg/"
-        ],
-        "instagram_usernames": [
-            "gdscutsg"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/graduate-association-of-students-in-physiology/",
-        "instagram_links": [
-            "https://www.instagram.com/uoft_gasp/?hl=en"
-        ],
-        "instagram_usernames": [
-            "uoft_gasp"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/global-spark-uoft/",
-        "instagram_links": [
-            "https://www.instagram.com/global.spark/"
-        ],
-        "instagram_usernames": [
-            "global.spark"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/global-educators-leadership-forum-utgelf/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/global-research-and-consulting-group-toronto-grc-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/grctoronto/?hl=en"
-        ],
-        "instagram_usernames": [
-            "grctoronto"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/global-link-for-university-exchange/",
@@ -47,42 +11,6 @@
         ],
         "instagram_usernames": [
             "uoft_glue"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/georgian-students-association/",
-        "instagram_links": [
-            "https://www.instagram.com/gsauoft/"
-        ],
-        "instagram_usernames": [
-            "gsauoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/global-medical-missions-alliance/",
-        "instagram_links": [
-            "https://www.instagram.com/gmma.toronto/"
-        ],
-        "instagram_usernames": [
-            "gmma.toronto"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/global-health-students-association-glohsa/",
-        "instagram_links": [
-            "https://www.instagram.com/glohsa/"
-        ],
-        "instagram_usernames": [
-            "glohsa"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/glamour-gals-university-of-toronto-chapter-gguoft/",
-        "instagram_links": [
-            "https://www.instagram.com/glamourgals.uoft"
-        ],
-        "instagram_usernames": [
-            "glamourgals.uoft"
         ]
     }
 ]

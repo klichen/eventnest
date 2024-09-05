@@ -1,14 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/university-college-literary-athletic-society-uclit/",
-        "instagram_links": [
-            "https://www.instagram.com/uclit_uoft/?hl=en"
-        ],
-        "instagram_usernames": [
-            "uclit_uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-college-residence-council-ucrc/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -24,27 +15,9 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-college-dragon-boat-club-ucdbc/",
-        "instagram_links": [
-            "https://www.instagram.com/ucdragonboat"
-        ],
-        "instagram_usernames": [
-            "ucdragonboat"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/frontier-college-literacy-at-uoft-st-george/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/unireach-global-urg/",
-        "instagram_links": [
-            "https://www.instagram.com/unireach_global/"
-        ],
-        "instagram_usernames": [
-            "unireach_global"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/u-of-t-grappling-club/",

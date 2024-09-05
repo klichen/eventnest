@@ -1,14 +1,5 @@
 [
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-fashion-collective/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftfashioncollective/"
-        ],
-        "instagram_usernames": [
-            "uoftfashioncollective"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-fanfiction-club-utffc/",
         "instagram_links": [
             "https://www.instagram.com/uoftfanfictionclub/"
@@ -27,45 +18,9 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-esports-2/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftesports"
-        ],
-        "instagram_usernames": [
-            "uoftesports"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-environmental-action/",
-        "instagram_links": [
-            "https://www.instagram.com/uteatoronto/"
-        ],
-        "instagram_usernames": [
-            "uteatoronto"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-chinese-finance-and-economics-association-utcfea/",
         "instagram_links": null,
         "instagram_usernames": null
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/chinese-catholic-community-utccc/",
-        "instagram_links": [
-            "https://www.instagram.com/utchinesecatholic/?utm_medium=copy_link"
-        ],
-        "instagram_usernames": [
-            "utchinesecatholic"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/university-of-toronto-cast-iron-cooking-organization-uoft-cico/",
-        "instagram_links": [
-            "https://www.instagram.com/uoftcastiron"
-        ],
-        "instagram_usernames": [
-            "uoftcastiron"
-        ]
     },
     {
         "club_page": "https://sop.utoronto.ca/group/university-of-toronto-campus-network/",
