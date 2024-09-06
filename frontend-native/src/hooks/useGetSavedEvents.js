@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { getAllEventIds } from '../utils/AsyncStorage';
 import { useFocusEffect } from '@react-navigation/native';
+import { arraysAreEqual } from '../utils/helperFunctions';
 
 const useGetSavedEvents = () => {
     const [savedEvents, setSavedEvents] = useState();
@@ -71,15 +72,12 @@ const useGetSavedEvents = () => {
     const fetchSavedEvents = useCallback(async () => {
         setLoading(true);
         try {
-            const baseUrl = 'http://18.118.132.176:8000/events';
+            const baseUrl = 'https://clubclubgo.website/events';
             const url = new URL(baseUrl);
             savedEventIds.forEach(id => url.searchParams.append('event_id', id));
 
             const response = await fetch(url, {
                 method: "GET",
-                headers: new Headers({
-                    "ngrok-skip-browser-warning": "25"
-                })
             });
             const json = await response.json();
             // console.log(json);
@@ -114,10 +112,17 @@ const useGetSavedEvents = () => {
     );
 
     useEffect(() => {
-        if (savedEventIds.length > 0 && savedEventIds.length !== prevSavedEventIdsRef.current.length) {
+        // if (savedEventIds.length > 0 && savedEventIds.length !== prevSavedEventIdsRef.current.length) {
+        if (savedEventIds.length > 0 && !arraysAreEqual(savedEventIds, prevSavedEventIdsRef.current)) {
             fetchSavedEvents();
             // fetchMockData();
         }
+        else if (savedEventIds.length === 0) {
+            setSavedEvents([]);
+        }
+        // else if (savedEventIds.length === 1) {
+        //     fetchSavedEvents();
+        // }
     }, [savedEventIds]);
 
 

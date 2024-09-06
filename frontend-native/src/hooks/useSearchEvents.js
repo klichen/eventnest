@@ -20,7 +20,7 @@ const useSearchEvents = () => {
     const fetchSearchedEvents = useCallback(async ({ startDate = null, endDate = null, searchString = null }) => {
         setSearchLoading(true);
         try {
-            const baseUrl = 'http://18.118.132.176:8000/search';
+            const baseUrl = 'https://clubclubgo.website/search';
             const params = new URLSearchParams();
             if (startDate) {
                 params.append('start_date', formatDate(startDate))
@@ -36,9 +36,6 @@ const useSearchEvents = () => {
 
             const response = await fetch(url, {
                 method: "GET",
-                headers: new Headers({
-                    "ngrok-skip-browser-warning": "25"
-                })
             });
             const json = await response.json();
             // console.log(json);
@@ -55,7 +52,7 @@ const useSearchEvents = () => {
     const fetchSearchedEventsByCategory = useCallback(async ({ searchString = null, startDate = null, endDate = null }) => {
         setSearchLoading(true);
         try {
-            const baseUrl = 'http://18.118.132.176:8000/category';
+            const baseUrl = 'https://clubclubgo.website/category';
             const params = new URLSearchParams();
             if (startDate) {
                 params.append('start_date', formatDate(startDate))
@@ -70,9 +67,6 @@ const useSearchEvents = () => {
 
             const response = await fetch(url, {
                 method: "GET",
-                headers: new Headers({
-                    "ngrok-skip-browser-warning": "25"
-                })
             });
             const json = await response.json();
             // console.log(json);

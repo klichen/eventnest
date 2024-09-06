@@ -1,6 +1,6 @@
 export default {
-  name: "frontend-native",
-  slug: "frontend-native",
+  name: "EventNest",
+  slug: "event-nest",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -14,7 +14,7 @@ export default {
     "**/*"
   ],
   ios: {
-    "supportsTablet": true
+    "supportsTablet": false
   },
   android: {
     adaptiveIcon: {
@@ -52,13 +52,16 @@ export default {
     },
     android: {
       package: "com.clubclubgo.eventnest",
-      versionCode: 1
+      versionCode: 2
     },
     splash: {
       backgroundColor: "#ffffff"
     },
     ios: {
-      bundleIdentifier: "com.uoftevents"
+      bundleIdentifier: "com.uoftevents",
+      config: {
+        usesNonExemptEncryption: false
+      }
     },
   },
 };

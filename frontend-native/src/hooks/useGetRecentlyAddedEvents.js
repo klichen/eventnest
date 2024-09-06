@@ -7,12 +7,9 @@ const useGetRecentlyAddedEvents = () => {
         setLoading(true);
 
         try {
-            const url = 'http://18.118.132.176:8000/new'
+            const url = 'https://clubclubgo.website/new'
             const response = await fetch(url, {
                 method: "GET",
-                headers: new Headers({
-                    "ngrok-skip-browser-warning": "25"
-                })
             });
             const json = await response.json();
 

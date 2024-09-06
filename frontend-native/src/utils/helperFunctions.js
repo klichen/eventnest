@@ -5,3 +5,18 @@ export function parseISOString(s) {
     const estDate = new Date(utcDate.getTime() + (4 * 60 * 60 * 1000));
     return estDate;
 }
+
+export function arraysAreEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length) return false;
+
+    // Sort and compare each element
+    const sortedArr1 = [...arr1].sort();
+    const sortedArr2 = [...arr2].sort();
+
+    for (let i = 0; i < sortedArr1.length; i++) {
+        if (sortedArr1[i] !== sortedArr2[i]) {
+            return false;
+        }
+    }
+    return true;
+}

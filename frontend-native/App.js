@@ -82,7 +82,7 @@ const App = () => {
           <Tab.Screen name={savedEventsStack} component={SavedEventsStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </>
   );
 };

@@ -31,7 +31,8 @@ export const removeEventId = async (id) => {
 export const getAllEventIds = async () => {
     let ids = []
     try {
-        ids = await AsyncStorage.getAllKeys()
+        ids = await AsyncStorage.getAllKeys();
+        // await AsyncStorage.removeItem('event5');
         // console.log(ids)
         return ids.map((id) => id.replace('event', ''));
     }
