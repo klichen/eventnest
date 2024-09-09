@@ -29,6 +29,7 @@ export default {
     env: process.env.ENV,
   },
   expo: {
+    icon: "./assets/icon.png",
     extra: {
       eas: {
         projectId: "966c2759-0bfa-4500-b97f-5187b4ae95e0"
@@ -52,7 +53,7 @@ export default {
     },
     android: {
       package: "com.clubclubgo.eventnest",
-      versionCode: 2
+      versionCode: 3
     },
     splash: {
       backgroundColor: "#ffffff"
@@ -61,7 +62,8 @@ export default {
       bundleIdentifier: "com.uoftevents",
       config: {
         usesNonExemptEncryption: false
-      }
+      },
+      icon: "./assets/icon.png"
     },
   },
 };

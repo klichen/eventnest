@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 10.2.4"
+    "version": ">= 10.2.4",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
@@ -20,7 +21,9 @@
         "buildType": "app-bundle"
       }
     },
-    "production": {}
+    "production": {
+      "autoIncrement": true
+    }
   },
   "submit": {
     "production": {}
