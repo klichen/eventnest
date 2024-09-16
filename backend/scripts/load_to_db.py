@@ -248,7 +248,7 @@ def showTable():
     cursor.execute("""SELECT * FROM clubclubgo_event;""")
     myresult = cursor.fetchall()
     
-    f = open("files/inDB.txt", "w")
+    f = open("files/inDB.txt", "w", encoding='utf8')
 
     for x in myresult:
         f.write(''.join(str(x)))
@@ -279,7 +279,7 @@ def main():
         # note where the last parameter is the ith post output (will be labelled in file name)
 
     elif parse.startswith("u"): 
-        events  = json_fn.read_json("/files/event_posts/filtered_posts00.json")
+        events  = json_fn.read_json("files/event_posts/filtered_posts2.json")
         load_events_to_db(events)
         showTable()
     else:

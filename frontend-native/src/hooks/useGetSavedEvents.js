@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { getAllEventIds } from '../utils/AsyncStorage';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -6,6 +6,7 @@ const useGetSavedEvents = () => {
     const [savedEvents, setSavedEvents] = useState();
     const [loading, setLoading] = useState(false);
     const [savedEventIds, setSavedEventIds] = useState([]);
+    const prevSavedEventIdsRef = useRef([]);
 
     // const mockData = [
     //     {
@@ -70,7 +71,7 @@ const useGetSavedEvents = () => {
     const fetchSavedEvents = useCallback(async () => {
         setLoading(true);
         try {
-            const baseUrl = 'https://2b6a-138-51-83-137.ngrok-free.app/events';
+            const baseUrl = 'http://3.139.60.94:8000/events';
             const url = new URL(baseUrl);
             savedEventIds.forEach(id => url.searchParams.append('event_id', id));
 
@@ -81,11 +82,12 @@ const useGetSavedEvents = () => {
                 })
             });
             const json = await response.json();
-            console.log(json);
+            // console.log(json);
             const data = reformatData(json);
-            console.log(data);
+            // console.log(data);
             setLoading(false);
             setSavedEvents(data);
+            prevSavedEventIdsRef.current = savedEventIds;
         } catch (error) {
             console.error(error.message);
             setLoading(false);
@@ -112,11 +114,13 @@ const useGetSavedEvents = () => {
     );
 
     useEffect(() => {
-        if (savedEventIds.length > 0) {
+        console.log(prevSavedEventIdsRef.current);
+        console.log(savedEventIds);
+        if (savedEventIds.length > 0 && savedEventIds.length !== prevSavedEventIdsRef.current.length) {
             fetchSavedEvents();
             // fetchMockData();
         }
-    }, [savedEventIds, fetchSavedEvents]);
+    }, [savedEventIds]);
 
 
     return { savedEvents, setSavedEvents, loading, refetch: fetchSavedEvents };

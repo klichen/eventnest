@@ -58,9 +58,9 @@ def getUpcomingEvents(request):
         current_date_time = datetime.now(eastern)
         in_a_year_date_time = datetime.now(eastern) + relativedelta(years=1)
 
-        print("current datetime:", current_date_time)
-        print("in_a_year_date_time:", in_a_year_date_time)
-        print(list(queryset)[0].start_datetime < current_date_time)
+        # print("current datetime:", current_date_time)
+        # print("in_a_year_date_time:", in_a_year_date_time)
+        # print(list(queryset)[0].start_datetime < current_date_time)
         queryset = queryset.filter(start_datetime__range=(current_date_time, in_a_year_date_time))
 
         #  perhaps we need pagination .. ?
@@ -77,9 +77,9 @@ def getRecentlyUpdatedEvents(request):
         current_date_time = datetime.now(eastern)
         in_a_year_date_time = datetime.now(eastern) + relativedelta(years=1)
 
-        print("current datetime:", current_date_time)
-        print("in_a_year_date_time:", in_a_year_date_time)
-        print(list(queryset)[0].start_datetime < current_date_time)
+        # print("current datetime:", current_date_time)
+        # print("in_a_year_date_time:", in_a_year_date_time)
+        # print(list(queryset)[0].start_datetime < current_date_time)
         queryset = queryset.filter(start_datetime__range=(current_date_time, in_a_year_date_time))
         querylst = list(queryset)
         if len(querylst) < 15:
@@ -96,7 +96,7 @@ def getRecentlyUpdatedEvents(request):
 def getEvents(request):
     if request.method == "GET":
         event_ids = request.GET.getlist("event_id")
-        print(event_ids)
+        # print(event_ids)
         events = []
         for event_id in event_ids:
             events.append(Event.objects.get(id=event_id))
@@ -127,19 +127,19 @@ def searchEvents(request):
         queryset = Event.objects.all().order_by('start_datetime')
         club_queryset = Club.objects.all()
 
-        print("DATE!!! ")
+        # print("DATE!!! ")
         start_date_str = request.GET.get("start_date", datetime.today().strftime('%m-%d-%Y'))
-        print(start_date_str)
+        # print(start_date_str)
         end_date_str = request.GET.get("end_date", (datetime.today() + relativedelta(years=1)).strftime('%m-%d-%Y'))
-        print(end_date_str)
+        # print(end_date_str)
 
         
         start_date = datetime.strptime(start_date_str, '%m-%d-%Y')
         end_date = datetime.strptime(end_date_str + " 23:59", '%m-%d-%Y %H:%M')
         
 
-        print("current start_date:", start_date)
-        print("end_date:", end_date)
+        # print("current start_date:", start_date)
+        # print("end_date:", end_date)
 
         # date_search = Q(start_datetime__range=(request.body["start_date"], request.body["end_date"]))
         date_search = Q(start_datetime__range=(start_date, end_date))
@@ -147,7 +147,7 @@ def searchEvents(request):
 
         searchString = request.GET.get("search", "")
         searchStrs = searchString.split(" ") 
-        print(searchStrs)
+        # print(searchStrs)
         event_vals  = {}
         
         title_search = Q(title__icontains=searchString)
@@ -155,10 +155,10 @@ def searchEvents(request):
         club_search = Q(name__icontains=searchString)
         
         events_queryset = queryset.filter(title_search | descr_search )
-        print("title")
-        print(list(queryset.filter(title_search)))
-        print("descr")
-        print(list(queryset.filter(descr_search)))
+        # print("title")
+        # print(list(queryset.filter(title_search)))
+        # print("descr")
+        # print(list(queryset.filter(descr_search)))
 
 
         for event in events_queryset.values("id"):
@@ -171,12 +171,12 @@ def searchEvents(request):
             title_search = Q(title__icontains=term)
             descr_search = Q(description__icontains=term)
             
-            print("term: ", term)
+            # print("term: ", term)
             events_queryset = queryset.filter(title_search | descr_search )
-            print("title")
-            print(list(queryset.filter(title_search)))
-            print("descr")
-            print(list(queryset.filter(descr_search)))
+            # print("title")
+            # print(list(queryset.filter(title_search)))
+            # print("descr")
+            # print(list(queryset.filter(descr_search)))
 
 
             for event in events_queryset.values("id"):
@@ -186,17 +186,17 @@ def searchEvents(request):
                     event_vals[event["id"]] = 1
 
         sorted_events = [item for item, _ in sorted(event_vals.items(), key=lambda item: item[1])]
-        print("sorted_events")
-        print(sorted_events)
+        # print("sorted_events")
+        # print(sorted_events)
 
         sorted_events_queryset = [queryset.get(id=event_id) for event_id in sorted_events]
-        print("sorted_events_queryset")
-        print(sorted_events_queryset)
+        # print("sorted_events_queryset")
+        # print(sorted_events_queryset)
 
         club_queryset = club_queryset.filter(club_search) 
 
-        print("club_queryset")
-        print(list(club_queryset))
+        # print("club_queryset")
+        # print(list(club_queryset))
 
         # get next event for each club in club_queryset
         clubs_list = list(club_queryset)
@@ -208,11 +208,12 @@ def searchEvents(request):
                 club_events = club_events.union(queryset.filter(club_event_search))
 
         club_events = list(club_events.order_by('start_datetime'))
-        print("club_events_queryset")
-        print(club_events)
+        # print("club_events_queryset")
+        # print(club_events)
 
         # TODO: NOTE: i am going to union the club events with the events beause we should have them available anyways even if not seperated
-        sorted_events_queryset.extend(club_events)
+        # sorted_events_queryset.extend(club_events) 
+        # ^commented out, this was causing duplicates in the retrieved data
         return JsonResponse({"events":EventSerializer(sorted_events_queryset, many=True, context={'request': request}).data if len(sorted_events_queryset)>0 else [],
                              "club_events": EventSerializer(club_events, many=True, context={'request': request}).data if len(club_events)>0 else []}, safe=False )
         # `HyperlinkedRelatedField` requires the request in the serializer context. Add `context={'request': request}` when instantiating the serializer.
@@ -227,19 +228,19 @@ def searchEventCategory(request):
     if request.method == "GET":
         queryset = Event.objects.all().order_by('start_datetime')
 
-        print("DATE!!! ")
+        # print("DATE!!! ")
         start_date_str = request.GET.get("start_date", datetime.today().strftime('%m-%d-%Y'))
-        print(start_date_str)
+        # print(start_date_str)
         end_date_str = request.GET.get("end_date", (datetime.today() + relativedelta(years=1)).strftime('%m-%d-%Y'))
-        print(end_date_str)
+        # print(end_date_str)
 
         
         start_date = datetime.strptime(start_date_str, '%m-%d-%Y')
         end_date = datetime.strptime(end_date_str + " 23:59", '%m-%d-%Y %H:%M')
         
 
-        print("current start_date:", start_date)
-        print("end_date:", end_date)
+        # print("current start_date:", start_date)
+        # print("end_date:", end_date)
 
         # date_search = Q(start_datetime__range=(request.body["start_date"], request.body["end_date"]))
         date_search = Q(start_datetime__range=(start_date, end_date))
@@ -247,23 +248,23 @@ def searchEventCategory(request):
 
         categoryTerms = request.GET.get("search", "").split(" ")
         category_events = Event.objects.none()
-        print(list(category_events))
+        # print(list(category_events))
 
         
         for term in categoryTerms:
             title_search = Q(title__icontains=term)
             descr_search = Q(description__icontains=term)
             
-            print("term: ", term)
+            # print("term: ", term)
             events_queryset = queryset.filter(title_search | descr_search)
-            print("title")
-            print(list(queryset.filter(title_search)))
-            print("descr")
-            print(list(queryset.filter(descr_search)))
-            print("category_events.first()")
-            print(list(category_events))
-            print("events_queryset.first()")
-            print(events_queryset.first())
+            # print("title")
+            # print(list(queryset.filter(title_search)))
+            # print("descr")
+            # print(list(queryset.filter(descr_search)))
+            # print("category_events.first()")
+            # print(list(category_events))
+            # print("events_queryset.first()")
+            # print(events_queryset.first())
             category_events = category_events.union(events_queryset)
             
 
