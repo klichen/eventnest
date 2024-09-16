@@ -217,8 +217,8 @@ def process_posts(posts, clubs, i):
     print("Approved Posts: ", completed_posts)
     print("Unapproved Posts: ", unapproved_posts)
     # TODO change output file name
-    json_fn.write_json("../files/event_posts/filtered_posts"+str(i)+".json", completed_posts)
-    json_fn.write_json("../files/event_posts/unapproved_posts"+str(i)+".json", unapproved_posts)
+    json_fn.write_json("files/event_posts/filtered_posts"+str(i)+".json", completed_posts)
+    json_fn.write_json("files/event_posts/unapproved_posts"+str(i)+".json", unapproved_posts)
     
 
 
@@ -245,10 +245,10 @@ def showTable():
     cnx = mysql.connector.connect(host=HOST,user=USER,
                     password=PASSWORD,database=DB)
     cursor = cnx.cursor()
-    cursor.execute("""SELECT * FROM clubclubgo_club;""")
+    cursor.execute("""SELECT * FROM clubclubgo_event;""")
     myresult = cursor.fetchall()
     
-    f = open("../files/inDB.txt", "w")
+    f = open("files/inDB.txt", "w")
 
     for x in myresult:
         f.write(''.join(str(x)))
@@ -273,14 +273,17 @@ def main():
     parse = input("filter(f)/upload(u)?:")
 
     if parse.startswith("f"):
-        posts = json_fn.read_json("../files/chatgpt_posts/batch1_data.json")
-        clubs  = json_fn.read_json("../files/club_all.json")
+        posts = json_fn.read_json("files/chatgpt_posts/posts10_final_data.json")
+        clubs  = json_fn.read_json("files/club_all.json")
         process_posts(posts, clubs, 2)
         # note where the last parameter is the ith post output (will be labelled in file name)
 
     elif parse.startswith("u"): 
         events  = json_fn.read_json("/files/event_posts/filtered_posts00.json")
         load_events_to_db(events)
+        showTable()
+    else:
+        runCommand()
         showTable()
     
     # clubs  = json_fn.read_json("/files/club_all.json")
@@ -290,7 +293,6 @@ def main():
     # showTable()
     # runCommand()
 
-    # 
 
     # print(posts[5]["image_texts"])
     # print(processed_posts)
