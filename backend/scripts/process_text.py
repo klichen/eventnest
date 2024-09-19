@@ -167,18 +167,18 @@ processor = OpenAIBatchProcessor(api_key=openai_api_key)
 # change name to corresponding processed post json file
 # batch_file_name = processor.create_input_file('files/processed_posts/all_posts.json')
 
-# batch_file_name = 'files/chatgpt_input_files/batch_input_all_posts.jsonl'
-# batch_file = processor.upload_input_file(batch_file_name)
-# batch_job = processor.create_batch_job(batch_file)
+batch_file_name = 'files/chatgpt_input_files/batch_input_all_posts.jsonl'
+batch_file = processor.upload_input_file(batch_file_name)
+batch_job = processor.create_batch_job(batch_file)
 
 
-batch_job = processor.get_batch_job('batch_HV4ChQpM4zPEIClwW8PANdGn')
-processor.check_status_retrieve(batch_job)
+# batch_job = processor.get_batch_job('batch_HV4ChQpM4zPEIClwW8PANdGn')
+# processor.check_status_retrieve(batch_job)
 
 # ---------------------------------------------------------
 # download batch result file using batch_id
-# batch_job_id = "batch_PeUR5ZpNJi70Q5reSWXZqbSy"
-# output_file_name = 'files/chatgpt_posts/posts12_results.jsonl'
-# batch_job = processor.download_output_file(batch_job_id, output_file_name)
+batch_job_id = "batch_XyB9qgToYhJqQYXawB2VBv3h"
+output_file_name = 'files/chatgpt_output_files/all_posts.jsonl'
+batch_job = processor.download_output_file(batch_job_id, output_file_name)
 
 

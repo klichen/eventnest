@@ -29,17 +29,20 @@ def write_posts_csv(rows):
 
 def load_posts(profile_name):
     L = instaloader.Instaloader()
-    L.login("clubclubgogo", "fakepassword!")
+    # L.load_session_from_file("kevinchen3880")
+    # L.login("kevinchen3880", "contra123KK!")
 
     # Get the Profile instance
     try:
         profile = instaloader.Profile.from_username(L.context, profile_name)
-    
+        print(profile)
         posts = []
         month_start = datetime.today().replace(day=1)
         pinned_posts_buffer = 0
+        profile_posts = profile.get_posts()
+        print(profile_posts)
 
-        for post in profile.get_posts():
+        for post in profile_posts:
             if post.date < month_start:
                 # allow for pinned posts to be skipped without skipping recently uploaded posts
                 if pinned_posts_buffer == 3:
@@ -61,10 +64,11 @@ def load_posts(profile_name):
                         "date_posted": post.date, 
                         "image_urls": url, 
                         "caption": post.caption})
-            time.sleep(random.randint(2,8))
+            time.sleep(random.randint(2,9))
+            print("found a post -> ", profile_name)
             
             # profile name|post id|date|image url|post caption
-        rand = random.randint(34, 125)
+        rand = random.randint(181, 333)
         print("sleeping for ", rand, " seconds")
         time.sleep(rand)
         return posts
@@ -100,7 +104,7 @@ def load_posts(profile_name):
     
 
 def load_post(post_id):
-    L = instaloader.Instaloader()
+    # L = instaloader.Instaloader()
     #L.login("username", "password")
 
 

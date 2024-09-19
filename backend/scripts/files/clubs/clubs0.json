@@ -9,15 +9,6 @@
         ]
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/aiesec-toronto/",
-        "instagram_links": [
-            "https://www.instagram.com/aiesecintoronto/"
-        ],
-        "instagram_usernames": [
-            "aiesecintoronto"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/ahmadiyya-muslim-students-association-lajna-at-university-of-toronto/",
         "instagram_links": null,
         "instagram_usernames": null
@@ -38,39 +29,12 @@
         "instagram_usernames": null
     },
     {
-        "club_page": "https://sop.utoronto.ca/group/a-moment-of-science-please/",
-        "instagram_links": [
-            "https://www.instagram.com/amosp_uoft/?hl=en"
-        ],
-        "instagram_usernames": [
-            "amosp_uoft"
-        ]
-    },
-    {
         "club_page": "https://sop.utoronto.ca/group/ace-utsg/",
         "instagram_links": [
             "https://www.instagram.com/aceutsg/"
         ],
         "instagram_usernames": [
             "aceutsg"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/aerospace-students-association/",
-        "instagram_links": [
-            "https://www.instagram.com/utias.uoft/"
-        ],
-        "instagram_usernames": [
-            "utias.uoft"
-        ]
-    },
-    {
-        "club_page": "https://sop.utoronto.ca/group/ace-of-architecture/",
-        "instagram_links": [
-            "https://www.instagram.com/aoastudio_official"
-        ],
-        "instagram_usernames": [
-            "aoastudio_official"
         ]
     }
 ]

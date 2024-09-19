@@ -65,7 +65,7 @@ def create_base_data(info_file = 'data/posts.json'):
 
 def extract_content(postsStr = 'all_posts'):
     info_file = f'files/processed_posts/{postsStr}.json'
-    chatgpt_output_file = f'files/chatgpt_output_files/{postsStr}_results.jsonl'
+    chatgpt_output_file = f'files/chatgpt_output_files/{postsStr}.jsonl'
     final_result_file = f'files/chatgpt_posts/{postsStr}_final_data.json'
     full_data = []
     base_data = create_base_data(info_file)

@@ -217,7 +217,7 @@ def process_posts(posts, clubs, i):
     print("Approved Posts: ", completed_posts)
     print("Unapproved Posts: ", unapproved_posts)
     # TODO change output file name
-    json_fn.write_json("files/event_posts/filtered_posts"+str(i)+".json", completed_posts)
+    json_fn.write_json("files/event_posts/filtered_posts_again"+str(i)+".json", completed_posts)
     json_fn.write_json("files/event_posts/unapproved_posts"+str(i)+".json", unapproved_posts)
     
 

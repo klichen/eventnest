@@ -83,7 +83,7 @@ def function_for_files(input_folder, input_prefix, target_folder, target_prefix,
                         return_val = function(cwd + input_folder + filename, cwd + target_folder + target_filename)
                         if return_val == -1:
                             pause = random.randint(610, 2001)
-                            print("Pausing for ..........", pause/30, "minutes")
+                            print("Pausing for ..........", pause/60, "minutes")
                             time.sleep(pause)
                             
                         print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
