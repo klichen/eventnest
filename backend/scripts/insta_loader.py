@@ -29,7 +29,6 @@ def write_posts_csv(rows):
 
 def load_posts(profile_name):
     L = instaloader.Instaloader()
-    # L.load_session_from_file("kevinchen3880")
     # L.login("kevinchen3880", "contra123KK!")
 
     # Get the Profile instance
@@ -37,7 +36,7 @@ def load_posts(profile_name):
         profile = instaloader.Profile.from_username(L.context, profile_name)
         print(profile)
         posts = []
-        month_start = datetime.today().replace(day=1)
+        month_start = datetime.today().replace(day=18)
         pinned_posts_buffer = 0
         profile_posts = profile.get_posts()
         print(profile_posts)
@@ -134,7 +133,7 @@ def check_profiles(profile_list):
     return posts        
 
 
-def load_club_posts(intput_filename,output_filename):
+def load_club_posts(intput_filename, output_filename):
     clubs = json_fn.read_json(intput_filename)
     posts = []
     for club in clubs:
@@ -147,6 +146,7 @@ def load_club_posts(intput_filename,output_filename):
                 return -1
     
     json_fn.write_json(output_filename, posts)
+    return 0
 
     # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
     # load_post("CxvdeKcg1EK")

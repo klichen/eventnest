@@ -4,44 +4,34 @@ import image_text
 import time
 import random
 import json
+import argparse
 
 FILETYPE = ".json"
 
-def extract_i(fileName, prefix, fileType):
-    '''
-    all parameters are strings
-    fileName requires a str in a [prefix][int][.filetype] format
-    '''
+def extract_index_from_filename(file_name: str, prefix: str, file_type: str) -> int:
+    """
+    Extract the integer index from the file name in the format [prefix][int][.filetype].
+
+    :param file_name: The file name as a string.
+    :param prefix: The prefix to look for in the file name.
+    :param file_type: The file extension.
+    :return: The integer index from the file name or -1 if not found.
+    """
     try:
-        return int(fileName.split(prefix)[1].split(fileType)[0])
+        return int(file_name.split(prefix)[1].split(file_type)[0])
     except IndexError:
-        print(fileName + " does not contain " + prefix)
+        print(f"{file_name} does not contain {prefix}")
         return -1
 
-
-
-def file_function(folderName, filetype, function):
-    
-    print(os.getcwd() + (folderName))
-    directory = os.fsencode(os.getcwd() + folderName)
-    print(directory)
-    
-    for file in os.listdir(directory):
-        filename = os.fsdecode(file)
-        if filename.endswith(filetype) : 
-            # print(os.path.join(directory, filename))
-            print(filename)
-            function(filename, filetype, function)
-            
-            continue
-        else:
-            continue
-
-
 def file_exists(cwdpath, subfolder, target_filename):
-    '''
-    all parameters are str
-    '''
+    """
+    Check if a file exists in a subfolder.
+
+    :param cwd_path: Current working directory.
+    :param subfolder: Subfolder where the file might exist.
+    :param target_filename: The target file name to check for.
+    :return: True if the file exists, False otherwise.
+    """
     directory = os.fsencode(cwdpath + "/" + subfolder)
     # print("files exists directory: " + directory)
     
@@ -52,54 +42,51 @@ def file_exists(cwdpath, subfolder, target_filename):
             
     return False
 
-
-
-def function_for_files(input_folder, input_prefix, target_folder, target_prefix, function):
+def retrieve_club_posts(function):
+    """
+    Fetch and load club posts for profiles without corresponding data files in /files/posts.
+    """
+    input_folder = "/files/clubs/"
+    target_folder = "/files/posts/"
     cwd =  os.getcwd() 
-    # print(cwd + "/files/clubs")
-    directory = os.fsencode(os.getcwd() + input_folder)
-    print(directory)
-    API_CALLS = 100
+    directory = os.fsencode(cwd + input_folder)
 
+    print(directory)
 
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
-        # if API_CALLS <= 0:
-        #     time.sleep(random.randint(112, 255))
-        #     API_CALLS = 100
         
         if filename.endswith(FILETYPE) : 
             # for every json file in the files/clubs/ folder, check if there is a corresponding files/posts/ file with the same index. 
             # if no then load the posts for those club profiles
             print(filename)
             try:
-                i = extract_i(filename, input_prefix, FILETYPE)
-                if i > -1:
-                    # if i == 15:
-                    #     break
-                    target_filename = target_prefix + str(i) + FILETYPE
-
+                index = extract_index_from_filename(filename, "clubs", FILETYPE)
+                if index > -1:
+                    target_filename = f"posts{index}{FILETYPE}"
+                    # check if corresponding posts{index}.json file exists
                     if not file_exists(cwd, target_folder, target_filename):
-                        return_val = function(cwd + input_folder + filename, cwd + target_folder + target_filename)
-                        if return_val == -1:
-                            pause = random.randint(610, 2001)
-                            print("Pausing for ..........", pause/60, "minutes")
+                        clubs_file_path = cwd + input_folder + filename
+                        posts_file_path = cwd + target_folder + target_filename
+                        result = insta_loader.load_club_posts(clubs_file_path, posts_file_path)
+                        if result == -1:
+                            pause = random.randint(3600, 7200)
+                            print("There was an error with instaloader - Pausing for .....", pause/60, "minutes")
                             time.sleep(pause)
-                            
-                        print(cwd + input_folder + filename, "to",cwd + target_folder + target_filename)
-                        # API_CALLS -= 15
-                        # time.sleep(random.randint(61, 201))
-                        
-
+                        else:
+                            print(f"posts{index}.json success")             
             except IndexError:
                 pass
 
-def merge_JsonFiles():
+def merge_posts_files():
+    """
+    Merge all files/posts# files into one JSON file.
+    """
     filenames = []
     cwd =  os.getcwd()
-    for i in range(77):
-        if i != 8 and i != 9:
-            filenames.append(f"{cwd}/files/posts/posts{i}.json")
+    for i in range(82):
+        # if i != 8 and i != 9:
+        filenames.append(f"{cwd}/files/posts/posts{i}.json")
 
     result = []
     for f1 in filenames:
@@ -108,22 +95,51 @@ def merge_JsonFiles():
 
     with open(f'{cwd}/files/posts/all_posts.json', 'w') as output_file:
         json.dump(result, output_file)
+
+def extract_text_from_images():
+    """
+    Process images and extract text data.
+    """
+    cwd = os.getcwd()
+    input_file = f"{cwd}/files/posts/all_posts.json"
+    output_file = f"{cwd}/files/processed_posts/all_posts.json"
+    image_text.process_posts(input_file, output_file)
+
+def run_all_tasks():
+    """
+    Run all tasks sequentially: club posts fetching, merging, and image processing.
+    """
+    print("Running all tasks sequentially...")
+
+    # Process club files
+    retrieve_club_posts()
+
+    # Merge JSON files
+    print("Merging JSON files...")
+    merge_posts_files()
+
+    # Process images
+    print("Processing images...")
+    extract_text_from_images()
+
+    print("All tasks completed.")
                 
-
-
 def main():
-    parse = input("club/post?:")
+    # Run desired task with corresponding arg in the command line
+    # Example: python load_files.py --task all
+    parser = argparse.ArgumentParser(description="Process club post data.")
+    parser.add_argument('--task', choices=['club', 'merge', 'text', 'post', 'all'], required=True, help="Specify the task to run.")
 
-    if parse.startswith("c"):
-        function_for_files("/files/clubs/", "clubs", "/files/posts/", "posts", insta_loader.load_club_posts)
-    elif parse.startswith("m"):
-        merge_JsonFiles()
-    elif parse.startswith("t"):
-        cwd =  os.getcwd()
-        image_text.process_posts(f"{cwd}/files/posts/all_posts.json", f"{cwd}/files/processed_posts/all_posts.json")
-    else: 
-        function_for_files("/files/posts/", "posts", "/files/processed_posts/", "posts", image_text.process_posts)
+    args = parser.parse_args()
 
+    if args.task == 'fetch':
+        retrieve_club_posts()
+    elif args.task == 'merge':
+        merge_posts_files()
+    elif args.task == 'process':
+        extract_text_from_images()
+    elif args.task == 'all':
+        run_all_tasks() 
     
 
 

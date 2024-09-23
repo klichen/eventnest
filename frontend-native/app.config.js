@@ -53,7 +53,7 @@ export default {
     },
     android: {
       package: "com.clubclubgo.eventnest",
-      versionCode: 3
+      versionCode: 4
     },
     splash: {
       backgroundColor: "#ffffff"

@@ -4,6 +4,9 @@ import SmallEventCard from '../components/SmallEventCard';
 import useGetSavedEvents from '../hooks/useGetSavedEvents';
 import Text from '../components/atomics/Text';
 
+// TODO: delete saved events that have passed ? 
+// Should we keep previous events in the database ? 
+
 const SavedEventsScreen = ({ navigation }) => {
   const { savedEvents, setSavedEvents, loading, refetch } = useGetSavedEvents();
 
