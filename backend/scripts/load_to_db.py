@@ -20,31 +20,7 @@ def find_club(clubs_dict,club_username):
     for club in clubs_dict:
         if club["instagram_usernames"] is not None and club["instagram_usernames"][0] == club_username:
             return club["club_title"]
-        
 
-
-def process_post(content):
-    content_count = []
-    try:
-        content_count.append(content["title"] is not None and not content["title"] == "null" ) 
-        content_count.append(content["summary"] is not None and not content["summary"] == "null"  )
-        content_count.append(content["date"] is not None and not content["date"] == "null")  
-        content_count.append(content["location"] is not None and not content["location"] == "null"  )
-        content_count.append(content["time"] is not None and not content["time"] == "null"  )
-        
-        print("content_count sum: ", sum(content_count))
-
-        if sum(content_count) == 5:
-            return [0, get_event_from_post(content)]
-        elif sum(content_count) > 3 and content_count[0] == 1 and content_count[1]==1:
-            # must have title and summary available
-            return [1, content]
-        else:
-            return [-1, content]
-    except KeyError:
-        print("content: \n")
-        print(content)
-        return (-1, content)
 
 def fix_am_pm(string):
     string = string.group(0)
@@ -89,7 +65,7 @@ def get_event_from_post(post):
 
     return post
     
-def saniztize(dictionary):
+def sanitize(dictionary):
     for key in dictionary:
         if "datetime" not in key.lower() and type(dictionary[key]) == str:
             # dictionary[key] = dictionary[key].encode()
@@ -201,6 +177,28 @@ def load_events_to_db(events):
         cnx.commit()
         cnx.close()
 
+def process_post(content):
+    content_count = []
+    try:
+        content_count.append(content["title"] is not None and not content["title"] == "null" ) 
+        content_count.append(content["summary"] is not None and not content["summary"] == "null"  )
+        content_count.append(content["date"] is not None and not content["date"] == "null")  
+        content_count.append(content["location"] is not None and not content["location"] == "null"  )
+        content_count.append(content["time"] is not None and not content["time"] == "null"  )
+        
+        print("content_count sum: ", sum(content_count))
+
+        if sum(content_count) == 5:
+            return [0, get_event_from_post(content)]
+        elif sum(content_count) > 3 and content_count[0] == 1 and content_count[1]==1:
+            # must have title and summary available
+            return [1, content]
+        else:
+            return [-1, content]
+    except KeyError:
+        print("content: \n")
+        print(content)
+        return (-1, content)
 
 def process_posts(posts, clubs, i):
     completed_posts = []
@@ -217,10 +215,9 @@ def process_posts(posts, clubs, i):
     print("Approved Posts: ", completed_posts)
     print("Unapproved Posts: ", unapproved_posts)
     # TODO change output file name
-    json_fn.write_json("files/event_posts/filtered_posts_again"+str(i)+".json", completed_posts)
+    json_fn.write_json("files/event_posts/filtered_posts"+str(i)+".json", completed_posts)
     json_fn.write_json("files/event_posts/unapproved_posts"+str(i)+".json", unapproved_posts)
     
-
 
 def deEmojify(text):
     # https://stackoverflow.com/questions/33404752/removing-emojis-from-a-string-in-python 
@@ -266,8 +263,6 @@ def runCommand():
         print(x)
 
 
-
-
 def main():
 
     parse = input("filter(f)/upload(u)?:")
@@ -275,26 +270,14 @@ def main():
     if parse.startswith("f"):
         posts = json_fn.read_json("files/chatgpt_posts/all_posts_final_data.json")
         clubs  = json_fn.read_json("files/club_all.json")
-        process_posts(posts, clubs, 2)
+        process_posts(posts, clubs, 3)
         # note where the last parameter is the ith post output (will be labelled in file name)
 
     elif parse.startswith("u"): 
-        events  = json_fn.read_json("files/event_posts/filtered_posts2.json")
+        events  = json_fn.read_json("files/event_posts/filtered_posts3.json")
         load_events_to_db(events)
         showTable()
-    
-    # clubs  = json_fn.read_json("/files/club_all.json")
-    # load_clubs_to_db(clubs)
-    
 
-    # showTable()
-    # runCommand()
-
-    # 
-
-    # print(posts[5]["image_texts"])
-    # print(processed_posts)
-    # image_to_text("https://instagram.fyzd1-3.fna.fbcdn.net/v/t39.30808-6/433139615_18326318554189325_4150010369888308604_n.jpg?stp=dst-jpg_e15_fr_s1080x1080&_nc_ht=instagram.fyzd1-3.fna.fbcdn.net&_nc_cat=105&_nc_ohc=FRrbw1mNPwsQ7kNvgFgq62k&edm=AOQ1c0wAAAAA&ccb=7-5&ig_cache_key=MzMzMTExMTUxOTUyOTE3MTE5NA%3D%3D.2-ccb7-5&oh=00_AYDiRay80ssYPau5nTSllU81bTnVFRGsJoVazXmUcmmJmg&oe=668E15B3&_nc_sid=8b3546")
     print("Complete!")
 
     

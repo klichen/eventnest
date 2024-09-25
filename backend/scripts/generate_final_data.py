@@ -77,7 +77,6 @@ def extract_content(postsStr = 'all_posts'):
             data_dict = json.loads(content)
 
             if post_id in base_data:
-                # print('POST ID IN BASE DATA')
                 res_dict = data_dict | base_data[post_id]
                 full_data.append(res_dict)
         
@@ -86,7 +85,7 @@ def extract_content(postsStr = 'all_posts'):
 
 
 # update_image_urls()
-extract_content()
+# extract_content()
 # create_base_data()
 # extract_post_id()
 # update_custom_id()

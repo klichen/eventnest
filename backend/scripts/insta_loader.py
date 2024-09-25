@@ -5,7 +5,8 @@ import json_fn
 import time
 import random
 from datetime import datetime
-
+import threading
+from pynput.keyboard import Key, Controller
 
 
 def read_clubs_csv():
@@ -17,6 +18,7 @@ def read_clubs_csv():
             print(row)
         return clubs
 
+
 def write_posts_csv(rows):
     with open('files/posts.csv', 'a', newline='') as csvfile:
         csv_writer = csv.writer(csvfile, delimiter="|",
@@ -26,25 +28,40 @@ def write_posts_csv(rows):
             csv_writer.writerow(row)
 
 
+def skip_profile(profile_name):
+    # append profile names to skipped_profiles.txt --- delete these from clubs json files after
+    with open("files/skipped_profiles.txt", "a") as text_file:
+        text_file.write("%s\n" % profile_name)
+    keyboard = Controller()
+    with keyboard.pressed(Key.ctrl):
+        keyboard.press('c')
+        keyboard.release('c')
 
 def load_posts(profile_name):
-    L = instaloader.Instaloader()
-    # L.login("kevinchen3880", "contra123KK!")
+    L = instaloader.Instaloader(max_connection_attempts=0)
+    # L = instaloader.Instaloader()
+    L.login("kevinchen3880", "chinito333NN!?")
+    # get_profile_delay = 5
+    # alarm = threading.Timer(get_profile_delay, skip_profile, args=[profile_name])
 
-    # Get the Profile instance
     try:
+        # Get the Profile instance
+        # alarm.start()
         profile = instaloader.Profile.from_username(L.context, profile_name)
+        # alarm.cancel()
         print(profile)
         posts = []
-        month_start = datetime.today().replace(day=18)
+        month_start = datetime.today().replace(day=18, hour=0, minute=0, second=0, microsecond=0)
+
         pinned_posts_buffer = 0
+        post_counter = 0
         profile_posts = profile.get_posts()
-        print(profile_posts)
 
         for post in profile_posts:
+            print(post.date)
             if post.date < month_start:
                 # allow for pinned posts to be skipped without skipping recently uploaded posts
-                if pinned_posts_buffer == 3:
+                if pinned_posts_buffer == 5:
                     break
                 else:
                     pinned_posts_buffer += 1
@@ -63,25 +80,29 @@ def load_posts(profile_name):
                         "date_posted": post.date, 
                         "image_urls": url, 
                         "caption": post.caption})
-            time.sleep(random.randint(2,9))
-            print("found a post -> ", profile_name)
-            
+            post_counter += 1
             # profile name|post id|date|image url|post caption
+        
+        print(f"{post_counter} new post(s) - {profile_name}")
         rand = random.randint(181, 333)
         print("sleeping for ", rand, " seconds")
         time.sleep(rand)
         return posts
     
     except instaloader.ProfileNotExistsException:
-        print("Profile does not exist")
+        print(f"Profile {profile_name} does not exist")
         return []
     
     except instaloader.exceptions.QueryReturnedNotFoundException:
-        print("Profile cannot be found")
+        print(f"Profile {profile_name} cannot be found")
+        return []
+    
+    except instaloader.exceptions.ConnectionException:
+        print(f"Profile {profile_name} cannot be found")
         return []
     
     except instaloader.QueryReturnedNotFoundException:
-        print("Profile cannot be found")
+        print(f"Profile {profile_name} cannot be found")
         return []
 
     except instaloader.LoginRequiredException:
@@ -96,14 +117,9 @@ def load_posts(profile_name):
         print("Invalid arguments. Skipping profile ", profile_name)
         return -1
     
-    except instaloader.exceptions as e:
-        print("instaloader error: ", e, " in profile: ", profile_name)
-        return -1
-     
-    
 
 def load_post(post_id):
-    # L = instaloader.Instaloader()
+    L = instaloader.Instaloader()
     #L.login("username", "password")
 
 
@@ -146,30 +162,30 @@ def load_club_posts(intput_filename, output_filename):
                 return -1
     
     json_fn.write_json(output_filename, posts)
-    return 0
-
-    # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
-    # load_post("CxvdeKcg1EK")
     print("Complete!")
+    return 0
 
 
 def main():
-    clubs = json_fn.read_json("../files/clubs/clubs00.json")
-    posts = []
-    for club in clubs:
-        print(club["instagram_usernames"])
-        posts.extend(check_profiles(club["instagram_usernames"]))
+    posts = load_posts('volleyballestadiopapi222')
+    # posts = load_posts('uoftparties')
+    print(posts)
+#     clubs = json_fn.read_json("../files/clubs/clubs00.json")
+#     posts = []
+#     for club in clubs:
+#         print(club["instagram_usernames"])
+#         posts.extend(check_profiles(club["instagram_usernames"]))
     
-    json_fn.write_json("../files/posts/posts00.json", posts)
+#     json_fn.write_json("../files/posts/posts00.json", posts)
 
-    # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
-    # load_post("CxvdeKcg1EK")
-    print("Complete!")
+#     # https://www.instagram.com/p/CxvdeKcg1EK/?img_index=1 
+#     # load_post("CxvdeKcg1EK")
+#     print("Complete!")
 
-    # club = clubs[1][1].split("/")[-2]
-    # load_posts(club)
-    # load_posts("uofttempo")
-#    write_csv()
+#     # club = clubs[1][1].split("/")[-2]
+#     # load_posts(club)
+#     # load_posts("uofttempo")
+# #    write_csv()
 
 
 if __name__ == '__main__':
