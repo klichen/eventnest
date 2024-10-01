@@ -68,8 +68,8 @@ def retrieve_club_posts():
     sorted_files = sorted(files, key=numerical_sort_key)
     for file in sorted_files:
         print(file)
-        if file == "clubs20.json":
-            break
+        # if file == "clubs20.json":
+        #     break
         filename = os.fsdecode(file)
         
         if filename.endswith(FILETYPE) : 
@@ -87,7 +87,7 @@ def retrieve_club_posts():
                         result = insta_loader.load_club_posts(clubs_file_path, posts_file_path)
                         file_counter += 1
                         if result == -1:
-                            pause = random.randint(3600, 7200)
+                            pause = random.randint(33333,77777)
                             print("There was an error with instaloader - Pausing for .....", pause/60, "minutes")
                             time.sleep(pause)
                         else:

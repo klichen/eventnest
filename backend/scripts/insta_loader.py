@@ -38,9 +38,10 @@ def skip_profile(profile_name):
         keyboard.release('c')
 
 def load_posts(profile_name):
-    L = instaloader.Instaloader(max_connection_attempts=0)
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+    L = instaloader.Instaloader(max_connection_attempts=0, user_agent=user_agent)
     # L = instaloader.Instaloader()
-    L.login("kevinchen3880", "chinito333NN!?")
+    # L.login("kevinchen3880", "fizz123leorio!")
     # get_profile_delay = 5
     # alarm = threading.Timer(get_profile_delay, skip_profile, args=[profile_name])
 
@@ -84,7 +85,7 @@ def load_posts(profile_name):
             # profile name|post id|date|image url|post caption
         
         print(f"{post_counter} new post(s) - {profile_name}")
-        rand = random.randint(181, 333)
+        rand = random.randint(600, 654)
         print("sleeping for ", rand, " seconds")
         time.sleep(rand)
         return posts
