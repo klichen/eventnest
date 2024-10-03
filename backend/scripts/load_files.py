@@ -68,8 +68,7 @@ def retrieve_club_posts():
     sorted_files = sorted(files, key=numerical_sort_key)
     for file in sorted_files:
         print(file)
-        # if file == "clubs20.json":
-        #     break
+
         filename = os.fsdecode(file)
         
         if filename.endswith(FILETYPE) : 
@@ -153,7 +152,7 @@ def main():
     # Run desired task with corresponding arg in the command line
     # Example: python load_files.py --task all
     parser = argparse.ArgumentParser(description="Process club post data.")
-    parser.add_argument('--task', choices=['club', 'merge', 'text', 'post', 'all'], required=True, help="Specify the task to run.")
+    parser.add_argument('--task', choices=['fetch', 'merge', 'process', 'all'], required=True, help="Specify the task to run.")
 
     args = parser.parse_args()
 

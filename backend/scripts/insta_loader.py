@@ -52,7 +52,7 @@ def load_posts(profile_name):
         # alarm.cancel()
         print(profile)
         posts = []
-        month_start = datetime.today().replace(day=18, hour=0, minute=0, second=0, microsecond=0)
+        month_start = datetime.today().replace(day=18, month=9, hour=0, minute=0, second=0, microsecond=0)
 
         pinned_posts_buffer = 0
         post_counter = 0
