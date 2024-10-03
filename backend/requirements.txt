@@ -18,6 +18,7 @@ mysql-connector-python==9.0.0
 numpy==1.21.4
 ordereddict==1.1
 protobuf==5.27.2
+pynput==1.7.7
 pyOpenSSL==24.1.0
 python_dateutil==2.9.0.post0
 pytz==2020.1

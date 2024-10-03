@@ -1,6 +1,9 @@
 # pycache
 **/__pycache__/*
 
+# .whl
+**.whl
+**.gz
 
 /clubclubgo/migrations
 
