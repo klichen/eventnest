@@ -1,7 +1,4 @@
 ## Eventnest | UofT Events Hub
-
----
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -23,26 +20,23 @@
 ### About The Project
 
 <!-- ![Product Name Screen Shot][product-screenshot] -->
-<div style="display: flex; align-items: flex-start;">
-    <img src="images/home-page.png" alt="Product Screenshot" height="650" />
-    <div style="margin-left: 30px">
-        <a href="https://testflight.apple.com/join/YUdKFEVK">
-            <img src="images/ios-qr.png" height="250" style="margin-top: 25px"/>
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.clubclubgo.eventnest">
-            <img src="images/android-qr.png" height="250" style="margin-top: 55px"/>
-        </a>
-    </div>
-</div>
-
+<table>
+  <tr>
+    <td valign="top" rowspan="2"><img src="images/home-page.png"/></td>
+    <td valign="top"><img src="images/ios-qr.png" height="250"/></td>
+  </tr>
+  <tr>
+        <td valign="top"><img src="images/android-qr.png" height="250"/></td>
+  </tr>
+</table>
 
 **Eventnest** serves as a centralized hub for students at the UofT St. George campus to easily discover and engage with extracurricular events. By aggregating real-time event information, the app simplifies the process of finding activities that match students' interests, helping them engage in the campus community.
 
-#### Motivation
+### Motivation
 
 We thought an app like this could help a lot of students who, like us, often struggled to stay updated on the wide range of extracurricular events happening around campus. Navigating student life at UofT can be overwhelming, and we wished there had been a tool to easily find activities that matched our interests. By building this app, we wanted to create something that would simplify the process and encourage students to engage more with their community, making it easier to explore opportunities and feel connected to campus life.
 
-#### Built With
+### Built With
 
 [![React Native][Reactnative]][Reactnative-url]
 [![Expo][Expo]][Expo-url]
@@ -58,10 +52,10 @@ We thought an app like this could help a lot of students who, like us, often str
 Below are screenshots of the several screens and features of Eventnest. We emphasized simplicity for the users in this app. Students can just download the app and quickly start browsing through events - no need to sign up or onboard.
 
 <p float="left" >
-  <img src="images/search-page.PNG" alt="Product Screenshot" height="650" />
-  <img src="images/search-and-date.PNG" alt="Product Screenshot" height="650" />
-  <img src="images/saved-events.PNG" alt="Product Screenshot" height="650" />
-  <img src="images/event-page.PNG" alt="Product Screenshot" height="650" />
+  <img src="images/search-page.png" alt="Product Screenshot" height="650" />
+  <img src="images/search-and-date.png" alt="Product Screenshot" height="650" />
+  <img src="images/saved-events.png" alt="Product Screenshot" height="650" />
+  <img src="images/event-page.png" alt="Product Screenshot" height="650" />
 </p>
 
 <!-- ROADMAP -->
