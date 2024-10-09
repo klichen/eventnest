@@ -22,11 +22,11 @@
 <!-- ![Product Name Screen Shot][product-screenshot] -->
 <table>
   <tr>
-    <td valign="top" rowspan="2"><img src="images/home-page.png"/></td>
-    <td valign="top"><img src="images/ios-qr.png" height="250"/></td>
+    <td valign="center" rowspan="2"><img src="images/home-page.png"/></td>
+    <td valign="center"><img src="images/ios-qr.png" height="250"/></td>
   </tr>
   <tr>
-        <td valign="top"><img src="images/android-qr.png" height="250"/></td>
+        <td valign="center"><img src="images/android-qr.png" height="250"/></td>
   </tr>
 </table>
 
