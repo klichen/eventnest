@@ -28,10 +28,10 @@ def process_posts(intput_filepath, output_filepath):
     for post in posts:
         try:
             if not post["image_texts"]:
-                post["image_texts"] = image_to_text(post["image_urls"])
+                post["image_texts"] = image_to_text([f"https://www.instagram.com/p/{post['post_id']}/media"])
                 
         except KeyError:
-            post["image_texts"] = image_to_text(post["image_urls"])
+            post["image_texts"] = image_to_text([f"https://www.instagram.com/p/{post['post_id']}/media"])
 
 
     json_fn.write_json(output_filepath, posts)
@@ -40,8 +40,6 @@ def process_posts(intput_filepath, output_filepath):
 
 
 def main():
-
-
     posts = json_fn.read_json("../files/posts/posts00.json")
     for post in posts:
         if not post["image_texts"]:

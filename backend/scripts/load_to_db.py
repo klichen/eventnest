@@ -34,6 +34,7 @@ def fix_am_pm(string):
 
 def get_event_from_post(post):
     # TODO can use this to parse....  
+    # TODO cannot handle some time formats that chatgpt outputs yet - do validation on parsed_date
     # if has __-__ (AM OR PM)
     print(post["time"])
     new_time = re.sub(r"\d+(:\d+)* *- *\d+(:\d+)* *[apAP].*[mM].*", fix_am_pm, post["time"])
@@ -273,7 +274,9 @@ def main():
         process_posts(posts, clubs, 3)
         # note where the last parameter is the ith post output (will be labelled in file name)
 
-    elif parse.startswith("u"): 
+    elif parse.startswith("u"):
+        # TODO some clubs are not in our club_all.json file ?
+        # error when club_title is null
         events  = json_fn.read_json("files/event_posts/filtered_posts3.json")
         load_events_to_db(events)
         showTable()

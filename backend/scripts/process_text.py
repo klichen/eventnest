@@ -41,7 +41,7 @@ class OpenAIBatchProcessor:
         """Create the input file for the batch process."""
 
         extract_info_prompt = '''Given an Instagram event post's text and caption, extract the following details:
-        - date: Provide the event date in mm-dd-yyyy format. If the post mentions a relative date (e.g., "this Friday"), calculate the exact date based on the provided `date_posted`.
+        - date: If the post mentions a relative date (e.g., "this Friday"), calculate the exact date based on the provided `date_posted`. Provide the event date in mm-dd-yyyy format.
         - location: Extract the location of the event.
         - time: Extract the event's time.
         Also, summarize the event and create an appropriate title. 

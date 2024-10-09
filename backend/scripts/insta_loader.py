@@ -28,14 +28,14 @@ def write_posts_csv(rows):
             csv_writer.writerow(row)
 
 
-def skip_profile(profile_name):
-    # append profile names to skipped_profiles.txt --- delete these from clubs json files after
-    with open("files/skipped_profiles.txt", "a") as text_file:
-        text_file.write("%s\n" % profile_name)
-    keyboard = Controller()
-    with keyboard.pressed(Key.ctrl):
-        keyboard.press('c')
-        keyboard.release('c')
+# def skip_profile(profile_name):
+#     # append profile names to skipped_profiles.txt --- delete these from clubs json files after
+#     with open("files/skipped_profiles.txt", "a") as text_file:
+#         text_file.write("%s\n" % profile_name)
+#     keyboard = Controller()
+#     with keyboard.pressed(Key.ctrl):
+#         keyboard.press('c')
+#         keyboard.release('c')
 
 def load_posts(profile_name):
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'

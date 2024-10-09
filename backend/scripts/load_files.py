@@ -105,9 +105,11 @@ def merge_posts_files():
     posts_len = len(os.listdir(directory)) - 1
 
     filenames = []
+
     for i in range(posts_len):
         # if i != 8 and i != 9:
-        filenames.append(f"{cwd}/files/posts/posts{i}.json")
+        if i not in range(55, 67):
+            filenames.append(f"{cwd}/files/posts/posts{i}.json")
 
     result = []
     for f1 in filenames:
